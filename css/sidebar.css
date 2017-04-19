@@ -1,0 +1,83 @@
+body{
+	height: 100%;
+}
+.sidebar-open{
+	transform: translateX(0px);
+	-o-transform: translateX(0px);
+	-ms-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	-webkit-transform: translateX(0px);
+	animation: sidebarOpen .4s;
+	-o-animation: sidebarOpen .4s;
+	-ms-animation: sidebarOpen .4s;
+	-moz-animation: sidebarOpen .4s;
+	-webkit-animation: sidebarOpen .4s;
+	animation-fill-mode:forwards;
+	-o-animation-fill-mode:forwards;
+	-ms-animation-fill-mode:forwards;
+	-moz-animation-fill-mode:forwards;
+	-webkit-animation-fill-mode:forwards;
+}
+.sidebar-close{
+	transform: translateX(-300px);
+	-o-transform: translateX(-300px);
+	-ms-transform: translateX(-300px);
+	-moz-transform: translateX(-300px);
+	-webkit-transform: translateX(-300px);
+	animation: sidebarClose .6s;
+	-o-animation: sidebarClose .6s;
+	-ms-animation: sidebarClose .6s;
+	-moz-animation: sidebarClose .6s;
+	-webkit-animation: sidebarClose .6s;
+	animation-fill-mode:forwards;
+	-o-animation-fill-mode:forwards;
+	-ms-animation-fill-mode:forwards;
+	-moz-animation-fill-mode:forwards;
+	-webkit-animation-fill-mode:forwards;
+}
+
+@keyframes sidebarOpen{
+	form{transform: translateX(0px);}
+	to{transform: translateX(-300px);}
+}
+@keyframes sidebarClose{
+	form{transform: translateX(-300px);}
+	to{transform: translateX(0px);}
+}
+
+@-o-keyframes sidebarOpen{
+	form{-o-transform: translateX(0px);}
+	to{-o-transform: translateX(-300px);}
+}
+@-o-keyframes sidebarClose{
+	form{-o-transform: translateX(-300px);}
+	to{-o-transform: translateX(0px);}
+}
+
+@-webkit-keyframes sidebarOpen{
+	form{-webkit-transform: translateX(0px);}
+	to{-webkit-transform: translateX(-300px);}
+}
+@-webkit-keyframes sidebarClose{
+	form{-webkit-transform: translateX(-300px);}
+	to{-webkit-transform: translateX(0px);}
+}
+
+@-moz-keyframes sidebarOpen{
+	form{-moz-transform: translateX(0px);}
+	to{-moz-transform: translateX(-300px);}
+}
+@-moz-keyframes sidebarClose{
+	form{-moz-transform: translateX(-300px);}
+	to{-moz-transform: translateX(0px);}
+}
+.sidebar{
+	width: 300px;
+	height: 100%;
+	margin-right: -300px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-color: #000;
+	color: #FFF;
+}
