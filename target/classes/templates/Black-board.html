@@ -87,6 +87,7 @@
 									</div>
 									<!-- 留言尾部 -->
 									<div class="floor-foot">
+										<input type="hidden" th:value="${floors.id}">
 										<p th:text="${floors.time}">2017年4月19日14:54:50</p>
 										<a class="btn-zan"><img src="img/zan.png"><span class="zan-count" th:text="${floors.zanCount}">2</span></a>
 										<a class="btn-comment"><img src="img/comment.png"><span class="reply-count" th:text="${floors.rpCount}">2</span></a>
@@ -94,21 +95,7 @@
 									<!-- 回复层 -->
 									<div class="reply-container">
 										<!-- 回复 -->
-										<div class="reply">
-											<!-- 回复头部 -->
-											<div class="reply-head">
-												<img class="head-sculpture" src="img/1.jpg">
-												<span class="name">李四</span>
-											</div>
-											<!-- 回复内容 -->
-											<div class="reply-body">
-												<p>它的父元素是视窗（浏览器默认用来展示内容的区域的尺寸，不是html 或body 的尺寸）。</p>
-											</div>
-											<!-- 回复尾部 -->
-											<div class="reply-foot">
-												<p>2017年4月19日14:54:50</p>
-											</div>
-										</div>
+										<div class="replys"></div>
 										<!-- 回复框 -->
 										<div class="reply-frame">
 											<div class="reply-frame-head">
