@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+	<title>留言板</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<!-- my css -->
+	<link rel="stylesheet" type="text/css" href="css/black-board.css">
+</head>
+<body>
+	<!-- 遮罩层 -->
+	<div id="mask-top"></div>
+	<div id="mask-bottom"></div>
+	<div id="mask-main">
+		
+	</div>
+	<!-- 第一个版本 -->
+	<!-- <div id="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6" id="h1-box"><h1>HEAD|<small>COUNTRY-SIDE</small></h1></div>
+					<div class="col-xs-2" id="nav-first"><img src="img/index/nav.png"></div>
+					<div class="col-xs-2" id="nav-second">
+					<a href="#"><img src="img/index/heart-red.png"></a>
+					</div>
+					<div class="col-xs-2" id="nav-third"><img src="img/index/person.png"></div>
+			</div>
+		</div>
+	</div> -->
+	<!-- 第二个版本 -->
+	<div id="header">
+		<div id="box-left">
+			<div id="item1">
+				<img src="img/index/nav.png"><span>MENU</span>
+			</div>
+		</div>
+		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
+		<div id="item3">REGISTER/LOG IN</div>
+		<div id="item2"><a href="#"><img src="img/index/heart-red.png"></a>/ do you like our web?</div>
+		<div id="logo">
+			Beautiful CountrySide
+		</div>
+	</div>
+	<!-- 左侧导航条 -->
+	<div id="header-left">
+		<div id="head">
+			<a href="#">ENGLISH</a><span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
+		</div>
+		<div id="items"><a href="index.html" th:href="@{/}">Home</a></div>
+		<div id="items"><a href="Food.html" th:href="@{food}">Food</a> </div>
+		<div id="items"><a href="scene.html" th:href="@{scene}">Scenery</a> </div>
+		<div id="items"><a href="Policy.html" th:href="@{policy}">Policy</a> </div>
+		<div id="items"><a href="Black-board.html" th:href="@{blackboard}">Blackborad</a> </div>
+		<div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div>
+		<div id="bottom"><img src="img/index/qr_code.png"></div>
+		<div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
+	</div>
+
+	<!-- __________________一条华丽丽的分隔线__________________-->
+	<!-- 主面板 -->
+	<div class="main">
+		<div class="container">
+			<div class="main-container">
+				<!-- 主头部 -->
+				<div class="main-head">
+					<h1>此处应是留言处</h1>
+				</div>
+				<div class="floor-content">
+					<!-- 楼层 -->
+					<div class="floor" th:each="floors : ${floors}">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- 留言 -->
+								<div class="floor-container">
+									<!-- 留言头部 -->
+									<div class="floor-head">
+										<img class="head-sculpture" src="img/1.jpg">
+										<span class="name"  th:text="${floors.username}">张三</span>
+										<small th:text="${floors.flNum}+'楼'">221楼</small>
+									</div>
+									<!-- 留言内容 -->
+									<div class="floor-body">
+										<p th:text="${floors.content}">它的父元素是视窗（浏览器默认用来展示内容的区域的尺寸，不是html 或body 的尺寸）。</p>
+									</div>
+									<!-- 留言尾部 -->
+									<div class="floor-foot">
+										<p th:text="${floors.time}">2017年4月19日14:54:50</p>
+										<a class="btn-zan"><img src="img/zan.png"><span class="zan-count" th:text="${floors.zanCount}">2</span></a>
+										<a class="btn-comment"><img src="img/comment.png"><span class="reply-count" th:text="${floors.rpCount}">2</span></a>
+									</div>
+									<!-- 回复层 -->
+									<div class="reply-container">
+										<!-- 回复 -->
+										<div class="reply">
+											<!-- 回复头部 -->
+											<div class="reply-head">
+												<img class="head-sculpture" src="img/1.jpg">
+												<span class="name">李四</span>
+											</div>
+											<!-- 回复内容 -->
+											<div class="reply-body">
+												<p>它的父元素是视窗（浏览器默认用来展示内容的区域的尺寸，不是html 或body 的尺寸）。</p>
+											</div>
+											<!-- 回复尾部 -->
+											<div class="reply-foot">
+												<p>2017年4月19日14:54:50</p>
+											</div>
+										</div>
+										<!-- 回复框 -->
+										<div class="reply-frame">
+											<div class="reply-frame-head">
+											</div>
+											<!-- 回复文本域 -->
+											<div contenteditable="true" class="reply-textarea">
+											</div>
+											<div class="reply-frame-foot">
+												<img class="expression" src="img/expression.png">
+												<div class="expression-panel">
+													<table border="1">
+														<tr>
+															<td><img src="img/emoji/1.png"></td>
+															<td><img src="img/emoji/2.png"></td>
+															<td><img src="img/emoji/3.png"></td>
+															<td><img src="img/emoji/4.png"></td>
+															<td><img src="img/emoji/5.png"></td>
+															<td><img src="img/emoji/6.png"></td>
+															<td><img src="img/emoji/7.png"></td>
+															<td><img src="img/emoji/8.png"></td>
+														</tr>
+														<tr>
+															<td><img src="img/emoji/9.png"></td>
+															<td><img src="img/emoji/10.png"></td>
+															<td><img src="img/emoji/11.png"></td>
+															<td><img src="img/emoji/12.png"></td>
+															<td><img src="img/emoji/13.png"></td>
+															<td><img src="img/emoji/14.png"></td>
+															<td><img src="img/emoji/15.png"></td>
+															<td><img src="img/emoji/16.png"></td>
+														</tr>
+														<tr>
+															<td><img src="img/emoji/17.png"></td>
+															<td><img src="img/emoji/18.png"></td>
+															<td><img src="img/emoji/19.png"></td>
+															<td><img src="img/emoji/20.png"></td>
+															<td><img src="img/emoji/21.png"></td>
+															<td><img src="img/emoji/22.png"></td>
+															<td><img src="img/emoji/23.png"></td>
+															<td><img src="img/emoji/24.png"></td>
+														</tr>
+														<tr>
+															<td><img src="img/emoji/25.png"></td>
+															<td><img src="img/emoji/26.png"></td>
+															<td><img src="img/emoji/27.png"></td>
+															<td><img src="img/emoji/28.png"></td>
+															<td><img src="img/emoji/29.png"></td>
+															<td><img src="img/emoji/30.png"></td>
+															<td><img src="img/emoji/31.png"></td>
+															<td><img src="img/emoji/32.png"></td>
+														</tr>
+													</table>
+													<span class="jiantou2"></span>
+													<span class="jiantou1"></span>
+												</div>
+												<a class="btn btn-default">回复</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="pagination-nav">
+				  <ul class="pagination">
+				    <li>
+				      <a href="#" >
+				        <span >&laquo;</span>
+				      </a>
+				    </li>
+				    <li class="active"><a href="#">1</a></li>
+				    <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">5</a></li>
+				    <li>
+				      <a href="#">
+				        <span>&raquo;</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- 导入js -->
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/index-nav.js"></script>
+	<script src="js/blackboard.js"></script>
+</body>
+</html>

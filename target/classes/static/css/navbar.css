@@ -1,0 +1,10 @@
+.navbar-brand{
+	width: 100px;
+}
+.navbar-fixed-top .navbar-collapse{
+	text-align: center;
+    max-height: 400px;
+}
+.navbar-dropdown{
+	text-align: center;
+}

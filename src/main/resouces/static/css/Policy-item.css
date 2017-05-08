@@ -1,0 +1,15 @@
+#body1{
+	padding-top: 70px;
+	max-width: 1300px;
+	margin: auto;
+}
+#body1 #top{
+	height: 50px;
+	width: 100%;
+}
+#body1 h1{
+	text-align: center;
+}
+#body1 #bottom{
+	text-align: center;
+}
