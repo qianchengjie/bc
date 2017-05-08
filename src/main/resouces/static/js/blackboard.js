@@ -1,5 +1,24 @@
 $(document).ready(function() {
-
+	
+	//获得页数
+	/*$.ajax({
+		url : "/blackboard/getpagesum",
+		method : "GET",
+		dateType : 'json',
+		success : function(pageSum){
+			pageSum++;
+			var html = "";
+			for( var i = 1; i <= pageSum; i++){
+				if( i == 1)
+					html += "<li class='active'><a href='blackboard?pageNum=";
+				else
+					html += "<li><a href='blackboard?pageNum=";
+				html += i+"'>"+i+"</a></li>"
+			}
+			$('.pagination').find("li:first-child").after(html);
+		}
+	});*/
+	
 	$('.btn-comment').click(function() {
 		var btn_obj = $(this);
 		var rp_obj = $(this).parents('.floor-container').find('.reply-container');
@@ -14,6 +33,7 @@ $(document).ready(function() {
 			}else{
 				$.ajax({
 					url : "/blackboard/viewreply",
+					method : 'GET',
 					data : {floorId : btn_obj.siblings("input[type='hidden']").val()},
 					dataType : "json",
 					success : function(data){

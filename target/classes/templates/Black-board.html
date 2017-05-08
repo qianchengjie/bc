@@ -79,7 +79,7 @@
 									<div class="floor-head">
 										<img class="head-sculpture" src="img/1.jpg">
 										<span class="name"  th:text="${floors.username}">张三</span>
-										<small th:text="${floors.flNum}+'楼'">221楼</small>
+										<!-- <small th:text="${floors.flNum}+'楼'">221楼</small> -->
 									</div>
 									<!-- 留言内容 -->
 									<div class="floor-body">
@@ -163,17 +163,25 @@
 				<nav class="pagination-nav">
 				  <ul class="pagination">
 				    <li>
-				      <a href="#" >
+				      <a href="#" th:href = "'blackboard?pageNum='+${currentPage-1}" th:unless = "${currentPage} == 1">
 				        <span >&laquo;</span>
 				      </a>
 				    </li>
-				    <li class="active"><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
+				    <script th:inline="javascript">
+				    	var pageSum = /*[[${pageSum}]]*/;
+				    	var currentPage = /*[[${currentPage}]]*/;
+				    	if(pageSum >= 1){
+				    		for(var i = 1; i <= pageSum ; i++){
+				    			if( i==currentPage){
+				    				document.write(" <li class='active'><a href='blackboard?pageNum="+i+"'>"+i+"</a></li>");
+				    			}else{
+				    				document.write(" <li><a href='blackboard?pageNum="+i+"'>"+i+"</a></li>");
+				    			}
+				    		}
+				    	}
+				    </script>
 				    <li>
-				      <a href="#">
+				      <a href="#" th:href = "'blackboard?pageNum='+${currentPage+1}" th:unless = "${currentPage} == ${pageSum}">
 				        <span>&raquo;</span>
 				      </a>
 				    </li>

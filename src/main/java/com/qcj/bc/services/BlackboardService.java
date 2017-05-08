@@ -2,6 +2,10 @@ package com.qcj.bc.services;
 
 import javax.annotation.Resource;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.qcj.bc.model.blackboard.Floor;
@@ -18,13 +22,22 @@ public class BlackboardService {
 	@Resource
 	private ReplyRepository replyRepository;
 	
-	
 	/**
-	 * 找出所有楼层
+	 * 返回页数
 	 * @return
 	 */
-	public Iterable<Floor> findAllFloor(){
-		return blackboardRepositroy.findAll();
+	public long getPageSum(){
+		return blackboardRepositroy.count()/6;
+	}
+	/**
+	 * 找出该pageNum页所有楼层
+	 * @param pageNum
+	 * @return
+	 */
+	public Page<Floor> findAll(int pageNum){
+		Sort sort = new Sort(Sort.Direction.DESC, "id"); 
+		Pageable pageable = new PageRequest(pageNum, 6, sort);
+		return blackboardRepositroy.findAll(pageable);
 	}
 	/**
 	 * 找出该id楼层的所有评论
