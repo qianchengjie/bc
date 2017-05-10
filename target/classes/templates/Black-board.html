@@ -7,6 +7,7 @@
 	<title>留言板</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/wangEditor.min.css" th:href="@{/css/wangEditor.min.css}">
 	<!-- my css -->
 	<link rel="stylesheet" type="text/css" href="../static/css/black-board.css" th:href="@{/css/black-board.css}">
 </head>
@@ -16,7 +17,6 @@
 	<div id="mask-top"></div>
 	<div id="mask-bottom"></div>
 	<div id="mask-main">
-		
 	</div>
 	<!-- 第一个版本 -->
 	<!-- <div id="header">
@@ -68,7 +68,8 @@
 			<div class="main-container">
 				<!-- 主头部 -->
 				<div class="main-head">
-					<h1>此处应是留言处</h1>
+					<h1>说点什么吧！</h1>
+					<div id="leave-message"></div>
 				</div>
 				<div class="floor-content">
 					<!-- 楼层 -->
@@ -103,7 +104,7 @@
 										<div class="reply-frame"  th:if="${session.username!=null}">
 											<div class="reply-frame-head"></div>
 											<!-- 回复文本域 -->
-											<div contenteditable="true" class="reply-textarea"></div>
+											<div contenteditable="false" class="reply-textarea">回复</div>
 											<div class="reply-frame-foot">
 												<img class="expression" src="../static/img/expression.png" th:src="@{/img/expression.png}">
 												<div class="expression-panel">
@@ -196,6 +197,7 @@
 	</div>
 	<!-- 导入js -->
 	<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="../static/js/wangEditor.js" th:src="@{/js/wangEditor.js}"></script>
 	<script src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
 	<script src="../static/js/blackboard.js" th:src="@{/js/blackboard.js}"></script>
 </body>

@@ -43,17 +43,19 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public String registerPost(Model model,
+	public ModelAndView registerPost(
 			@ModelAttribute(value = "user") User user,
 			HttpSession session,
 			HttpServletResponse response){
+		ModelAndView mav = new ModelAndView();
 		String msg = userService.register(user);
-		if(msg.equals("注册成功"))
+		if(msg.equals("注册成功")){
 			session.setAttribute("username", user.getUsername());
-		model.addAttribute("msg",msg);
-		model.addAttribute("username", user.getUsername());
-		model.addAttribute("email", user.getEmail());
-		return "register";
+			mav.setViewName("redirect:/");
+		}else{
+			mav.addObject("msg",msg);
+		}
+		return mav;
 	}
 	/**
 	 * 返回用户登录界面
@@ -71,17 +73,20 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String loginPost(Model model,
+	public ModelAndView loginPost(
 			@ModelAttribute(value = "user")User user,
 			HttpSession session){
+		ModelAndView mav = new ModelAndView();
 		String msg = userService.login(user);
-		String go = "";
-		if(msg.equals("登录成功"))
+		if(msg.equals("登录成功")){
 			session.setAttribute("username", user.getUsername());
-		model.addAttribute("gotoindex",go);
-		model.addAttribute("msg",msg);
-		model.addAttribute("username",user.getUsername());
-		return "login";
+			mav.setViewName("redirect:/");
+		}else{
+			mav.addObject("msg",msg);
+			mav.addObject("username",user.getUsername());
+			mav.setViewName("login");
+		}
+		return mav;
 	}
 	/**
 	 * ajax检查用户名是否可用

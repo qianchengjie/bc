@@ -19,6 +19,38 @@ $(document).ready(function() {
 		}
 	});*/
 	
+	$(function () {
+        var editor = new wangEditor('leave-message');
+
+        // 自定义菜单
+        editor.config.menus = [
+            'bold',
+            'underline',
+            'italic',
+            'strikethrough',
+            'emotion',
+            '|',
+            'forecolor',
+            'bgcolor',
+            'eraser',
+            '|',
+            'quote',
+            'fontfamily',
+            'fontsize',
+            'head',
+            'orderlist',
+            'unorderlist',
+            '|',
+            'alignleft',
+            'aligncenter',
+            'alignright',
+            '|',
+            'fullscreen',
+        ];
+        editor.config.menuFixed = false;
+        editor.create();
+    });
+	
 	$('.btn-comment').click(function() {
 		var btn_obj = $(this);
 		var rp_obj = $(this).parents('.floor-container').find('.reply-container');
