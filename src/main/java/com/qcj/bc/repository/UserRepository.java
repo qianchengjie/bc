@@ -20,4 +20,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Integer
 	@Query("select email from User where email=:email")
 	public String getEmail(@Param("email")String email);
 	
+	@Query("select imgSrc from User where username=:username")
+	public String getImgSrc(@Param("username")String username);
+	
 }

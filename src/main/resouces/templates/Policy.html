@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=.7,user-scalable=no,maximum-scale=.7">
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 	<title>POLICY</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
@@ -34,8 +35,9 @@
 				<img src="../static/img/index/nav.png" th:src="@{/img/index/nav.png}"><span>MENU</span>
 			</div>
 		</div>
-		<div id="item1"><span class="glyphicon glyphicon-search"></span></div>
-		<div id="item3">REGISTER/LOG IN</div>
+		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
+		<a href="login.html" th:if="${session.username == null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
+		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
 		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{/img/index/heart-red.png}"></a>/ do you like our web?</div>
 		<div id="logo">
 			Beautiful CountrySide
@@ -50,7 +52,7 @@
 		<div id="items"><a href="Food.html" th:href="@{food}">Food</a> </div>
 		<div id="items"><a href="scene.html" th:href="@{scene}">Scenery</a> </div>
 		<div id="items"><a href="Policy.html" th:href="@{policy}">Policy</a> </div>
-		<div id="items"><a href="Black-board.html" th:href="@{blackboard}">Blackborad</a> </div>
+		<div id="items"><a href="Black-board.html" th:href="@{blackboard?pageNum=1}">Blackborad</a> </div>
 		<div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div>
 		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{/img/index/qr_code.png}"></div>
 		<div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
@@ -65,12 +67,12 @@
 				<div class="col-lg-8">
 					<div class="con1">
 						<ul>
-							<li class="item"><a href="Policy-item.html" th:href="@{policyitem?id=1}">最近发布！！</a><div class="time">2017/4/8</div></li>
-							<li class="item"><a href="Policy-item.html" th:href="@{policyitem?id=2}">最近发布！！</a><div class="time">2017/4/8</div></li>
-							<li class="item"><a href="Policy-item.html" th:href="@{policyitem?id=3}">最近发布！！</a><div class="time">2017/4/8</div></li>
-							<li class="item"><a href="Policy-item.html" th:href="@{policyitem?id=4}">最近发布！！</a><div class="time">2017/4/8</div></li>
-							<li class="item"><a href="Policy-item.html" th:href="@{policyitem?id=5}">最近发布！！</a><div class="time">2017/4/8</div></li>
-							<li class="item"><a href="Policy-item.html" th:href="@{policyitem?id=6}">最近发布！！</a><div class="time">2017/4/8</div></li>
+							<li class="item"><a href="Policy-item.html" th:href="@{policy/policyitem?id=1}">最近发布！！</a><div class="time">2017/4/8</div></li>
+							<li class="item"><a href="Policy-item.html" th:href="@{policy/policyitem?id=2}">最近发布！！</a><div class="time">2017/4/8</div></li>
+							<li class="item"><a href="Policy-item.html" th:href="@{policy/policyitem?id=3}">最近发布！！</a><div class="time">2017/4/8</div></li>
+							<li class="item"><a href="Policy-item.html" th:href="@{policy/policyitem?id=4}">最近发布！！</a><div class="time">2017/4/8</div></li>
+							<li class="item"><a href="Policy-item.html" th:href="@{policy/policyitem?id=5}">最近发布！！</a><div class="time">2017/4/8</div></li>
+							<li class="item"><a href="Policy-item.html" th:href="@{policy/policyitem?id=6}">最近发布！！</a><div class="time">2017/4/8</div></li>
 						</ul>
 					</div>
 				</div>

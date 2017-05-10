@@ -157,3 +157,6 @@ function addSuccess(obj) {
 		.removeClass('has-warning')
 		.addClass('has-success');
 }
+function go(){
+	window.location.href="../";
+}

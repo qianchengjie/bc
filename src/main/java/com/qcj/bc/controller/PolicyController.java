@@ -6,9 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("policy")
 public class PolicyController {
-	
-	@RequestMapping("policy*")
+
+	@RequestMapping("")
 	public String policy(){
 		return "policy";
 	}

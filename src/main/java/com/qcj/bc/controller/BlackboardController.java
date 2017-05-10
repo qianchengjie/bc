@@ -5,12 +5,16 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.qcj.bc.model.User;
 import com.qcj.bc.model.blackboard.Floor;
+import com.qcj.bc.model.blackboard.Reply;
 import com.qcj.bc.services.BlackboardService;
 
 @Controller
@@ -55,6 +59,23 @@ public class BlackboardController {
 	@RequestMapping(value = "viewreply", method = RequestMethod.GET)
 	public Iterable viewreply(int floorId){
 		return blackboardService.findAllReply(floorId);
+	}
+	/**
+	 * 用户回复
+	 * @param reply
+	 * @return
+	 */
+	@RequestMapping(value = "reply", method = RequestMethod.POST)
+	@ResponseBody
+	public String reply(
+			@ModelAttribute(value = "reply") Reply reply
+			){
+		return blackboardService.reply(reply);
+	}
+	@RequestMapping(value = "zan", method = RequestMethod.POST)
+	@ResponseBody
+	public int zan(int floorId){
+		return blackboardService.zan(floorId);
 	}
 	
 }

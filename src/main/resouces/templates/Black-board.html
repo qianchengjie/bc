@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+	<meta name="viewport" content="width=device-width,initial-scale=.7,user-scalable=no,maximum-scale=.7">
 	<title>留言板</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../static/css/black-board.css" th:href="@{/css/black-board.css}">
 </head>
 <body>
+	<input id="username" type="hidden" th:if="${session.username!=null}" th:value="${session.username}">
 	<!-- 遮罩层 -->
 	<div id="mask-top"></div>
 	<div id="mask-bottom"></div>
@@ -38,7 +39,8 @@
 			</div>
 		</div>
 		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
-		<div id="item3">REGISTER/LOG IN</div>
+		<a href="login.html" th:if="${session.username == null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
+		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
 		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{/img/index/heart-red.png}"></a>/ do you like our web?</div>
 		<div id="logo">
 			Beautiful CountrySide
@@ -53,9 +55,9 @@
 		<div id="items"><a href="Food.html" th:href="@{food}">Food</a> </div>
 		<div id="items"><a href="scene.html" th:href="@{scene}">Scenery</a> </div>
 		<div id="items"><a href="Policy.html" th:href="@{policy}">Policy</a> </div>
-		<div id="items"><a href="Black-board.html" th:href="@{blackboard}">Blackborad</a> </div>
+		<div id="items"><a href="Black-board.html" th:href="@{blackboard?pageNum=1}">Blackborad</a> </div>
 		<div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div>
-		<div id="bottom"><img src="../static/img/index/qr_code.png"></div>
+		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{/img/index/qr_code.png}"></div>
 		<div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
 	</div>
 
@@ -89,7 +91,7 @@
 									<div class="floor-foot">
 										<input type="hidden" value="-1" th:value="${floors.id}">
 										<p th:text="${floors.time}">2017年4月19日14:54:50</p>
-										<a class="btn-zan"><img src="../static/img/zan.png" th:src="@{/img/zan.png}"><span class="zan-count" th:text="${floors.zanCount}">2</span></a>
+										<a class="btn-zan" th:value="${floors.id}"><img src="../static/img/zan.png" th:src="@{/img/zan.png}"><span class="zan-count" th:text="${floors.zanCount}">2</span></a>
 										<a class="btn-comment"><img src="../static/img/comment.png" th:src="@{/img/comment.png}"><span class="reply-count" th:text="${floors.rpCount}">2</span></a>
 									</div>
 									<!-- 回复层 -->
@@ -97,12 +99,11 @@
 										<!-- 回复 -->
 										<div class="replys"></div>
 										<!-- 回复框 -->
-										<div class="reply-frame">
-											<div class="reply-frame-head">
-											</div>
+										<div class="reply-frame"  th:if="${session.username==null}"><a href="login.html" th:href="@{user/login}"><h1>请登录</h1></a></div>
+										<div class="reply-frame"  th:if="${session.username!=null}">
+											<div class="reply-frame-head"></div>
 											<!-- 回复文本域 -->
-											<div contenteditable="true" class="reply-textarea">
-											</div>
+											<div contenteditable="true" class="reply-textarea"></div>
 											<div class="reply-frame-foot">
 												<img class="expression" src="../static/img/expression.png" th:src="@{/img/expression.png}">
 												<div class="expression-panel">
@@ -151,7 +152,8 @@
 													<span class="jiantou2"></span>
 													<span class="jiantou1"></span>
 												</div>
-												<a class="btn btn-default">回复</a>
+												<a class="btn btn-default btn-reply">回复</a>
+												<input type="hidden" th:value="${floors.id}">
 											</div>
 										</div>
 									</div>

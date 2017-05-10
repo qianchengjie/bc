@@ -116,8 +116,13 @@ body{
 .reply-body{
 	margin-left: 3.5rem;
 }
-.reply-foot{
+.reply-foot p{
 	text-align: right;
+}
+.reply-body img{
+	width: 1.5rem;
+	vertical-align: baseline;
+	margin-right: .4rem;
 }
 .reply-foot p{
 	color: #999;
@@ -128,6 +133,9 @@ body{
 	border-radius: .3rem;
 	margin-bottom: 1rem;
 	margin-top: 2rem;
+}
+.reply-frame>a{
+	text-align: center;
 }
 .reply-frame .reply-textarea{
 	width: 100%;

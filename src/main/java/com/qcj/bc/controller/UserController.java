@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.qcj.bc.model.User;
 import com.qcj.bc.services.UserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 	
 	@Resource
@@ -42,16 +43,17 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public @ResponseBody String registerPost(Model model,
+	public String registerPost(Model model,
 			@ModelAttribute(value = "user") User user,
 			HttpSession session,
 			HttpServletResponse response){
 		String msg = userService.register(user);
+		if(msg.equals("注册成功"))
+			session.setAttribute("username", user.getUsername());
 		model.addAttribute("msg",msg);
 		model.addAttribute("username", user.getUsername());
 		model.addAttribute("email", user.getEmail());
-		session.setAttribute("username", user.getUsername());
-		return "<script>window.location.href='../'</script>";
+		return "register";
 	}
 	/**
 	 * 返回用户登录界面
@@ -69,15 +71,17 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public @ResponseBody String loginPost(Model model,
+	public String loginPost(Model model,
 			@ModelAttribute(value = "user")User user,
 			HttpSession session){
 		String msg = userService.login(user);
+		String go = "";
 		if(msg.equals("登录成功"))
-			session.setAttribute("username",user.getUsername());
+			session.setAttribute("username", user.getUsername());
+		model.addAttribute("gotoindex",go);
 		model.addAttribute("msg",msg);
 		model.addAttribute("username",user.getUsername());
-		return "<script>window.location.href='../'</script>";
+		return "login";
 	}
 	/**
 	 * ajax检查用户名是否可用

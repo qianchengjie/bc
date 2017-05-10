@@ -3,9 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/food.css">
+	<meta name="viewport" content="width=device-width,initial-scale=.7,user-scalable=no,maximum-scale=.7">
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/food.css" th:href="@{/css/food.css}">
 </head>
 <body>
 	<!-- 遮罩层 -->
@@ -18,12 +19,13 @@
 	<div id="header">
 		<div id="box-left">
 			<div id="item1">
-				<img src="img/index/nav.png"><span>MENU</span>
+				<img src="../static/img/index/nav.png" th:src="@{/img/index/nav.png}"><span>MENU</span>
 			</div>
 		</div>
-		<div id="item1"><span class="glyphicon glyphicon-search"></span></div>
-		<div id="item3">REGISTER/LOG IN</div>
-		<div id="item2"><a href="#"><img src="img/index/heart-red.png"></a>/ do you like our web?</div>
+		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
+		<a href="login.html" th:if="${session.username == null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
+		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
+		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{/img/index/heart-red.png}"></a>/ do you like our web?</div>
 		<div id="logo">
 			Beautiful CountrySide
 		</div>
@@ -37,9 +39,9 @@
 		<div id="items"><a href="Food.html" th:href="@{food}">Food</a> </div>
 		<div id="items"><a href="scene.html" th:href="@{scene}">Scenery</a> </div>
 		<div id="items"><a href="Policy.html" th:href="@{policy}">Policy</a> </div>
-		<div id="items"><a href="Black-board.html" th:href="@{blackboard}">Blackborad</a> </div>
+		<div id="items"><a href="Black-board.html" th:href="@{blackboard?pageNum=1}">Blackborad</a> </div>
 		<div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div>
-		<div id="bottom"><img src="img/index/qr_code.png"></div>
+		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{/img/index/qr_code.png}"></div>
 		<div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
 	</div>
 
@@ -61,15 +63,15 @@
 							    轮播（Carousel）项目
 							    <div class="carousel-inner">
 							        <div class="item active">
-							            <img src="img/img01.jpg" alt="First slide">
+							            <img src="../static/img/img01.jpg" alt="First slide" th:src="@{/img/img01.jpg}">
 							            <div class="carousel-caption">标题 1</div>
 							        </div>
 							        <div class="item">
-							            <img src="img/img02.jpg" alt="Second slide">
+							            <img src="../static/img/img02.jpg" alt="Second slide" th:src="@{/img/img02.jpg}">
 							            <div class="carousel-caption">标题 2</div>
 							        </div>
 							        <div class="item">
-							            <img src="img/img03.jpg" alt="Third slide">
+							            <img src="../static/img/img03.jpg" alt="Third slide" th:src="@{/img/img03.jpg}">
 							            <div class="carousel-caption">标题 3</div>
 							        </div>
 							    </div>
@@ -93,7 +95,7 @@
 			</div>
 			<div id="item-box">
 				<div id="box-left">
-					<!-- <img src="img/bg3.jpg"> -->
+					<!-- <img src="../static/img/bg3.jpg" th:src="@{/img/bg3.jpg}"> -->
 				</div>
 				<div id="box-right">
 					<div id="hr" class="hr1"></div>
@@ -193,12 +195,12 @@
 	<div class="footer">
 		<div id="top">
 			<ul>
-				<li><a href="#"><img src="img/logo.png" id="logo"></a></li>
-				<li><a href="#"><img src="img/p.png"></a></li>
-				<li><a href="#"><img src="img/F.png"></a></li>
-				<li><a href="#"><img src="img/brid.png"></a></li>
-				<li><a href="#"><img src="img/video.png"></a></li>
-				<li><a href="#"><img src="img/camera.png"></a></li>
+				<li><a href="#"><img src="../static/img/logo.png" id="logo" th:src="@{/img/logo.png}"></a></li>
+				<li><a href="#"><img src="../static/img/p.png" th:src="@{/img/p.png}"></a></li>
+				<li><a href="#"><img src="../static/img/F.png" th:src="@{/img/F.png}"></a></li>
+				<li><a href="#"><img src="../static/img/brid.png" th:src="@{/img/brid.png}"></a></li>
+				<li><a href="#"><img src="../static/img/video.png" th:src="@{/img/video.png}"></a></li>
+				<li><a href="#"><img src="../static/img/camera.png" th:src="@{/img/camera.png}"></a></li>
 				<li id="title">FOLLOW US</li>
 			</ul>
 		</div>
@@ -255,7 +257,7 @@
 	</div>
 </body>
 </html>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/index-nav.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/button.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
+	<script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" src="../static/js/button.js" th:src="@{/js/button.js}"></script>

@@ -49,9 +49,8 @@ $(document).ready(function() {
 							var time = replys_obj[i].time;
 							html += time+"</p></div></div>";
 							rp_obj.find(".replys").append(html);
-							
-							replyDropdown(btn_obj,rp_obj);
 						}
+						replyDropdown(btn_obj,rp_obj);
 					}
 				})
 			}
@@ -102,6 +101,74 @@ $(document).ready(function() {
 		var ta_obj = $(this).parents('.reply-frame').find('.reply-textarea');
 		var expr_src = $(this).attr('src');
 		ta_obj.html(ta_obj.html()+"<img src='"+expr_src+"'>")
+	})
+	
+	$('.btn-reply').click(function(){
+		var obj = $(this).parents('.reply-container');
+		var floorId = $(this).next().val();
+		var username = $('#username').val();
+		var content = $(this).parents('.reply-frame').find('div.reply-textarea').html();
+		if(content == ""){
+			alert('请输入内容')
+			$(this).parents('.reply-frame').find('.reply-textarea').focus();
+		}else{
+			$.ajax({
+				url : '/blackboard/reply',
+				method : 'post',
+				data : {username : username, content : content,floorId : floorId},
+				success : function(msg){
+					if(msg != '回复成功'){
+						alert('服务器错误！')
+					}else{
+						$.ajax({
+							url : "/blackboard/viewreply",
+							method : 'GET',
+							data : {floorId : floorId},
+							dataType : "json",
+							success : function(data){
+								var replys_obj = eval(data);
+								for( var i = replys_obj.length-1; i < replys_obj.length; i++){
+									var html = "<div class='reply'><div class='reply-head'><img class='head-sculpture' src='";
+									var imgSrc = replys_obj[i].imgSrc;
+									html += imgSrc+"'><span class='name'>"
+									var username = replys_obj[i].username;
+									html += username+"</span></div><div class='reply-body'><p>"
+									var content = replys_obj[i].content;
+									html += content+"</p></div><div class='reply-foot'><p>"
+									var time = replys_obj[i].time;
+									html += time+"</p></div></div>";
+									obj.find(".replys").append(html);
+								}
+							}
+						})
+					}
+				}
+			})
+			$(this).parents('.reply-frame').find('div.reply-textarea').text('')
+			var rc_obj = $(this).parents('.floor-container').find('.reply-count');
+			var rpCount = Number(rc_obj.text());
+			rc_obj.text(rpCount+1);
+		}
+		
+	})
+	
+	$('.btn-zan').click(function(){
+		if(!$(this).hasClass('already-zan')){
+			$(this).addClass('already-zan').css('background-color','#8CF2ED');
+			var floorId = $(this).attr('value');
+			var obj = $(this).find('.zan-count');
+			$.ajax({
+				url : 'blackboard/zan',
+				method : 'post',
+				data : {floorId : floorId},
+				success : function(num){
+					obj.text(num);
+					zan_flag = false;
+				}
+			})
+		}else{
+			alert("您已赞过");
+		}
 	})
 
 })

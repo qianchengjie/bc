@@ -3,7 +3,7 @@
   <head>
     <title>Login</title>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+	<meta name="viewport" content="width=device-width,initial-scale=.7,user-scalable=no,maximum-scale=.7">
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 	<link rel="stylesheet" type="text/css" href="../static/css/login.css" th:href="@{/css/login.css}">
 
@@ -42,9 +42,11 @@
 		</form>
 	</div>
 	
+	
 	<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 	<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 	<!-- my js -->
 	<script src="../static/js/login.js" th:src="@{/js/login.js}"></script>
+	<script th:if="${session.username != null}" th:text="${'go();'}"></script>
   </body>
 </html>
