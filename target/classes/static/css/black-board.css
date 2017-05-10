@@ -42,6 +42,7 @@ body{
 	height: 3rem;
 	border-radius: .5rem;
 	margin: 1rem 1rem;
+	border: 1px solid black;
 }
 .floor-head .name{}
 .floor-head small{
@@ -112,6 +113,7 @@ body{
 	height: 2.5rem;
 	border-radius: .3rem;
 	margin: .5rem .5rem;
+	border: .2px solid black;
 }
 .reply-body{
 	margin-left: 3.5rem;
