@@ -3,9 +3,9 @@
 <head>
 	<title>美丽乡村</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/index.css" th:href="@{/css/index.css}">
 </head>
 <body>
 	<!-- 遮罩层 -->
@@ -31,12 +31,13 @@
 	<div id="header">
 		<div id="box-left">
 			<div id="item1">
-				<img src="img/index/nav.png"><span>MENU</span>
+				<img src="../static/img/index/nav.png" th:src="@{/img/index/nav.png}"><span>MENU</span>
 			</div>
 		</div>
 		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
-		<div id="item3">REGISTER/LOG IN</div>
-		<div id="item2"><a href="#"><img src="img/index/heart-red.png"></a>/ do you like our web?</div>
+		<a href="login.html" th:unless="${session.usernmae==null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
+		<a href="login.html" th:if="${session.usernmae==null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
+		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{/img/index/heart-red.png}"></a>/ do you like our web?</div>
 		<div id="logo">
 			Beautiful CountrySide
 		</div>
@@ -50,9 +51,9 @@
 		<div id="items"><a href="Food.html" th:href="@{food}">Food</a> </div>
 		<div id="items"><a href="scene.html" th:href="@{scene}">Scenery</a> </div>
 		<div id="items"><a href="Policy.html" th:href="@{policy}">Policy</a> </div>
-		<div id="items"><a href="Black-board.html" th:href="@{blackboard}">Blackborad</a> </div>
+		<div id="items"><a href="Black-board.html" th:href="@{blackboard?pageNum=1}">Blackborad</a> </div>
 		<div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div>
-		<div id="bottom"><img src="img/index/qr_code.png"></div>
+		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{/img/index/qr_code.png}"></div>
 		<div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
 	</div>
 
@@ -76,15 +77,15 @@
 						    <!-- 轮播（Carousel）项目 -->
 						    <div class="carousel-inner">
 						        <div class="item active">
-						            <img src="img/img01.jpg" alt="First slide">
+						            <img src="../static/img/img01.jpg" alt="First slide" th:src="@{/img/img01.jpg}">
 						            <div class="carousel-caption">标题 1</div>
 						        </div>
 						        <div class="item">
-						            <img src="img/img02.jpg" alt="Second slide">
+						            <img src="../static/img/img02.jpg" alt="Second slide" th:src="@{/img/img02.jpg}">
 						            <div class="carousel-caption">标题 2</div>
 						        </div>
 						        <div class="item">
-						            <img src="img/img03.jpg" alt="Third slide">
+						            <img src="../static/img/img03.jpg" alt="Third slide" th:src="@{/img/img03.jpg}">
 						            <div class="carousel-caption">标题 3</div>
 						        </div>
 						    </div>
@@ -120,7 +121,7 @@
 					<div id="title"><h1>Today's Featured Art</h1></div>
 				</div>
 				<div class="row">
-					<div id="img"><img src="img/img01.jpg" ></div>
+					<div id="img"><img src="../static/img/img01.jpg"  th:src="@{/img/img01.jpg}"></div>
 				</div>
 				<div class="row">
 					<div id="img-bottom">title-img-bottom</div>
@@ -132,11 +133,11 @@
 					<div id="title"><h1>Previously Featured Art</h1></div>
 				</div>
 				<div class="row">
-					<div class="col-xs-3"><img src="img/index/food.png"></div>
-					<!-- <div class="col-md-3"><img src="img/index/scenne4.png"></div> -->
-					<div class="col-xs-3"><img src="img/index/scene2.png"></div>
-					<div class="col-xs-3"><img src="img/index/news3.png"></div>
-					<div class="col-xs-3" id="last"><img src="img/index/chalk board.png"></div>
+					<div class="col-xs-3"><img src="../static/img/index/food.png" th:src="@{/img/index/food.png}"></div>
+					<!-- <div class="col-md-3"><img src="../static/img/index/scenne4.png" th:src="@{/img/index/scenne4.png}"></div> -->
+					<div class="col-xs-3"><img src="../static/img/index/scene2.png" th:src="@{/img/index/scene2.png}"></div>
+					<div class="col-xs-3"><img src="../static/img/index/news3.png" th:src="@{/img/index/news3.png}"></div>
+					<div class="col-xs-3" id="last"><img src="../static/img/index/chalk board.png" th:src="@{/img/index/chalk board.png}"></div>
 				</div>
 				<div class="row" id="details-box">
 					<div class="col-md-6 col-xs-12" id="detials-left"><h1>section1</h1></div>
@@ -153,12 +154,12 @@
 	<div class="footer">
 		<div id="top">
 			<ul>
-				<li><a href="#"><img src="img/logo.png" id="logo"></a></li>
-				<li><a href="#"><img src="img/p.png"></a></li>
-				<li><a href="#"><img src="img/F.png"></a></li>
-				<li><a href="#"><img src="img/brid.png"></a></li>
-				<li><a href="#"><img src="img/video.png"></a></li>
-				<li><a href="#"><img src="img/camera.png"></a></li>
+				<li><a href="#"><img src="../static/img/logo.png" id="logo" th:src="@{img/logo.png}"></a></li>
+				<li><a href="#"><img src="../static/img/p.png" th:src="@{img/p.png}"></a></li>
+				<li><a href="#"><img src="../static/img/F.png" th:src="@{/img/F.png}"></a></li>
+				<li><a href="#"><img src="../static/img/brid.png" th:src="@{/img/brid.png}"></a></li>
+				<li><a href="#"><img src="../static/img/video.png" th:src="@{/img/video.png}"></a></li>
+				<li><a href="#"><img src="../static/img/camera.png" th:src="@{/img/camera.png}"></a></li>
 				<li id="title">FOLLOW US</li>
 			</ul>
 		</div>
@@ -213,8 +214,8 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
 </body>
 </html>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/index-nav.js"></script>

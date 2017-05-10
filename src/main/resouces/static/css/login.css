@@ -1,0 +1,113 @@
+body{
+	background: #fafafa;
+}
+#content{
+	width: 450px;
+	margin: auto;
+	margin-top: 80px;
+}
+#content #logo{
+	width: 100%;
+	text-align: center;
+}
+#content #logo p{
+	font-size: 20px;
+}
+#content #logo img{
+	width: 35%;
+}
+#content #view{
+	border-style: solid;
+	border-color: #ccc;
+	border-radius: 10px;
+	border-width: 1px;
+	background: #fff;
+	padding: 50px 35px;
+}
+#content #view input{
+	width: 280px;
+}
+#content #view2{
+	text-align: center;
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+	border-style: solid;
+	border-color: #ccc;
+	border-radius: 10px;
+	border-width: 1px;
+	background: #fff;
+	margin-top: 20px;
+	background: #fafafa;
+	cursor: pointer;
+}
+#content #view2:hover{
+	background: #ccc;
+}
+.register-content{
+	position: absolute;
+	width: 500px;
+	border: 1px solid #000;
+	top: 200px;
+	left: 200px;
+	padding: 80px 0px 0px 40px;
+}
+.form-group label{
+	width: 70px;
+}
+.form-group small{
+	height: 10px;
+	display: block;
+	padding: 5px 0px 10px 75px;
+	color: red;
+}
+.input-group span{
+	z-index: 10;
+}
+.input-group input{
+	border-radius: 4px !important;
+}
+#register,#login,#view2{
+	margin: 0 auto;
+	display: block;
+	width: 5rem;
+}
+#head-img{
+	width: 100px;
+	height: 100px;
+}
+.group{
+	margin-left: 10%;
+}
+#login,#goregister{
+	width: 30% !important;
+	margin-left: 8%;
+	display: inline-block;
+}
+#msg{
+	height:30px;
+	text-align: center;
+	color: red;
+}
+@media (max-width: 768px){
+	#content{
+		width: 100%;
+	 	margin-top: 40px;
+	}
+	#content #view input{
+		width: 100%;
+	}
+	.input-group{
+		width: 100%;
+	}
+	.form-group small{
+		padding: 5px 0px 10px 5px;
+	}
+	#content #view{
+		width: 100%;
+		position: absolute;
+		border: 0;
+		border-radius: 0;
+		bottom: 0;
+	}
+}
