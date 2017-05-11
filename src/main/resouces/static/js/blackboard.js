@@ -49,7 +49,36 @@ $(document).ready(function() {
         ];
         editor.config.menuFixed = false;
         editor.create();
+        $('#leave-message').html('');
+
+		var editor1 = new wangEditor('reply-textarea');
+
+        // 自定义菜单
+        editor1.config.menus = [
+            'emotion'
+        ];
+        editor1.config.menuFixed = false;
+        editor1.create();
     });
+
+	$('#leave-message-btn').click(function() {
+		var content = $('#leave-message').html();
+		var username = $('#username').val();
+		if(content == '')
+			alert('请输入回复内容');
+		else
+			$.ajax({
+				url : '/blackboard/leaveMessage',
+				method : 'post',
+				data : {username: username, content: content},
+				success : function(msg){
+					if(msg == '留言成功')
+						location.reload();
+					else
+						alert('服务器错误');
+				}
+			})
+	})
 	
 	$('.btn-comment').click(function() {
 		var btn_obj = $(this);
@@ -59,12 +88,11 @@ $(document).ready(function() {
 			rp_obj.css('display','none')
 			btn_obj.attr('style', '')
 		} else {
-			
 			if(btn_obj.siblings("input[type='hidden']").val()==-1){
 				replyDropdown(btn_obj,rp_obj);
 			}else{
 				$.ajax({
-					url : "/blackboard/viewreply",
+					url : "/blackboard/viewReply",
 					method : 'GET',
 					data : {floorId : btn_obj.siblings("input[type='hidden']").val()},
 					dataType : "json",
@@ -105,11 +133,6 @@ $(document).ready(function() {
 			paddingBottom: '7.5px'
 		});
 		rp_obj.css('display','block')
-		$('body').animate({
-			scrollTop: rp_obj.find('.reply-textarea').offset().top - $(window).height() / 2
-		},300, function() {
-			rp_obj.find('.reply-textarea').focus().focus();
-		});
 		btn_obj.siblings("input[type='hidden']").val(-1);
 	}
 
@@ -134,15 +157,14 @@ $(document).ready(function() {
 		var expr_src = $(this).attr('src');
 		ta_obj.html(ta_obj.html()+"<img src='"+expr_src+"'>")
 	})
-	
+
 	$('.btn-reply').click(function(){
 		var obj = $(this).parents('.reply-container');
 		var floorId = $(this).next().val();
 		var username = $('#username').val();
-		var content = $(this).parents('.reply-frame').find('div.reply-textarea').html();
+		var content = $('#reply-textarea').html();
 		if(content == ""){
 			alert('请输入内容')
-			$(this).parents('.reply-frame').find('.reply-textarea').focus();
 		}else{
 			$.ajax({
 				url : '/blackboard/reply',
@@ -152,8 +174,12 @@ $(document).ready(function() {
 					if(msg != '回复成功'){
 						alert('服务器错误！')
 					}else{
+						$('.reply-frame-head').show();
+						$('.reply-frame-foot').hide();
+						$('#reply-textarea').html('');
+						$('#reply-textarea-content').hide();
 						$.ajax({
-							url : "/blackboard/viewreply",
+							url : "/blackboard/viewReply",
 							method : 'GET',
 							data : {floorId : floorId},
 							dataType : "json",
@@ -176,14 +202,13 @@ $(document).ready(function() {
 					}
 				}
 			})
-			$(this).parents('.reply-frame').find('div.reply-textarea').text('')
 			var rc_obj = $(this).parents('.floor-container').find('.reply-count');
 			var rpCount = Number(rc_obj.text());
 			rc_obj.text(rpCount+1);
 		}
-		
+
 	})
-	
+
 	$('.btn-zan').click(function(){
 		if(!$(this).hasClass('already-zan')){
 			$(this).addClass('already-zan').css('background-color','#8CF2ED');
@@ -201,6 +226,19 @@ $(document).ready(function() {
 		}else{
 			alert("您已赞过");
 		}
+	})
+
+	$('.reply-frame-head').click(function(){
+		$('.reply-frame-head').show();
+		$('.reply-frame-foot').hide();
+		$('#reply-textarea').html('')
+		var $v =$(this).next();
+		var v=$v[0];
+		$('#reply-textarea-content').hide().appendTo(v).fadeIn();
+		$(this).hide()
+		$(this).siblings('.reply-frame-foot').fadeIn(function(){
+			$('#reply-textarea').focus();
+		});
 	})
 
 })

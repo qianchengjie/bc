@@ -78,8 +78,8 @@ public class UserService {
 		else if(userRepository.getEmail( user.getEmail() ) != null)
 			msg = "邮箱已被注册";
 		else{
-			user.setImgSrc("/img/index/person.png");
-			user.setRegDate(new Date());
+			user.setImgSrc("/img/person.png");
+			user.setRegDate(new Date().toLocaleString());
 			userRepository.save(user);
 		}
 		return msg;

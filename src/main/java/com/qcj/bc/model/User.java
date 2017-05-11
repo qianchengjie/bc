@@ -21,7 +21,7 @@ public class User {
 	
 	private String imgSrc;
 	
-	private Date regDate;
+	private String regDate;
 
 	public int getId() {
 		return id;
@@ -63,11 +63,11 @@ public class User {
 		this.imgSrc = imgSrc;
 	}
 
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 	

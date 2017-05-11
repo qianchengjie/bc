@@ -51,13 +51,24 @@ public class BlackboardController {
 		return "Black-board"; 
 	}
 	/**
+	 * 留言
+	 * @param floor
+	 * @return
+	 */
+	@RequestMapping(value = "leaveMessage", method = RequestMethod.POST)
+	public @ResponseBody String leaveMessage(
+				@ModelAttribute(value = "floor")Floor floor
+			){
+		return blackboardService.leaveMessage(floor);
+	}
+	/**
 	 * 查选当前楼层回复的内容
 	 * @param floorId
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "viewreply", method = RequestMethod.GET)
-	public Iterable viewreply(int floorId){
+	@RequestMapping(value = "viewReply", method = RequestMethod.GET)
+	public Iterable viewReply(int floorId){
 		return blackboardService.findAllReply(floorId);
 	}
 	/**

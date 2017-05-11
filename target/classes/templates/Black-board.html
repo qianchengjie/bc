@@ -68,10 +68,12 @@
 			<div class="main-container">
 				<!-- 主头部 -->
 				<div class="main-head">
-					<h1>说点什么吧！</h1>
+					<h1>既然过来了，就说点什么吧！</h1>
 					<div id="leave-message"></div>
-				</div>
-				<div class="floor-content">
+					<div class="leave-message-foot">
+					<button id="leave-message-btn" class="btn btn-primary">留言</button>
+					</div>
+				</div><div class="floor-content">
 					<!-- 楼层 -->
 					<div class="floor" th:each="floors : ${floors}">
 						<div class="row">
@@ -80,13 +82,13 @@
 								<div class="floor-container">
 									<!-- 留言头部 -->
 									<div class="floor-head">
-										<img class="head-sculpture" src="../static/img/1.jpg" th:src="@{/img/1.jpg}">
+										<img class="head-sculpture" src="../static/img/1.jpg" th:src="${floors.imgSrc}">
 										<span class="name"  th:text="${floors.username}">张三</span>
 										<!-- <small th:text="${floors.flNum}+'楼'">221楼</small> -->
 									</div>
 									<!-- 留言内容 -->
 									<div class="floor-body">
-										<p th:text="${floors.content}">它的父元素是视窗（浏览器默认用来展示内容的区域的尺寸，不是html 或body 的尺寸）。</p>
+										<p th:utext="${floors.content}">它的父元素是视窗（浏览器默认用来展示内容的区域的尺寸，不是html 或body 的尺寸）。</p>
 									</div>
 									<!-- 留言尾部 -->
 									<div class="floor-foot">
@@ -102,57 +104,11 @@
 										<!-- 回复框 -->
 										<div class="reply-frame"  th:if="${session.username==null}"><a href="login.html" th:href="@{user/login}"><h1>请登录</h1></a></div>
 										<div class="reply-frame"  th:if="${session.username!=null}">
-											<div class="reply-frame-head"></div>
+											<div class="reply-frame-head">回复</div>
 											<!-- 回复文本域 -->
-											<div contenteditable="false" class="reply-textarea">回复</div>
+											<div class="reply-textarea">
+											</div>
 											<div class="reply-frame-foot">
-												<img class="expression" src="../static/img/expression.png" th:src="@{/img/expression.png}">
-												<div class="expression-panel">
-													<table border="1">
-														<tr>
-															<td><img src="../static/img/emoji/1.png" th:src="@{/img/emoji/1.png}"></td>
-															<td><img src="../static/img/emoji/2.png" th:src="@{/img/emoji/2.png}"></td>
-															<td><img src="../static/img/emoji/3.png" th:src="@{/img/emoji/3.png}"></td>
-															<td><img src="../static/img/emoji/4.png" th:src="@{/img/emoji/4.png}"></td>
-															<td><img src="../static/img/emoji/5.png" th:src="@{/img/emoji/5.png}"></td>
-															<td><img src="../static/img/emoji/6.png" th:src="@{/img/emoji/6.png}"></td>
-															<td><img src="../static/img/emoji/7.png" th:src="@{/img/emoji/7.png}"></td>
-															<td><img src="../static/img/emoji/8.png" th:src="@{/img/emoji/8.png}"></td>
-														</tr>
-														<tr>
-															<td><img src="../static/img/emoji/9.png" th:src="@{/img/emoji/9.png}"></td>
-															<td><img src="../static/img/emoji/10.png" th:src="@{/img/emoji/10.png}"></td>
-															<td><img src="../static/img/emoji/11.png" th:src="@{/img/emoji/11.png}"></td>
-															<td><img src="../static/img/emoji/12.png" th:src="@{/img/emoji/12.png}"></td>
-															<td><img src="../static/img/emoji/13.png" th:src="@{/img/emoji/13.png}"></td>
-															<td><img src="../static/img/emoji/14.png" th:src="@{/img/emoji/14.png}"></td>
-															<td><img src="../static/img/emoji/15.png" th:src="@{/img/emoji/15.png}"></td>
-															<td><img src="../static/img/emoji/16.png" th:src="@{/img/emoji/16.png}"></td>
-														</tr>
-														<tr>
-															<td><img src="../static/img/emoji/17.png" th:src="@{/img/emoji/17.png}"></td>
-															<td><img src="../static/img/emoji/18.png" th:src="@{/img/emoji/18.png}"></td>
-															<td><img src="../static/img/emoji/19.png" th:src="@{/img/emoji/19.png}"></td>
-															<td><img src="../static/img/emoji/20.png" th:src="@{/img/emoji/20.png}"></td>
-															<td><img src="../static/img/emoji/21.png" th:src="@{/img/emoji/21.png}"></td>
-															<td><img src="../static/img/emoji/22.png" th:src="@{/img/emoji/22.png}"></td>
-															<td><img src="../static/img/emoji/23.png" th:src="@{/img/emoji/23.png}"></td>
-															<td><img src="../static/img/emoji/24.png" th:src="@{/img/emoji/24.png}"></td>
-														</tr>
-														<tr>
-															<td><img src="../static/img/emoji/25.png" th:src="@{/img/emoji/25.png}"></td>
-															<td><img src="../static/img/emoji/26.png" th:src="@{/img/emoji/26.png}"></td>
-															<td><img src="../static/img/emoji/27.png" th:src="@{/img/emoji/27.png}"></td>
-															<td><img src="../static/img/emoji/28.png" th:src="@{/img/emoji/28.png}"></td>
-															<td><img src="../static/img/emoji/29.png" th:src="@{/img/emoji/29.png}"></td>
-															<td><img src="../static/img/emoji/30.png" th:src="@{/img/emoji/30.png}"></td>
-															<td><img src="../static/img/emoji/31.png" th:src="@{/img/emoji/31.png}"></td>
-															<td><img src="../static/img/emoji/32.png" th:src="@{/img/emoji/32.png}"></td>
-														</tr>
-													</table>
-													<span class="jiantou2"></span>
-													<span class="jiantou1"></span>
-												</div>
 												<a class="btn btn-default btn-reply">回复</a>
 												<input type="hidden" th:value="${floors.id}">
 											</div>
@@ -162,6 +118,9 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div id="reply-textarea-content">
+					<div id="reply-textarea"></div>
 				</div>
 				<nav class="pagination-nav">
 				  <ul class="pagination">

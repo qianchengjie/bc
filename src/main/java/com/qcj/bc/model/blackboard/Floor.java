@@ -11,7 +11,7 @@ public class Floor {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	private String flNum;
+	private int flNum;
 	
 	private String username;
 	
@@ -31,10 +31,10 @@ public class Floor {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFlNum() {
+	public int getFlNum() {
 		return flNum;
 	}
-	public void setFlNum(String flNum) {
+	public void setFlNum(int flNum) {
 		this.flNum = flNum;
 	}
 	public String getUsername() {

@@ -46,6 +46,14 @@ public class BlackboardService {
 		Pageable pageable = new PageRequest(pageNum, 6, sort);
 		return floorRepository.findAll(pageable);
 	}
+	public String leaveMessage(Floor floor){
+		String msg = "留言成功";
+		floor.setImgSrc(userRepository.getImgSrc(floor.getUsername()));
+		floor.setTime(new Date().toLocaleString());
+		floor.setFlNum((int) floorRepository.count()+1);
+		floorRepository.save(floor);
+		return msg;
+	}
 	/**
 	 * 找出该id楼层的所有评论
 	 * @param id
