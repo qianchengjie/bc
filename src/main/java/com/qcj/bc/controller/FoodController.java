@@ -3,8 +3,8 @@ package com.qcj.bc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("food")
 @Controller
+@RequestMapping("food")
 public class FoodController {
 
 	@RequestMapping("")

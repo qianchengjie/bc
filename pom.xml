@@ -5,9 +5,8 @@
   <groupId>com.qcj</groupId>
   <artifactId>bc</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
-  <name>bc</name>
+  <packaging>war</packaging>
+  <name>bc Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
    <!--  springboot父节点依赖     -->
@@ -26,13 +25,25 @@
   </properties>
   <!-- 依赖包 -->
   <dependencies>
-  
-    <!-- 
+  	<!-- tomcat依赖 -->
+  	<dependency>  
+		<groupId>org.springframework.boot</groupId>  
+		<artifactId>spring-boot-starter-tomcat</artifactId>  
+		<!-- <scope>provided</scope>   -->
+	</dependency>  
+  	
+    <!-- ;
     	spring-boot-stater-web: MVC,ADP的依赖包
      -->
     <dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-web</artifactId>
+		<exclusions>  
+		    <exclusion>  
+		        <groupId>org.springframework.boot</groupId>  
+		        <artifactId>spring-boot-starter-tomcat</artifactId>  
+		    </exclusion>  
+		</exclusions>  
     </dependency>
   
     <!-- 添加fastjson -->
@@ -118,6 +129,14 @@
 				<fork>true</fork>
 			</configuration>
 		</plugin>
+		
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+                <warName>ROOT</warName>
+            </configuration>
+        </plugin>
 		
 	</plugins>
   </build>

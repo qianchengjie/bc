@@ -59,10 +59,10 @@ $(document).ready(function() {
 });
 
 	$("#header #item2 a").click(function(event) {
-		if($("#header #item2 a").html().toString()=='<img src="img/index/heart-red.png">'){
-			$("#header #item2 a").html('<img src="img/index/heart-filled-red.png">');
+		if($("#header #item2 a").html().toString()=='<img src="/img/index/heart-red.png">'){
+			$("#header #item2 a").html('<img src="/img/index/heart-filled-red.png">');
 		}else{
-			$("#header #item2 a").html('<img src="img/index/heart-red.png">');
+			$("#header #item2 a").html('<img src="/img/index/heart-red.png">');
 		}
 	});
 	//弹出header-left 左侧导航

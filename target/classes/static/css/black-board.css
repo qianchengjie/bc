@@ -1,4 +1,4 @@
-﻿html{font-size: 14px;line-height: 14px;}
+html{font-size: 14px;line-height: 14px;}
 body{overflow-x: hidden;font: 1rem "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;}
 a{text-decoration: none;color: #000;}
 *{outline: none;}
@@ -29,7 +29,7 @@ body{
 .main-head #leave-message-btn{ 
 	margin: 5px 10px 0 0;
 }
-.main-head>h1{
+.main-head>h3{
 	padding-left: 2rem;
 }
 .main-head #leave-message{
@@ -244,4 +244,7 @@ img.expression{
 }
 .pagination-nav{
 	text-align: center;
+}
+.pagination>li>a{
+	position: static;
 }

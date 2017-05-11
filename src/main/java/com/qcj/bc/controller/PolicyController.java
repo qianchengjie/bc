@@ -1,9 +1,8 @@
 package com.qcj.bc.controller;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("policy")
@@ -15,9 +14,10 @@ public class PolicyController {
 	}
 	
 	@RequestMapping("policyitem")
-	public String policyitem(String id,Map<String,Object> map){
-		map.put("id",id);
-		return "policy-item";
+	public String policyitem(String id){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("id", id);
+		return "policy_item";
 	}
 	
 }

@@ -68,7 +68,7 @@ $(document).ready(function() {
 			alert('请输入回复内容');
 		else
 			$.ajax({
-				url : '/blackboard/leaveMessage',
+				url : 'blackboard/leaveMessage',
 				method : 'post',
 				data : {username: username, content: content},
 				success : function(msg){
@@ -92,7 +92,7 @@ $(document).ready(function() {
 				replyDropdown(btn_obj,rp_obj);
 			}else{
 				$.ajax({
-					url : "/blackboard/viewReply",
+					url : "blackboard/viewReply",
 					method : 'GET',
 					data : {floorId : btn_obj.siblings("input[type='hidden']").val()},
 					dataType : "json",
@@ -167,7 +167,7 @@ $(document).ready(function() {
 			alert('请输入内容')
 		}else{
 			$.ajax({
-				url : '/blackboard/reply',
+				url : 'blackboard/reply',
 				method : 'post',
 				data : {username : username, content : content,floorId : floorId},
 				success : function(msg){
@@ -179,7 +179,7 @@ $(document).ready(function() {
 						$('#reply-textarea').html('');
 						$('#reply-textarea-content').hide();
 						$.ajax({
-							url : "/blackboard/viewReply",
+							url : "blackboard/viewReply",
 							method : 'GET',
 							data : {floorId : floorId},
 							dataType : "json",
