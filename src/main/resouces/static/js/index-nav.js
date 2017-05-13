@@ -120,3 +120,10 @@ $(document).ready(function() {
 	}
 	
 });
+$("#header-left #change span").click(function(event) {
+	/* Act on the event */
+	$("body").css({
+		'background': '#282828',
+		'color': '#ccc'
+	});
+});

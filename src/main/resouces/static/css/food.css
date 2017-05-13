@@ -110,6 +110,7 @@ body{
 	height: 350px;
 	width: 50%;
 	background: #fff;
+	position: relative;
 }
 #content #item-box #box-right #hr{
 	width: 100px;

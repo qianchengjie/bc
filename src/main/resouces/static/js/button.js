@@ -45,8 +45,12 @@ $(document).ready(function() {
 		$("#content #item-box #box-right").find('.hr1').attr('id', 'hr');
 		$("#content #item-box #box-right").find('.hr2').attr('id', 'hr').css('float', 'right');
 		$("#content #item-box #box-right #text").css({
-			'margin-left': '190px',
-			'text-align':'center'
+			'position': 'absolute',
+			'text-align':'center',
+			'top':'50%',
+			'left':'50%',
+			'margin-left':'-200px',
+			'margin-top':'-150px'
 		});
 	}
 	// 未完成
