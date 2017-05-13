@@ -1,6 +1,9 @@
 		#body{
 			padding-top: 75px;
 		}
+		#body #bottom-group span{
+			font-size: 35px;
+		}
 		#title #img img{
 			max-width: 500px;
 		}

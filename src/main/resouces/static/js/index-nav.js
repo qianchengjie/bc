@@ -122,8 +122,45 @@ $(document).ready(function() {
 });
 $("#header-left #change span").click(function(event) {
 	/* Act on the event */
+	$(this).css('color', 'red');
 	$("body").css({
 		'background': '#282828',
+		'color': '#ccc'
+	});
+	$("#header").css({
+		'background': '#380000',
+		'color': '#ccc'
+	});
+	$("#header #box-left").css({
+		'border-color': '#888',
+		'color': '#ccc'
+	});
+	$("#header #box-left span").css({
+		'border-color': '#888',
+		'color': '#ccc'
+	});
+	$("#header-left").css({
+		'background': '#282828',
+		'color': '#ccc',
+	});
+	$("#header-left #items").css({
+		'border-color':'#888',
+		property2: 'value2'
+	});
+	$("#header #item3").css({
+		'background': '#2F4F4F',
+		'color': '#ccc'
+	});
+	$(".footer").css({
+		'background': '#505050',
+		'color': '#ccc'
+	});
+	$(".footer #top").css({
+		'background': '#505050',
+		'border-color': '#eee'
+	});
+	$("#details-devider").css({
+		'background': '#380000',
 		'color': '#ccc'
 	});
 });
