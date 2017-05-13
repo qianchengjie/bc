@@ -44,6 +44,7 @@ body{
 }
 .main-container .floor-content{}
 .floor{
+	background-color: #FFF;
 	border-bottom: 2px solid #F1F1F1;
 	padding-bottom: 1rem;
 }

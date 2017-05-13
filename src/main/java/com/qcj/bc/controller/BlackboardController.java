@@ -1,6 +1,8 @@
 package com.qcj.bc.controller;
 
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.qcj.bc.model.blackboard.Floor;
 import com.qcj.bc.model.blackboard.Reply;
 import com.qcj.bc.services.BlackboardService;
@@ -58,7 +61,7 @@ public class BlackboardController {
 	public @ResponseBody String leaveMessage(
 				@ModelAttribute(value = "floor")Floor floor
 			){
-		return blackboardService.leaveMessage(floor);
+		return JSON.toJSONString(blackboardService.leaveMessage(floor));
 	}
 	/**
 	 * 查选当前楼层回复的内容
