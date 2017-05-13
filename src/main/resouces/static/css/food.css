@@ -5,7 +5,7 @@ body{
 	padding-top: 70px;
 }
 #body #top-back{
-	background-image: url("../img/bg2.jpg");
+	background-image: url("http://optpqehds.bkt.clouddn.com/bc/images/food/bg2.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 400px;
@@ -72,7 +72,7 @@ body{
 	height: 350px;
 	width: 50%;
 	overflow: hidden;
-	background-image: url("../img/bg3.jpg");
+	background-image: url("http://optpqehds.bkt.clouddn.com/bc/images/food/bg3.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;

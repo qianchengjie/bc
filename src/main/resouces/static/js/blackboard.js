@@ -71,16 +71,19 @@ $(document).ready(function() {
 				url : 'blackboard/leaveMessage',
 				method : 'post',
 				data : {username: username, content: content},
-				success : function(msg){
-					if(msg == '留言成功')
-						location.reload();
+				success : function(data){
+					var json = JSON.parse(data);
+					if(json.msg == '留言成功'){
+						var html = "<div class='floor animated bounceInRight'><div class='row'><div class='col-xs-12'><div class='floor-container'><div class='floor-head'><img class='head-sculpture' src='"+json.floor.imgSrc+"'><span class='name'>"+json.floor.username+"</span></div><div class='floor-body'><p>"+json.floor.content+"</p></div><div class='floor-foot'><input type='hidden' value='"+json.floor.id+"' ><p >"+json.floor.time+"</p><a class='btn-zan' value='"+json.floor.id+"'><img src='http://optpqehds.bkt.clouddn.com/bc/images/blackboard/zan.png' ><span class='zan-count'>0</span></a><a class='btn-comment'><img src='http://optpqehds.bkt.clouddn.com/bc/images/blackboard/comment.png'><span class='reply-count' >0</span></a></div><div class='reply-container'><div class='replys'></div><div class='reply-frame' ><div class='reply-frame-head'>回复</div><div class='reply-textarea'></div><div class='reply-frame-foot'><a class='btn btn-default btn-reply'>回复</a><input type='hidden' value='"+json.floor.id+"'></div></div></div></div></div></div></div>";
+						 $(".floor-content").prepend(html)
+					}
 					else
 						alert('服务器错误');
 				}
 			})
 	})
-	
-	$('.btn-comment').click(function() {
+
+	$('.main').on('click','.btn-comment',function() {
 		var btn_obj = $(this);
 		var rp_obj = $(this).parents('.floor-container').find('.reply-container');
 		//回复框上拉
@@ -158,7 +161,7 @@ $(document).ready(function() {
 		ta_obj.html(ta_obj.html()+"<img src='"+expr_src+"'>")
 	})
 
-	$('.btn-reply').click(function(){
+	$('.main').on('click','.btn-reply',function(){
 		var obj = $(this).parents('.reply-container');
 		var floorId = $(this).next().val();
 		var username = $('#username').val();
@@ -209,7 +212,7 @@ $(document).ready(function() {
 
 	})
 
-	$('.btn-zan').click(function(){
+	$('.main').on('click','.btn-zan',function(){
 		if(!$(this).hasClass('already-zan')){
 			$(this).addClass('already-zan').css('background-color','#8CF2ED');
 			var floorId = $(this).attr('value');
@@ -228,7 +231,7 @@ $(document).ready(function() {
 		}
 	})
 
-	$('.reply-frame-head').click(function(){
+	$('.main').on('click','.reply-frame-head',function(){
 		$('.reply-frame-head').show();
 		$('.reply-frame-foot').hide();
 		$('#reply-textarea').html('')

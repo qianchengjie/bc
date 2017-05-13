@@ -32,13 +32,13 @@
 	<div id="header">
 		<div id="box-left">
 			<div id="item1">
-				<img src="../static/img/index/nav.png" th:src="@{/img/index/nav.png}"><span>MENU</span>
+				<img src="../static/img/index/nav.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/nav.png}"><span>MENU</span>
 			</div>
 		</div>
 		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
 		<a href="login.html" th:if="${session.username == null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
 		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
-		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{/img/index/heart-red.png}"></a>/ do you like our web?</div>
+		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png}"></a>/ do you like our web?</div>
 		<div id="logo">
 			Beautiful CountrySide
 		</div>
@@ -54,7 +54,7 @@
 		<div id="items"><a href="Policy.html" th:href="@{policy}">Policy</a> </div>
 		<div id="items"><a href="Black-board.html" th:href="@{blackboard?pageNum=1}">Blackborad</a> </div>
 		<div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div>
-		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{/img/index/qr_code.png}"></div>
+		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/qr_code.png}"></div>
 		<div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
 	</div>
 
@@ -90,12 +90,12 @@
 	<div class="footer">
 		<div id="top">
 			<ul>
-				<li><a href="#"><img src="../static/img/logo.png" id="logo" th:src="@{/img/logo.png}"></a></li>
-				<li><a href="#"><img src="../static/img/p.png" th:src="@{/img/p.png}"></a></li>
-				<li><a href="#"><img src="../static/img/F.png" th:src="@{/img/F.png}"></a></li>
-				<li><a href="#"><img src="../static/img/brid.png" th:src="@{/img/brid.png}"></a></li>
-				<li><a href="#"><img src="../static/img/video.png" th:src="@{/img/video.png}"></a></li>
-				<li><a href="#"><img src="../static/img/camera.png" th:src="@{/img/camera.png}"></a></li>
+				<li><a href="#"><img src="../static/img/logo.png" id="logo" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/logo.png}"></a></li>
+				<li><a href="#"><img src="../static/img/p.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/p.png}"></a></li>
+				<li><a href="#"><img src="../static/img/F.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/F.png}"></a></li>
+				<li><a href="#"><img src="../static/img/brid.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/brid.png}"></a></li>
+				<li><a href="#"><img src="../static/img/video.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/video.png}"></a></li>
+				<li><a href="#"><img src="../static/img/camera.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/camera.png}"></a></li>
 				<li id="title">FOLLOW US</li>
 			</ul>
 		</div>
