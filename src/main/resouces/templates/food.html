@@ -48,7 +48,11 @@
 	<!-- __________________一条华丽丽的分隔线__________________-->
 	<div id="body">
 		<div id="top-back"></div>
-		<div id="top">Food</div>
+		<div id="top">
+			<div id="top-box">
+				Food
+			</div>
+		</div>
 		<!-- <div id="lunbo-box">
 			<div class="container-fluid">
 				<div class="row">
@@ -259,5 +263,10 @@
 	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
 	<script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 	<script type="text/javascript" src="../static/js/button.js" th:src="@{/js/button.js}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#body #top #top-box").css('opacity', '1.0');
+		});
+	</script>
 </body>
 </html>
