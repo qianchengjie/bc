@@ -6,6 +6,34 @@ ul,li{margin: 0;padding: 0;list-style: none;}
 
 .row{text-align:left}
 
+//¼ÓÔØÐ¡¶¯»­
+.loader-anim{
+	
+}
+.loader-anim .pacman>div:nth-child(3), .pacman>div:nth-child(4), .pacman>div:nth-child(5), .pacman>div:nth-child(6) {
+    background-color: #CCC;
+    border-radius: 100%;
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    -webkit-transform: translate(0,-6.25px);
+    transform: translate(0,-6.25px);
+    top: 25px;
+    left: 70px;
+}
+.pacman>div:first-of-type, .pacman>div:nth-child(2) {
+    width: 0;
+    height: 0;
+    border-right: 25px solid transparent;
+    border-top: 25px solid #CCC;
+    border-left: 25px solid #CCC;
+    border-bottom: 25px solid #CCC;
+    border-radius: 25px;
+    position: relative;
+    left: -30px;
+}
+
 body{
 	background-color: #F1F1F1;
 }

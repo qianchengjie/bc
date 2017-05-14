@@ -84,7 +84,11 @@ public class UserService {
 		}
 		return msg;
 	}
-	
+	/**
+	 * 用户登录
+	 * @param user
+	 * @return
+	 */
 	public String login(User user){
 		String msg = "登录成功";
 		if(userRepository.getUsername( user.getUsername() ) == null)
