@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>美丽乡村</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=.7,user-scalable=no,maximum-scale=.7">
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/OldStreet.css">
+</head>
+<body>
+	<!-- 遮罩层 -->
+	<div id="mask-top"></div>
+	<div id="mask-bottom"></div>
+	<div id="mask-main">
+		
+	</div>
+	<!-- 第一个版本 -->
+	<!-- <div id="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6" id="h1-box"><h1>HEAD|<small>COUNTRY-SIDE</small></h1></div>
+					<div class="col-xs-2" id="nav-first"><img src="img/index/nav.png"></div>
+					<div class="col-xs-2" id="nav-second">
+					<a href="#"><img src="img/index/heart-red.png"></a>
+					</div>
+					<div class="col-xs-2" id="nav-third"><img src="img/index/person.png"></div>
+			</div>
+		</div>
+	</div> -->
+	<!-- 第二个版本 -->
+	<div id="header">
+		<div id="box-left">
+			<div id="item1">
+				<img src="../static/img/index/nav.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/nav.png}"><span>MENU</span>
+			</div>
+		</div>
+		<div id="box-right"><input type="text" name="" placeholder="Search Someting" id="text"><button id="do" class="glyphicon glyphicon-search"></button></div>
+		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
+		<a href="login.html" th:if="${session.username == null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
+		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
+		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png}"></a>/ do you like our web?</div>
+		<div id="logo">
+			Beautiful CountrySide
+		</div>
+	</div>
+
+	<div id="header-static">
+		<div id="logo">Beautiful CountrySide</div>
+		<div id="menu-box">Menu</div>
+		<div id="login-box">User</div>
+		<div id="search-box">
+			<div id="search">
+				<span class="glyphicon glyphicon-search"></span><input type="text" name="search" class="form-control" placeholder="search">
+			</div>
+		</div>
+	</div>
+	<!-- 左侧导航条 -->
+	<div id="header-left">
+		<div id="head">
+			<a href="#">ENGLISH</a><span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
+		</div>
+		<a href="index.html" th:href="@{/}"><div id="items">Home <span class="glyphicon glyphicon-map-marker"></span></div></a>
+		<a href="Food.html" th:href="@{food}"><div id="items">Food <span class="glyphicon glyphicon-fire"></span></div></a>
+		<a href="scene.html" th:href="@{scene}"><div id="items">Scenery <span class="glyphicon glyphicon-leaf"></span></div></a>
+		<a href="Policy.html" th:href="@{policy}"><div id="items">Policy <span class="glyphicon glyphicon-comment"></span></div></a>
+		<a href="Black-board.html" th:href="@{blackboard?pageNum=1}"><div id="items">Blackborad <span class="glyphicon glyphicon-edit"></span></div></a>
+		<a href="#"><div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div></a>
+		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/qr_code.png}"></div>
+		<div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
+	</div>
+
+	<!-- __________________一条华丽丽的分隔线__________________-->
+	
+	<div id="body">
+		<div id="content">
+			<div class="container-fluid">
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+					<div class="col-lg-3 col-md-4 col-xs-12" id="items" data-toggle="modal" data-target="#myModal"><div id="img"><div id="mask">
+						教堂
+					</div></div></div>
+
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+
+	<!-- <div class="footer">
+		<div id="top">
+			<ul>
+				<li><a href="#"><img src="../static/img/logo.png" id="logo" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/logo.png}"></a></li>
+				<li><a href="#"><img src="../static/img/p.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/p.png}"></a></li>
+				<li><a href="#"><img src="../static/img/F.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/F.png}"></a></li>
+				<li><a href="#"><img src="../static/img/brid.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/brid.png}"></a></li>
+				<li><a href="#"><img src="../static/img/video.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/video.png}"></a></li>
+				<li><a href="#"><img src="../static/img/camera.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/camera.png}"></a></li>
+				<li id="title">FOLLOW US</li>
+			</ul>
+		</div>
+		<div id="ul-group-box" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-3">
+					<ul>
+						<caption><h2><small>SOUTHERN FOOD</small></h2></caption>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+					</ul>
+				</div>
+				<div class="col-xs-3">
+					<ul>
+						<caption><h2><small>SOUTHERN FOOD</small></h2></caption>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+					</ul>
+				</div>
+				<div class="col-xs-3">
+					<ul>
+						<caption><h2><small>SOUTHERN FOOD</small></h2></caption>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+					</ul>
+				</div>
+				<div class="col-xs-3">
+					<ul>
+						<caption><h2><small>SOUTHERN FOOD</small></h2></caption>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				SouthernLiving.com is part of the Time Inc. Food Collection and the Time Inc. Lifestyle Network. ©2016 Time Inc. Lifestyle Group. Rights Reserved. Look for a Job at Time Inc. Use of this site constitutes acceptance of our Terms of Use and Privacy Policy ( Your California Privacy Rights ). Ad Choices. All products and services featured are selected by our editors. Southern Living may receive compensation for some links to products and services on this website.
+			</div>
+		</div>
+	</div> -->
+
+</body>
+</html>
+	<script type="text/javascript" src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
+	<script type="text/javascript" src="../static/js/OldStreet.js"></script>
