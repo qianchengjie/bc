@@ -111,6 +111,18 @@ $(document).ready(function() {
 			'opacity':'0.7'
 		});
 	});
+	$("#header-static #menu-box").click(function(event) {
+		/* Act on the event */
+		$("#header-left").css({
+			'left': '0px',
+			'opacity': '1.0'
+		});
+		$("#mask-top,#mask-bottom").css({
+			'animation':'mask-show 2s',
+			'height':'50vh',
+			'opacity':'0.7'
+		});
+	});
 	//左侧导航缩进
 	$("#header-left #head #text span").click(function(event) {
 		$("#header-left").css({
