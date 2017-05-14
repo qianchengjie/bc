@@ -19,15 +19,25 @@
 	<div id="header">
 		<div id="box-left">
 			<div id="item1">
-				<img src="../static/img/index/nav.png" th:src="@{/img/index/nav.png}"><span>MENU</span>
+				<img src="../static/img/index/nav.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/nav.png}"><span>MENU</span>
 			</div>
 		</div>
 		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
 		<a href="login.html" th:if="${session.username == null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
 		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
-		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{/img/index/heart-red.png}"></a>/ do you like our web?</div>
+		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png}"></a>/ do you like our web?</div>
 		<div id="logo">
 			Beautiful CountrySide
+		</div>
+	</div>
+	<div id="header-static">
+		<div id="logo">Beautiful CountrySide</div>
+		<div id="menu-box"></div>
+		<div id="login-box"></div>
+		<div id="search-box">
+			<div id="search">
+				<span class="glyphicon glyphicon-search"></span><input type="text" name="search" class="form-control" placeholder="search">
+			</div>
 		</div>
 	</div>
 	<!-- 左侧导航条 -->

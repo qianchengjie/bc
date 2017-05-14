@@ -198,6 +198,7 @@ $("#header-left #change span").click(function(event) {
 		'color': '#ccc'
 	});
 });
+
 //header-static search
 $("#header-static #search-box span").click(function(event) {
 	/* Act on the event */
@@ -208,5 +209,29 @@ $("#header-static #search-box span").click(function(event) {
 	$("#header-static #search-box #search").css({
 		'left': '0',
 		'animation': 'search 0.7s'
+	});
+});
+//search
+$("#header #item4 span").click(function(event) {
+	/* Act on the event */
+	$("#header #box-right").css({
+		'opacity': '1.0',
+		'display': 'block'
+	});
+	$("#mask-main").css({
+		'background-color': 'rgba(0,0,0,0.75)',
+		'height': '100vh',
+		'animation':'mask-main 1s'
+	});
+});
+$("#mask-main").click(function(event) {
+	/* Act on the event */
+	$("#mask-main").css({
+		'background-color': 'rgba(0,0,0,0.75)',
+		'height': '0vh'
+	});
+	$("#header #box-right").css({
+		'opacity': '1.0',
+		'display': 'none'
 	});
 });

@@ -35,6 +35,7 @@
 				<img src="../static/img/index/nav.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/nav.png}"><span>MENU</span>
 			</div>
 		</div>
+		<div id="box-right"><input type="text" name="" placeholder="Search Someting" id="text"><button id="do" class="glyphicon glyphicon-search"></button></div>
 		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
 		<a href="login.html" th:if="${session.username == null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
 		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>

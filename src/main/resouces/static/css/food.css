@@ -1,14 +1,11 @@
 body{
 	background: #EDD5D1;
 }
-#body{
-	padding-top: 70px;
-}
 #body #top-back{
 	background-image: url("../img/bg2.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 700px;
+	height: 800px;
 	width: 100%;
 	background-position: center center;
 	filter: blur(3px);
@@ -17,7 +14,7 @@ body{
 #body #top{
 	position: relative;
 	z-index: 1;
-	height: 700px;
+	height: 800px;
 	width: 100%;
 }
 #body #top #top-box{
@@ -28,7 +25,7 @@ body{
 	border-width: 15px;
 	border-color: #fff;
 	position: absolute;
-	top: 50%;
+	top: 65%;
 	left: 50%;
 	margin-top: -200px;
 	margin-left: -550px;
