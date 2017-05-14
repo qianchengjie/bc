@@ -18,6 +18,10 @@ import com.qcj.bc.model.blackboard.Reply;
 import com.qcj.bc.repository.FloorRepository;
 import com.qcj.bc.repository.ReplyRepository;
 import com.qcj.bc.repository.UserRepository;
+import com.qiniu.common.Zone;
+import com.qiniu.storage.Configuration;
+import com.qiniu.storage.UploadManager;
+import com.qiniu.util.Auth;
 
 @Service
 public class BlackboardService {
@@ -36,7 +40,7 @@ public class BlackboardService {
 	 * @return
 	 */
 	public long getPageSum(){
-		return floorRepository.count()/6;
+		return (floorRepository.count()-1)/6;
 	}
 	/**
 	 * 找出该pageNum页所有楼层
@@ -91,6 +95,26 @@ public class BlackboardService {
 		floor.setZanCount(floor.getZanCount()+1);
 		floorRepository.save(floor);
 		return floorRepository.getZanCount(floorId);
+	}
+	/**
+	 * 获得upToken
+	 * @return
+	 */
+	public Map<String, String> getUpToken(){
+		//构造一个带指定Zone对象的配置类
+		Configuration cfg = new Configuration(Zone.zone2());
+		//...其他参数参考类注释
+		UploadManager uploadManager = new UploadManager(cfg);
+		//...生成上传凭证，然后准备上传
+		String accessKey = "khCLjbIJ-htjneC2BUtX8zOBSk71wpm1TZnU9s5u";
+		String secretKey = "PG0aUetavLZQvD6pp4hvgqDV_5P9_2X5xG5kfGKk";
+		String bucket = "imgs";
+		//默认不指定key的情况下，以文件内容的hash值作为文件名
+		Auth auth = Auth.create(accessKey, secretKey);
+		String upToken = auth.uploadToken(bucket);
+		Map<String,String> map = new HashMap<>();
+		map.put("uptoken", upToken);
+		return map;
 	}
 
 }

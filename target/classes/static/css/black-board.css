@@ -69,6 +69,9 @@ body{
 .floor-body p{
 	font-size: 1.2rem;
 }
+.floor-body img{
+	max-width:100%;
+}
 .floor-foot{
 	text-align: right;
 }
@@ -119,6 +122,9 @@ body{
 }
 .reply{
 	border-top: 1px solid #F1F1F1;
+	-webkit-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;:
 }
 .reply-head{}
 .reply-head .head-sculpture{

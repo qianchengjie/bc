@@ -1,14 +1,11 @@
 body{
 	background: #EDD5D1;
 }
-#body{
-	padding-top: 70px;
-}
 #body #top-back{
 	background-image: url("../img/bg2.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 700px;
+	height: 800px;
 	width: 100%;
 	background-position: center center;
 	filter: blur(3px);
@@ -17,7 +14,7 @@ body{
 #body #top{
 	position: relative;
 	z-index: 1;
-	height: 700px;
+	height: 800px;
 	width: 100%;
 }
 #body #top #top-box{
@@ -28,7 +25,7 @@ body{
 	border-width: 15px;
 	border-color: #fff;
 	position: absolute;
-	top: 50%;
+	top: 65%;
 	left: 50%;
 	margin-top: -200px;
 	margin-left: -550px;
@@ -86,11 +83,21 @@ body{
 	height: 350px;
 	width: 50%;
 	overflow: hidden;
+	position: relative;
+	animation: box-left-in 1s;
+}
+#content #item-box #box-left #img{
 	background-image: url("../img/bg3.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
 	cursor: pointer;
+	height: 350px;
+	width: 550px;
+	transition: 1s;
+}
+#content #item-box *{
+	animation: box-items 2s;
 }
 /*#content #item-box #box-left img{
 	cursor: pointer;
@@ -111,6 +118,7 @@ body{
 	width: 50%;
 	background: #fff;
 	position: relative;
+	animation: box-right-in 1s;
 }
 #content #item-box #box-right #hr{
 	width: 100px;
@@ -174,4 +182,31 @@ body{
 	left: 0px;
 	width: 0px;
 	border-style: solid;
+}
+@keyframes box-left-in{
+	0%{
+		left: -100%;
+	}
+	100%{
+		left: 0;
+	}
+}
+@keyframes box-right-in{
+	0%{
+		right: -100%;
+	}
+	100%{
+		right: 0;
+	}
+}
+@keyframes box-items{
+	0%{
+		opacity: 0;
+	}
+	50%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1.0;
+	}
 }

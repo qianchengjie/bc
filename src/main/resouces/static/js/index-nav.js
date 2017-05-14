@@ -50,7 +50,41 @@ $(document).ready(function() {
 	// 	}
 		
 	// });
-
+	//导航栏随页面滚动条变化
+	if($(window).scrollTop()>=40){
+			$("#header").css({
+				'top': '0px',
+				property2: 'value2'
+			});
+			$("#header-static").css({
+				'top': '-110px',
+				property2: 'value2'
+			});
+	}
+	$(window).scroll(function(event) {
+		/* Act on the event */
+		var distance=$(window).scrollTop();
+		if(distance>=40){
+			$("#header").css({
+				'top': '0px',
+				property2: 'value2'
+			});
+			$("#header-static").css({
+				'top': '-110px',
+				property2: 'value2'
+			});
+		}
+		if(distance<40){
+			$("#header").css({
+				'top': '-80px',
+				property2: 'value2'
+			});
+			$("#header-static").css({
+				'top': '0px',
+				property2: 'value2'
+			});
+		}
+	});
 	//第二个版本
 	var widt=parseFloat($("#header #logo").width())/2.0;   //让logo居中
 	$("#header #logo").css({
@@ -67,6 +101,18 @@ $(document).ready(function() {
 	});
 	//弹出header-left 左侧导航
 	$("#header #box-left #item1").click(function(event) {
+		$("#header-left").css({
+			'left': '0px',
+			'opacity': '1.0'
+		});
+		$("#mask-top,#mask-bottom").css({
+			'animation':'mask-show 2s',
+			'height':'50vh',
+			'opacity':'0.7'
+		});
+	});
+	$("#header-static #menu-box").click(function(event) {
+		/* Act on the event */
 		$("#header-left").css({
 			'left': '0px',
 			'opacity': '1.0'
@@ -122,8 +168,82 @@ $(document).ready(function() {
 });
 $("#header-left #change span").click(function(event) {
 	/* Act on the event */
+	$(this).css('color', 'red');
 	$("body").css({
 		'background': '#282828',
 		'color': '#ccc'
+	});
+	$("#header").css({
+		'background': '#380000',
+		'color': '#ccc'
+	});
+	$("#header #box-left").css({
+		'border-color': '#888',
+		'color': '#ccc'
+	});
+	$("#header #box-left span").css({
+		'border-color': '#888',
+		'color': '#ccc'
+	});
+	$("#header-left").css({
+		'background': '#282828',
+		'color': '#ccc',
+	});
+	$("#header-left #items").css({
+		'border-color':'#888',
+		property2: 'value2'
+	});
+	$("#header #item3").css({
+		'background': '#2F4F4F',
+		'color': '#ccc'
+	});
+	$(".footer").css({
+		'background': '#505050',
+		'color': '#ccc'
+	});
+	$(".footer #top").css({
+		'background': '#505050',
+		'border-color': '#eee'
+	});
+	$("#details-devider").css({
+		'background': '#380000',
+		'color': '#ccc'
+	});
+});
+
+//header-static search
+$("#header-static #search-box span").click(function(event) {
+	/* Act on the event */
+	$("#header-static #search-box #search input").css({
+		'opacity': '1.0',
+		'animation':'search-input 2s'
+	});
+	$("#header-static #search-box #search").css({
+		'left': '0',
+		'animation': 'search 0.7s'
+	});
+});
+//search
+$("#header #item4 span").click(function(event) {
+	/* Act on the event */
+	$("#header #box-right").css({
+		'opacity': '1.0',
+		'display': 'block'
+	});
+	$("#mask-main").css({
+		'background-color': 'rgba(0,0,0,0.75)',
+		'height': '100vh',
+		'animation':'mask-main 1s'
+	});
+});
+$("#mask-main").click(function(event) {
+	/* Act on the event */
+	$("#mask-main").css({
+		'background-color': 'rgba(0,0,0,0.75)',
+		'height': '0vh'
+	});
+	$("#header #box-right").css({
+		'opacity': '1.0',
+		'display': 'none'
 	});
 });
