@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	//屏蔽右击
+ 
 	 // $(document).bind("contextmenu",function(e){   
   //       return false;   
   //    });   
@@ -50,7 +51,15 @@ $(document).ready(function() {
 	// 	}
 		
 	// });
+
+	//禁用滚动条
+	// $(document.body).css({
+	// 	   "overflow-x":"hidden",
+	// 	   "overflow-y":"hidden"
+	// 	});
+
 	//导航栏随页面滚动条变化
+
 	if($(window).scrollTop()>=40){
 			$("#header").css({
 				'top': '0px',
@@ -110,9 +119,12 @@ $(document).ready(function() {
 			'height':'50vh',
 			'opacity':'0.7'
 		});
+		$("body").css('overflow', 'hidden');
 	});
+	//弹出header-left 左侧导航
 	$("#header-static #menu-box").click(function(event) {
 		/* Act on the event */
+		$("body").css('overflow', 'hidden');
 		$("#header-left").css({
 			'left': '0px',
 			'opacity': '1.0'
@@ -133,6 +145,7 @@ $(document).ready(function() {
 			'animation':'mask-hidden 3s',
 			'height':'0px'
 		});
+		$("body").css('overflow', 'auto');
 	});
 	//点击遮罩层左侧导航缩进
 	$("#mask-top,#mask-bottom").click(function(event) {
@@ -144,6 +157,7 @@ $(document).ready(function() {
 			'animation':'mask-hidden 2s',
 			'height':'0px'
 		});
+		$("body").css('overflow', 'auto');
 	});
 	//监视网页大小
 	if(document.body.clientWidth<1000){
@@ -211,7 +225,7 @@ $("#header-left #change span").click(function(event) {
 	});
 });
 
-//header-static search
+//header-static search界面
 $("#header-static #search-box span").click(function(event) {
 	/* Act on the event */
 	$("#header-static #search-box #search input").css({
@@ -235,6 +249,7 @@ $("#header #item4 span").click(function(event) {
 		'height': '100vh',
 		'animation':'mask-main 1s'
 	});
+	$("body").css('overflow', 'hidden');
 });
 $("#mask-main").click(function(event) {
 	/* Act on the event */
@@ -246,4 +261,5 @@ $("#mask-main").click(function(event) {
 		'opacity': '1.0',
 		'display': 'none'
 	});
+	$("body").css('overflow', 'auto');
 });
