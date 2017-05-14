@@ -50,7 +50,41 @@ $(document).ready(function() {
 	// 	}
 		
 	// });
-
+	//导航栏随页面滚动条变化
+	if($(window).scrollTop()>=40){
+			$("#header").css({
+				'top': '0px',
+				property2: 'value2'
+			});
+			$("#header-static").css({
+				'top': '-110px',
+				property2: 'value2'
+			});
+	}
+	$(window).scroll(function(event) {
+		/* Act on the event */
+		var distance=$(window).scrollTop();
+		if(distance>=40){
+			$("#header").css({
+				'top': '0px',
+				property2: 'value2'
+			});
+			$("#header-static").css({
+				'top': '-110px',
+				property2: 'value2'
+			});
+		}
+		if(distance<40){
+			$("#header").css({
+				'top': '-80px',
+				property2: 'value2'
+			});
+			$("#header-static").css({
+				'top': '0px',
+				property2: 'value2'
+			});
+		}
+	});
 	//第二个版本
 	var widt=parseFloat($("#header #logo").width())/2.0;   //让logo居中
 	$("#header #logo").css({
@@ -162,5 +196,17 @@ $("#header-left #change span").click(function(event) {
 	$("#details-devider").css({
 		'background': '#380000',
 		'color': '#ccc'
+	});
+});
+//header-static search
+$("#header-static #search-box span").click(function(event) {
+	/* Act on the event */
+	$("#header-static #search-box #search input").css({
+		'opacity': '1.0',
+		'animation':'search-input 2s'
+	});
+	$("#header-static #search-box #search").css({
+		'left': '0',
+		'animation': 'search 0.7s'
 	});
 });
