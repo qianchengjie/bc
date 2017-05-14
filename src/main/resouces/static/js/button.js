@@ -38,6 +38,24 @@ $("#content #item-box #box-right #text #button").mouseout(function(event) {
 		'width': '0px'
 	});
 });
+$("#content #item-box #box-left #img").mouseover(function(event) {
+	/* Act on the event */
+	$(this).css({
+		'height': '450px',
+		'width': '650px',
+		'margin-top':'-60px',
+		'margin-left':'-50px'
+	});
+});
+$("#content #item-box #box-left #img").mouseout(function(event) {
+	/* Act on the event */
+	$(this).css({
+		'height': '350px',
+		'width': '550px',
+		'margin-top':'0px',
+		'margin-left':'0px'
+	});
+});
 $(document).ready(function() {
 	if(document.body.clientWidth<1100){
 		$("#content #item-box #box-left").css('width', '100%');
