@@ -96,8 +96,11 @@ body{
 	width: 550px;
 	transition: 1s;
 }
-#content #item-box *{
-	animation: box-items 2s;
+#content #item-box #box-right *{
+	animation: box-items-right 2s;
+}
+#content #item-box #box-left *{
+	animation: box-items-left 2s;
 }
 /*#content #item-box #box-left img{
 	cursor: pointer;
@@ -199,7 +202,7 @@ body{
 		right: 0;
 	}
 }
-@keyframes box-items{
+@keyframes box-items-right{
 	0%{
 		opacity: 0;
 	}
@@ -208,5 +211,16 @@ body{
 	}
 	100%{
 		opacity: 1.0;
+	}
+}
+@keyframes box-items-left{
+	0%{
+		filter: blur(20px);
+	}
+	50%{
+		filter: blur(20px);
+	}
+	100%{
+		filter: blur(0px);
 	}
 }
