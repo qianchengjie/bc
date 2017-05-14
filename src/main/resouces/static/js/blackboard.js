@@ -126,7 +126,8 @@ $(document).ready(function() {
 		];
 		editor1.config.menuFixed = false;
 		editor1.create();
-
+		$('#reply-textarea').html('');
+		
 		var editor = new wangEditor('leave-message');
 
 		// 自定义菜单
@@ -163,6 +164,7 @@ $(document).ready(function() {
 
 		editor.config.menuFixed = false;
 		editor.create();
+		$('#leave-message').html('');
 	});
 	//留言
 	$('#leave-message-btn').click(function() {
@@ -352,7 +354,7 @@ $(document).ready(function() {
 	$('.main').on('click', '.reply-frame-head', function() {
 		$('.reply-frame-head').show();
 		$('.reply-frame-foot').hide();
-		$('#reply-textarea').html('<p><br></p>')
+		$('#reply-textarea').html('')
 		var $v = $(this).next();
 		var v = $v[0];
 		$('#reply-textarea-content').hide().appendTo(v).fadeIn();
