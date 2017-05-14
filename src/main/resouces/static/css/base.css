@@ -1,4 +1,4 @@
-		*{
+*{
 			padding: 0px;
 			border: 0px;
 			margin: 0px;
@@ -30,8 +30,8 @@
 		.container-fluid{
 			max-width: 1130px;
 		}
-		/*---------ä¸€æ¡åä¸½ä¸½çš„åˆ†éš”çº¿----------*/
-		/*ç¬¬ä¸€ä¸ªç‰ˆæœ¬*/
+		/*---------Ò»Ìõ»ªÀöÀöµÄ·Ö¸ôÏß----------*/
+		/*µÚÒ»¸ö°æ±¾*/
 		/*#header{
 			width: 100%;
 			background: #fff;
@@ -66,7 +66,7 @@
 			text-align: center;
 			background: #ccc;
 		}*/
-		/*ç¬¬äºŒä¸ªç‰ˆæœ¬*/
+		/*µÚ¶ş¸ö°æ±¾*/
 		#header{
 			width: 100%;
 			transition: 1s;
@@ -181,7 +181,7 @@
 			height: 60%;
 		}
 		
-		/*é™æ€herder*/
+		/*¾²Ì¬herder*/
 		#header-static{
 			height: 150px;
 			transition: 1s;
@@ -259,7 +259,7 @@
 			margin-right: 5px;
 			cursor: pointer;
 		}
-		/*å·¦è¾¹æ‰©å±•æ */
+		/*×ó±ßÀ©Õ¹À¸*/
 		#header-left{
 			opacity: 0.7;
 			position: fixed;
@@ -340,7 +340,7 @@
 			line-height: 70px;
 			cursor: pointer;
 		}
-		/*---------------------------æ‰‹æœºç‰ˆ----------------------------*/
+		/*---------------------------ÊÖ»ú°æ----------------------------*/
 		#header #item4-m{
 			height: 70px;
 			line-height: 70px;
@@ -356,7 +356,7 @@
 		#header #item3-m{
 			display: none;
 		}
-		/*--------------------------é®ç½©å±‚--------------------------*/
+		/*--------------------------ÕÚÕÖ²ã--------------------------*/
 		#mask-top{
 			position: fixed;
 			top: 0px;
@@ -386,7 +386,7 @@
 			display: block;
 			cursor: pointer;
 		}
-		/*é®ç½©å±‚åŠ¨ç”»*/
+		/*ÕÚÕÖ²ã¶¯»­*/
 		@keyframes mask-show{
 			0%{
 				height: 0px;
@@ -415,7 +415,7 @@
 				height: 0px;
 			}
 		}
-		/*-------ä¸€æ¡åä¸½ä¸½çš„åˆ†å‰²çº¿----------*/
+		/*-------Ò»Ìõ»ªÀöÀöµÄ·Ö¸îÏß----------*/
 		
 		.footer{
 			padding: 30px;

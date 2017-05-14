@@ -91,4 +91,9 @@ public class BlackboardController {
 		return blackboardService.zan(floorId);
 	}
 	
+	@RequestMapping(value = "getUpToken", method = RequestMethod.GET)
+	public @ResponseBody String getUpToken(){
+		return JSON.toJSONString(blackboardService.getUpToken());
+	}
+	
 }
