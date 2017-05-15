@@ -116,11 +116,11 @@
 									</div>
 									<!-- 回复层 -->
 									<div class="reply-container">
+										<!-- 回复 -->
+										<div class="replys"></div>
 										<div class="loader-anim">
 											<div class="loader-inner pacman"></div>
 										</div> 
-										<!-- 回复 -->
-										<div class="replys"></div>
 										<!-- 回复框 -->
 										<div class="reply-frame"  th:if="${session.username==null}"><a href="login.html" th:href="@{user/login}"><h3>登录后才可回复哦！</h3></a></div>
 										<div class="reply-frame"  th:if="${session.username!=null}">

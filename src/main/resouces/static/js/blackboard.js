@@ -239,6 +239,7 @@ $(document).ready(function() {
 	$('.main').on('click', '.btn-comment', function() {
 			var btn_obj = $(this);
 			var rp_obj = $(this).parents('.floor-container').find('.reply-container');
+			var loader_obj = rp_obj.find('.loader-anim');
 			//回复框上拉
 			if (rp_obj.css('display') == 'block') {
 				rp_obj.css('display', 'none')
@@ -247,7 +248,11 @@ $(document).ready(function() {
 				if (btn_obj.siblings("input[type='hidden']").val() == -1) {
 					replyDropdown(btn_obj, rp_obj);
 				} else {
-					var loader_obj = rp_obj.find('.loader-anim').show();
+					replyDropdown(btn_obj, rp_obj);
+					setTimeout(function(){
+						if(btn_obj.siblings("input[type='hidden']").val() != -1)
+							loader_obj.show();
+					},500)
 					$.ajax({
 						url: "blackboard/viewReply",
 						method: 'GET',
@@ -256,6 +261,7 @@ $(document).ready(function() {
 						},
 						dataType: "json",
 						success: function(data) {
+							toast
 							var replys_obj = eval(data);
 							for (var i = 0; i < replys_obj.length; i++) {
 								var html = "<div class='reply'><div class='reply-head'><img class='head-sculpture' src='";
@@ -269,8 +275,8 @@ $(document).ready(function() {
 								html += time + "</p></div></div>";
 								rp_obj.find(".replys").append(html);
 							}
-							var loader_obj = rp_obj.find('.loader-anim').hide();
-							replyDropdown(btn_obj, rp_obj);
+							btn_obj.siblings("input[type='hidden']").val(-1);
+							loader_obj = rp_obj.find('.loader-anim').hide();
 						}
 					})
 				}
@@ -289,7 +295,6 @@ $(document).ready(function() {
 			paddingBottom: '7.5px'
 		});
 		rp_obj.css('display', 'block')
-		btn_obj.siblings("input[type='hidden']").val(-1);
 	}
 
 	//表情
@@ -316,6 +321,7 @@ $(document).ready(function() {
 
 	//回复
 	$('.main').on('click', '.btn-reply', function() {
+		var flag = true;
 		var obj = $(this).parents('.reply-container');
 		var floorId = $(this).next().val();
 		var username = $('#username').val();
@@ -335,10 +341,15 @@ $(document).ready(function() {
 					if (msg != '回复成功') {
 						toast('服务器错误！')
 					} else {
+						var loader_obj = obj.find('.loader-anim')
 						$('.reply-frame-head').show();
 						$('.reply-frame-foot').hide();
 						$('#reply-textarea').html('');
 						$('#reply-textarea-content').hide();
+						setTimeout(function(){
+							if(flag)
+								loader_obj.show();
+						},1000)
 						$.ajax({
 							url: "blackboard/viewReply",
 							method: 'GET',
@@ -349,7 +360,7 @@ $(document).ready(function() {
 							success: function(data) {
 								var replys_obj = eval(data);
 								for (var i = replys_obj.length - 1; i < replys_obj.length; i++) {
-									var html = "<div class='reply fadeInRight bounceIn'><div class='reply-head'><img class='head-sculpture' src='";
+									var html = "<div class='reply animated fadeInRight'><div class='reply-head'><img class='head-sculpture' src='";
 									var imgSrc = replys_obj[i].imgSrc;
 									html += imgSrc + "'><span class='name'>"
 									var username = replys_obj[i].username;
@@ -358,8 +369,13 @@ $(document).ready(function() {
 									html += content + "</p></div><div class='reply-foot'><p>"
 									var time = replys_obj[i].time;
 									html += time + "</p></div></div>";
+									loader_obj = obj.find('.loader-anim').hide();
 									obj.find(".replys").append(html);
+									flag = false;
 								}
+								setTimeout(function() {
+									obj.find('.reply').removeClass('animated fadeInRight')
+								}, 1000)
 							}
 						})
 					}
