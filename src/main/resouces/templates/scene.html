@@ -46,7 +46,7 @@
 			</div>
 		</div>
 	</div> -->
-	<!-- 第二个版本 -->
+		<!-- 第二个版本 -->
 	<div id="header">
 		<div id="box-left">
 			<div id="item1">
@@ -55,9 +55,9 @@
 		</div>
 		<div id="box-right"><input type="text" name="" placeholder="Search Someting" id="text"><button id="do" class="glyphicon glyphicon-search"></button></div>
 		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
-		<a href="login.html" th:if="${session.username == null}" th:href="@{user/login}"><div id="item3">REGISTER/LOG IN</div></a>
+		<a href="login.html" th:if="${session.username == null}" th:href="@{/user/login}"><div id="item3">REGISTER/LOG IN</div></a>
 		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
-		<div id="item2"><a href="#"><img src="../static/img/index/heart-red.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png}"></a>/ do you like our web?</div>
+		<div id="item2"><a><img src="../static/img/index/heart-red.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png}"></a>/ do you like our web?</div>
 		<div id="logo">
 			Beautiful CountrySide
 		</div>
@@ -66,7 +66,8 @@
 	<div id="header-static">
 		<div id="logo">Beautiful CountrySide</div>
 		<div id="menu-box">Menu</div>
-		<div id="login-box">User</div>
+		<div id="login-box" th:if="${session.username == null}"><a href="login.html" th:href="@{/user/login}">Login</a></div>
+		<div id="login-box" th:if="${session.username != null}"><img src="../static/img/1.jpg" th:src="${session.userHeadImg}"></div>
 		<div id="search-box">
 			<div id="search">
 				<span class="glyphicon glyphicon-search"></span><input type="text" name="search" class="form-control" placeholder="search">
@@ -79,10 +80,10 @@
 			<a href="#">ENGLISH</a><span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
 		</div>
 		<a href="index.html" th:href="@{/}"><div id="items">Home <span class="glyphicon glyphicon-map-marker"></span></div></a>
-		<a href="Food.html" th:href="@{food}"><div id="items">Food <span class="glyphicon glyphicon-fire"></span></div></a>
-		<a href="scene.html" th:href="@{scene}"><div id="items">Scenery <span class="glyphicon glyphicon-leaf"></span></div></a>
-		<a href="Policy.html" th:href="@{policy}"><div id="items">Policy <span class="glyphicon glyphicon-comment"></span></div></a>
-		<a href="Black-board.html" th:href="@{blackboard?pageNum=1}"><div id="items">Blackborad <span class="glyphicon glyphicon-edit"></span></div></a>
+		<a href="Food.html" th:href="@{/food}"><div id="items">Food <span class="glyphicon glyphicon-fire"></span></div></a>
+		<a href="scene.html" th:href="@{/scene}"><div id="items">Scenery <span class="glyphicon glyphicon-leaf"></span></div></a>
+		<a href="Policy.html" th:href="@{/policy}"><div id="items">Policy <span class="glyphicon glyphicon-comment"></span></div></a>
+		<a href="Black-board.html" th:href="@{/blackboard?pageNum=1}"><div id="items">Blackborad <span class="glyphicon glyphicon-edit"></span></div></a>
 		<a href="#"><div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div></a>
 		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/qr_code.png}"></div>
 		<div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
