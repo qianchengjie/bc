@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,8 +42,9 @@ public class BlackboardController {
 	 * @param pageSum
 	 * @return
 	 */
-	@RequestMapping("")
-	public ModelAndView blackboard(int pageNum){
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ModelAndView blackboard(
+			@RequestParam(value = "pageNum")int pageNum){
 		ModelAndView mav = new ModelAndView();
 		Iterable<Floor> floors = blackboardService.findAll(pageNum-1);
 		long pageSum = blackboardService.getPageSum();

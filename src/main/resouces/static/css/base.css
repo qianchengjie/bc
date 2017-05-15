@@ -157,6 +157,7 @@
 		#header #item2 img{
 			margin: 0 10px;
 			width: 20px;
+			cursor: pointer;
 		}
 		#header #item3{
 			background: #42ab9e;
@@ -231,6 +232,17 @@
 			line-height: 100px;
 			margin-top: -50px;
 			font-size: 20px;
+		}
+		#login-box a{
+			text-decoration: none;
+			color: #000;
+		}
+		#login-box img{
+			height: 50px;
+			width: 50px;
+			margin-top: 30px;
+			border-radius: 5px;
+			box-shadow: 2px 2px 2px #777;
 		}
 		#header-static #search-box{
 			width: 300px;

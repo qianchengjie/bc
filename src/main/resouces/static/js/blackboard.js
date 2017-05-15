@@ -1,5 +1,30 @@
 $(document).ready(function() {
-
+	
+	var pe = false;
+	//判断是否是移动端
+	$(function(){
+			var userAgentInfo = navigator.userAgent;
+		    var Agents = ["Android", "iPhone",
+		                "SymbianOS", "Windows Phone",
+		                "iPad", "iPod"];
+		    for (var v = 0; v < Agents.length; v++) {
+		        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		        	pe = true;
+		        	break;
+	        }
+	    }
+    })
+    //Toast
+    var toastHideTimer = null;
+    function toast(msg){
+    	clearTimeout(toastHideTimer);
+    	$('#toast p').text(msg);
+    	$('#toast').fadeIn(400);
+    	toastHideTimer = setTimeout(function(){
+    		$('#toast').fadeOut(700);
+    	},2000)
+	}
+	
 	//获得页数
 	/*$.ajax({
 		url : "/blackboard/getpagesum",
@@ -80,6 +105,8 @@ $(document).ready(function() {
 				},
 				'UploadProgress': function(up, file) {
 					// 每个文件上传时，处理相关的事情
+                    // 显示进度条
+                    editor.showUploadProgress(file.percent);
 				},
 				'FileUploaded': function(up, file, info) {
 					// 每个文件上传成功后，处理相关的事情
@@ -94,13 +121,14 @@ $(document).ready(function() {
 					var domain = up.getOption('domain');
 					var res = JSON.parse(info.response);
 					var sourceLink = domain + "/" + res.key; //获取上传成功后的文件的Url
-					$('#leave-message').append("<img src='" + sourceLink + "' />");
+                    editor.command(null, 'insertHtml', '<img src="' + sourceLink + '" style="max-width:100%;"/>')
 				},
 				'Error': function(up, err, errTip) {
 					//上传出错时，处理相关的事情
 				},
 				'UploadComplete': function() {
 					//队列文件处理完毕后，处理相关的事情
+                    editor.hideUploadProgress();
 				},
 				'Key': function(up, file) {
 					// 若想在前端对每个文件的key进行个性化处理，可以配置该函数
@@ -126,38 +154,52 @@ $(document).ready(function() {
 		];
 		editor1.config.menuFixed = false;
 		editor1.create();
-
+		
 		var editor = new wangEditor('leave-message');
-
-		// 自定义菜单
-		editor.config.menus = [
-			'bold',
-			'underline',
-			'italic',
-			'strikethrough',
-			'emotion',
-			'img',
-			'uploadImg',
-			'|',
-			'forecolor',
-			'bgcolor',
-			'eraser',
-			'|',
-			'quote',
-			'fontfamily',
-			'fontsize',
-			'head',
-			'orderlist',
-			'unorderlist',
-			'undo',
-			'|',
-			'alignleft',
-			'aligncenter',
-			'alignright',
-			'|',
-			'fullscreen',
-		];
-
+		if(pe)
+			// 自定义菜单
+			editor.config.menus = [
+				'emotion',
+				'img',
+				'uploadImg',
+				'|',
+				'quote',
+				'head',
+				'undo',
+				'|',
+				'alignleft',
+				'aligncenter',
+				'alignright',
+				'|',
+				'fullscreen',
+			];
+		else
+			// 自定义菜单
+			editor.config.menus = [
+					'bold',
+					'underline',
+					'italic',
+					'strikethrough',
+					'emotion',
+					'img',
+					'uploadImg',
+					'|',
+					'forecolor',
+					'bgcolor',
+					'eraser',
+					'|',
+					'quote',
+					'fontfamily',
+					'fontsize',
+					'head',
+					'undo',
+					'|',
+					'alignleft',
+					'aligncenter',
+					'alignright',
+					'|',
+					'fullscreen',
+				];
 		editor.config.customUpload = true;
 		editor.config.customUploadInit = uploadInit;
 
@@ -168,8 +210,8 @@ $(document).ready(function() {
 	$('#leave-message-btn').click(function() {
 		var content = $('#leave-message').html();
 		var username = $('#username').val();
-		if (content == '')
-			alert('请输入留言内容');
+		if (content == '<p><br></p>')
+			toast('请输入留言内容');
 		else
 			$.ajax({
 				url: 'blackboard/leaveMessage',
@@ -187,8 +229,9 @@ $(document).ready(function() {
 						setTimeout(function() {
 							$('.main').find('.floor').removeClass('animated')
 						}, 1000)
+						$('.floor-content .floor:last-child').hide();
 					} else
-						alert('服务器错误');
+						toast('服务器错误');
 				}
 			})
 	})
@@ -204,6 +247,7 @@ $(document).ready(function() {
 				if (btn_obj.siblings("input[type='hidden']").val() == -1) {
 					replyDropdown(btn_obj, rp_obj);
 				} else {
+					var loader_obj = rp_obj.find('.loader-anim').show();
 					$.ajax({
 						url: "blackboard/viewReply",
 						method: 'GET',
@@ -225,6 +269,7 @@ $(document).ready(function() {
 								html += time + "</p></div></div>";
 								rp_obj.find(".replys").append(html);
 							}
+							var loader_obj = rp_obj.find('.loader-anim').hide();
 							replyDropdown(btn_obj, rp_obj);
 						}
 					})
@@ -275,8 +320,8 @@ $(document).ready(function() {
 		var floorId = $(this).next().val();
 		var username = $('#username').val();
 		var content = $('#reply-textarea').html();
-		if (content == "") {
-			alert('请输入内容')
+		if (content == "<p><br></p>") {
+			toast('请输入回复内容')
 		} else {
 			$.ajax({
 				url: 'blackboard/reply',
@@ -288,7 +333,7 @@ $(document).ready(function() {
 				},
 				success: function(msg) {
 					if (msg != '回复成功') {
-						alert('服务器错误！')
+						toast('服务器错误！')
 					} else {
 						$('.reply-frame-head').show();
 						$('.reply-frame-foot').hide();
@@ -332,6 +377,8 @@ $(document).ready(function() {
 			$(this).addClass('already-zan').css('background-color', '#8CF2ED');
 			var floorId = $(this).attr('value');
 			var obj = $(this).find('.zan-count');
+			$(this).find('.zan').addClass('animated bounce');
+			obj.text(Number(obj.text())+1);
 			$.ajax({
 				url: 'blackboard/zan',
 				method: 'post',
@@ -339,12 +386,11 @@ $(document).ready(function() {
 					floorId: floorId
 				},
 				success: function(num) {
-					obj.text(num);
 					zan_flag = false;
 				}
 			})
 		} else {
-			alert("您已赞过");
+			toast("您已赞过");
 		}
 	})
 

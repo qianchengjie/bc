@@ -31,8 +31,9 @@ public class UserController {
 	}
 	/**
 	 * 用户注册
-	 * @param model 用于向网页输出参数
 	 * @param user
+	 * @param session
+	 * @param response
 	 * @return
 	 */
 	@RequestMapping(value = "register", method = RequestMethod.POST)
@@ -44,6 +45,7 @@ public class UserController {
 		String msg = userService.register(user);
 		if(msg.equals("注册成功")){
 			session.setAttribute("username", user.getUsername());
+			session.setAttribute("userHeadImg", userService.getImgSrc(user.getUsername()));
 			mav.setViewName("redirect:/");
 		}else{
 			mav.addObject("msg",msg);
@@ -60,7 +62,6 @@ public class UserController {
 	}
 	/**
 	 * 用户登录
-	 * @param model
 	 * @param user
 	 * @param session
 	 * @return
@@ -73,6 +74,7 @@ public class UserController {
 		String msg = userService.login(user);
 		if(msg.equals("登录成功")){
 			session.setAttribute("username", user.getUsername());
+			session.setAttribute("userHeadImg", userService.getImgSrc(user.getUsername()));
 			mav.setViewName("redirect:/");
 		}else{
 			mav.addObject("msg",msg);

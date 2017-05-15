@@ -102,10 +102,10 @@ $(document).ready(function() {
 });
 
 	$("#header #item2 a").click(function(event) {
-		if($("#header #item2 a").html().toString()=='<img src="/img/index/heart-red.png">'){
-			$("#header #item2 a").html('<img src="/img/index/heart-filled-red.png">');
+		if($("#header #item2 a").html().toString()=='<img src="http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png">'){
+			$("#header #item2 a").html('<img src="http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-filled-red.png">');
 		}else{
-			$("#header #item2 a").html('<img src="/img/index/heart-red.png">');
+			$("#header #item2 a").html('<img src="http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png">');
 		}
 	});
 	//弹出header-left 左侧导航
@@ -200,6 +200,7 @@ $("#header-static #search-box span").click(function(event) {
 });
 //search
 $("#header #item4 span").click(function(event) {
+	debugger;
 	/* Act on the event */
 	$("#header #box-right").css({
 		'opacity': '1.0',

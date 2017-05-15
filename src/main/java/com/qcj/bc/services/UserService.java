@@ -84,7 +84,11 @@ public class UserService {
 		}
 		return msg;
 	}
-	
+	/**
+	 * 用户登录
+	 * @param user
+	 * @return
+	 */
 	public String login(User user){
 		String msg = "登录成功";
 		if(userRepository.getUsername( user.getUsername() ) == null)
@@ -93,24 +97,36 @@ public class UserService {
 			msg = "密码错误";
 		return msg;
 	}
-	
-	public void debug(String str){
-		System.out.println(str);
-	}
-	
+	/**
+	 * 用户名验证
+	 * @param username
+	 * @return
+	 */
 	public String checkUsername(String username){
 		String msg = "用户名可用";
 		if(userRepository.getUsername(username) != null)
 			msg = "用户名已存在";
 		return msg;
 	}
-	
+	/**
+	 * 邮箱验证
+	 * @param email
+	 * @return
+	 */
 	public String checkEmail(String email){
 		String msg = "邮箱可用";
 		if(userRepository.getEmail(email) != null)
 			msg = "邮箱已被注册";
 		return msg;
 		
+	}
+	/**
+	 * 获得头像
+	 * @param usernmae
+	 * @return
+	 */
+	public String getImgSrc(String usernmae){
+		return userRepository.getImgSrc(usernmae);
 	}
 	
 }
