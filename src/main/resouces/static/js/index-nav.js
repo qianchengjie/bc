@@ -180,49 +180,10 @@ $(document).ready(function() {
 	}
 	
 });
+//护眼模式!!!!
 $("#header-left #change span").click(function(event) {
 	/* Act on the event */
-	$(this).css('color', 'red');
-	$("body").css({
-		'background': '#282828',
-		'color': '#ccc'
-	});
-	$("#header").css({
-		'background': '#380000',
-		'color': '#ccc'
-	});
-	$("#header #box-left").css({
-		'border-color': '#888',
-		'color': '#ccc'
-	});
-	$("#header #box-left span").css({
-		'border-color': '#888',
-		'color': '#ccc'
-	});
-	$("#header-left").css({
-		'background': '#282828',
-		'color': '#ccc',
-	});
-	$("#header-left #items").css({
-		'border-color':'#888',
-		property2: 'value2'
-	});
-	$("#header #item3").css({
-		'background': '#2F4F4F',
-		'color': '#ccc'
-	});
-	$(".footer").css({
-		'background': '#505050',
-		'color': '#ccc'
-	});
-	$(".footer #top").css({
-		'background': '#505050',
-		'border-color': '#eee'
-	});
-	$("#details-devider").css({
-		'background': '#380000',
-		'color': '#ccc'
-	});
+	change();
 });
 
 //header-static search界面
@@ -263,3 +224,51 @@ $("#mask-main").click(function(event) {
 	});
 	$("body").css('overflow', 'auto');
 });
+//改变网页颜色
+function change(){
+	$("#header-left #change span").css('color', 'red');
+	$("body").css({
+		'background': '#282828',
+		'color': '#ccc'
+	});
+	$("#header-static").css({
+		'background': '#380000',
+		'color': '#ccc'
+	});
+	$("#header").css({
+		'background': '#380000',
+		'color': '#ccc'
+	});
+	$("#header #box-left").css({
+		'border-color': '#888',
+		'color': '#ccc'
+	});
+	$("#header #box-left span").css({
+		'border-color': '#888',
+		'color': '#ccc'
+	});
+	$("#header-left").css({
+		'background': '#282828',
+		'color': '#ccc',
+	});
+	$("#header-left #items").css({
+		'border-color':'#888',
+		property2: 'value2'
+	});
+	$("#header #item3").css({
+		'background': '#2F4F4F',
+		'color': '#ccc'
+	});
+	$(".footer").css({
+		'background': '#505050',
+		'color': '#ccc'
+	});
+	$(".footer #top").css({
+		'background': '#505050',
+		'border-color': '#eee'
+	});
+	$("#details-devider").css({
+		'background': '#380000',
+		'color': '#ccc'
+	});
+}

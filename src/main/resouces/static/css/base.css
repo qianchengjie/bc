@@ -314,6 +314,9 @@
 			line-height: 70px;
 			transition: 0.5s;
 		}
+		#header-left #items:hover{
+			background: #ccc;
+		}
 		#header-left #items span{
 			padding-right: 30px;
 			float: right;
