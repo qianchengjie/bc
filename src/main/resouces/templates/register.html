@@ -9,24 +9,23 @@
 	<link rel="stylesheet" type="text/css" href="../static/css/login.css" th:href="@{/css/login.css}">
 </head>
 <body>
+
+	<div id="tip" th:if="${msg!=null}" th:text="${msg}"></div>
+	
 	<div id="content">
 		<div id="logo">
-		<a href="index.html"><img src="../static/img/brid.png" th:src="@{/img/brid.png}"></a>
-		<p>Register</p>
+		<a href="index.html"  th:href="@{/}"><img src="../static/img/logo.png" th:src="@{/img/logo.png}"></a>
 		</div>
 		<form name="form-register" th:aciton="@{register}" method="post" onsubmit="return check()">
 			<div id="view">
 				<div class="form-group form-inline">
 					<label class="control-label" for="username">用户名</label>
 					<input id="username" class="form-control" type="text" name="username" th:value="${username}">
-					<small th:if="${msg}=='用户名已存在'" th:text="'用户名已存在'"></small>
-					<small th:if="${msg}=='用户名不能为空'" th:text="'用户名不能为空'"></small>
 					<small></small>
 				</div>
 				<div class="form-group form-inline">
 					<label class="control-label" for="password">密码</label>
 					<input id="password" class="form-control" type="password" name="password">
-					<small th:if="${msg}=='密码不能为空'">密码不能为空</small>
 					<small></small>
 				</div>
 				<div class="form-group form-inline">
@@ -37,8 +36,6 @@
 				<div class="form-group form-inline">
 					<label class="control-label" for="email">邮箱地址</label>
 					<input id="email" class="form-control" type="email" name="email" th:value="${email}">
-					<small th:if="${msg}=='邮箱不能为空'">邮箱不能为空</small>
-					<small th:if="${msg}=='邮箱已被注册'">邮箱已被注册</small>
 					<small></small>
 				</div>
 				<input id="register" type="submit" name="submit" class="btn btn-success" value="注册">
