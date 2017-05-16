@@ -86,17 +86,17 @@ body{
 	position: relative;
 	animation: box-left-in 1s;
 }
-#content #item-box #box-left #img{
-	background-image: url("../img/bg3.jpg");
+#content #item-box #box-left img{
+/*	background-image: url("../img/test/test1.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: center center;*/
 	cursor: pointer;
 	height: 100%;
 	width: 100%;
 	transition: 1.5s;
 }
-#content #item-box #box-left #img:hover{
+#content #item-box #box-left img:hover{
 	transform: scale(1.2);
 }
 #content #item-box #box-right *{
@@ -140,6 +140,8 @@ body{
 	margin: 25px;
 	float: left;
 	line-height: 30px;
+	position: relative;
+	padding: 30px;
 }
 #content #item-box #box-right #text #button{
 	height: 50px;
@@ -150,7 +152,9 @@ body{
 	border-top-width: 1px;
 	border-color: #ccc;*/
 	cursor: pointer;
-	position: relative;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 	transition: 0.7s;
 }
 /*#content #item-box #box-right #text #button:hover{

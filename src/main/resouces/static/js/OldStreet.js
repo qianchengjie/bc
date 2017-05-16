@@ -13,14 +13,12 @@ $(document).ready(function() {
 $("#body #content #items #img").mouseover(function(event) {
 	/* Act on the event */
 	$(this).find('#mask').css({
-		'transition': '1s',
-		'transform': 'translate(0,0)'
+		'opacity': '1.0'
 	});
 });
 $("#body #content #items #img").mouseout(function(event) {
 	/* Act on the event */
 	$(this).find('#mask').css({
-		'transition': '1s',
-		'transform': 'translate(0,-150px)'
+		'opacity': '0'
 	});
 });
