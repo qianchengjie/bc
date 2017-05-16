@@ -145,6 +145,25 @@
 			text-align: center;
 			font-size: 20px;
 		}
+		#header #box-right .search-items{
+			position: absolute;
+			top: 70px;
+
+			background: rgba(225,225,225,0.2);
+			width: 85%;
+		}
+		#header #box-right .search-items .items{
+			width: 100%;
+			color: #fff;
+			padding: 10px;
+			font-size: 15px;
+			height: 50px;
+			line-height: 30px;
+			cursor: pointer;
+		}
+		#header #box-right .search-items .items:hover{
+			background: #222;
+		}
 		#header span{
 			padding-left: 7px;
 			font-size: 15px;
