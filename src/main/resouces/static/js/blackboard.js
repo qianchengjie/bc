@@ -249,10 +249,8 @@ $(document).ready(function() {
 					replyDropdown(btn_obj, rp_obj);
 				} else {
 					replyDropdown(btn_obj, rp_obj);
-					setTimeout(function(){
-						if(btn_obj.siblings("input[type='hidden']").val() != -1)
-							loader_obj.show();
-					},500)
+					if(btn_obj.siblings("input[type='hidden']").val() != -1 && btn_obj.find('.reply-count').text() != '0')
+						loader_obj.show();
 					$.ajax({
 						url: "blackboard/viewReply",
 						method: 'GET',
@@ -261,8 +259,8 @@ $(document).ready(function() {
 						},
 						dataType: "json",
 						success: function(data) {
-							toast
 							var replys_obj = eval(data);
+							rp_obj.find(".replys").hide();
 							for (var i = 0; i < replys_obj.length; i++) {
 								var html = "<div class='reply'><div class='reply-head'><img class='head-sculpture' src='";
 								var imgSrc = replys_obj[i].imgSrc;
@@ -276,7 +274,10 @@ $(document).ready(function() {
 								rp_obj.find(".replys").append(html);
 							}
 							btn_obj.siblings("input[type='hidden']").val(-1);
-							loader_obj = rp_obj.find('.loader-anim').hide();
+							setTimeout(function(){
+								loader_obj = rp_obj.find('.loader-anim').hide();
+								rp_obj.find(".replys").show();
+							},500)
 						}
 					})
 				}
@@ -346,10 +347,7 @@ $(document).ready(function() {
 						$('.reply-frame-foot').hide();
 						$('#reply-textarea').html('');
 						$('#reply-textarea-content').hide();
-						setTimeout(function(){
-							if(flag)
-								loader_obj.show();
-						},1000)
+						loader_obj.show();
 						$.ajax({
 							url: "blackboard/viewReply",
 							method: 'GET',
@@ -359,20 +357,22 @@ $(document).ready(function() {
 							dataType: "json",
 							success: function(data) {
 								var replys_obj = eval(data);
-								for (var i = replys_obj.length - 1; i < replys_obj.length; i++) {
-									var html = "<div class='reply animated fadeInRight'><div class='reply-head'><img class='head-sculpture' src='";
-									var imgSrc = replys_obj[i].imgSrc;
-									html += imgSrc + "'><span class='name'>"
-									var username = replys_obj[i].username;
-									html += username + "</span></div><div class='reply-body'><p>"
-									var content = replys_obj[i].content;
-									html += content + "</p></div><div class='reply-foot'><p>"
-									var time = replys_obj[i].time;
-									html += time + "</p></div></div>";
-									loader_obj = obj.find('.loader-anim').hide();
-									obj.find(".replys").append(html);
-									flag = false;
-								}
+								setTimeout(function(){
+									loader_obj.hide();
+									for (var i = replys_obj.length - 1; i < replys_obj.length; i++) {
+										var html = "<div class='reply animated fadeInRight'><div class='reply-head'><img class='head-sculpture' src='";
+										var imgSrc = replys_obj[i].imgSrc;
+										html += imgSrc + "'><span class='name'>"
+										var username = replys_obj[i].username;
+										html += username + "</span></div><div class='reply-body'><p>"
+										var content = replys_obj[i].content;
+										html += content + "</p></div><div class='reply-foot'><p>"
+										var time = replys_obj[i].time;
+										html += time + "</p></div></div>";
+										obj.find(".replys").append(html);
+										flag = false;
+									}
+								},500)
 								setTimeout(function() {
 									obj.find('.reply').removeClass('animated fadeInRight')
 								}, 1000)
