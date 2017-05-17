@@ -1,4 +1,4 @@
-package com.qcj.bc.repository;
+package com.qcj.bc.repository.user;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.qcj.bc.model.User;
+import com.qcj.bc.model.user.User;
 import com.qcj.bc.services.UserService;
 
 @Controller
@@ -101,5 +101,11 @@ public class UserController {
 	public @ResponseBody String checkEmail(String email){
 		return userService.checkEmail(email);
 	}
-	
+	@RequestMapping(value = "userRoleRight", method = RequestMethod.GET)
+	public ModelAndView userRoleRight(){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("uRRList",userService.getAllURR());
+		mav.setViewName("userroleright");
+		return mav;
+	}
 }

@@ -14,12 +14,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.qcj.bc.model.User;
 import com.qcj.bc.model.blackboard.Floor;
 import com.qcj.bc.model.blackboard.Reply;
+import com.qcj.bc.model.user.User;
 import com.qcj.bc.repository.FloorRepository;
-import com.qcj.bc.repository.ReplyRepository;
-import com.qcj.bc.repository.UserRepository;
+import com.qcj.bc.repository.user.ReplyRepository;
+import com.qcj.bc.repository.user.UserRepository;
 import com.qiniu.common.Zone;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
@@ -78,11 +78,11 @@ public class BlackboardService {
 	public Map<String, Object> deleteMessage(int floorId,int currentPage){
 		String msg = "删除成功";
 		long count = floorRepository.count();
-		long pageSum = (count-1)/6;
+		long pageSum = (count-1)/6+1;
 		Map<String, Object> map = new HashMap<>();
 		if(count > 6){
-			Sort sort = new Sort(Sort.Direction.DESC, "id");
 			if(currentPage <  pageSum){
+				Sort sort = new Sort(Sort.Direction.DESC, "id");
 				Pageable pageable = new PageRequest(currentPage, 6, sort);
 				Page<Floor> page = floorRepository.findAll(pageable);
 				List<Floor> list = page.getContent();

@@ -102,35 +102,35 @@
 				</div>
 				<div class="floor-content">
 					<!-- 楼层 -->
-					<div class="floor" th:each="floors : ${floors}">
+					<div class="floor" th:each="floor : ${floors}">
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- 留言 -->
 								<div class="floor-container">
 									<!-- 留言头部 -->
 									<div class="floor-head">
-										<img class="head-sculpture" src="../static/img/1.jpg" th:src="${floors.imgSrc}">
-										<span class="name"  th:text="${floors.username}">张三</span>
-										<!-- <small th:text="${floors.flNum}+'楼'">221楼</small> -->
-										<div class="dropdown tools">
+										<img class="head-sculpture" src="../static/img/1.jpg" th:src="${floor.imgSrc}">
+										<span class="name"  th:text="${floor.username}">张三</span>
+										<!-- <small th:text="${floor.flNum}+'楼'">221楼</small> -->
+										<div th:if="${right == 2 || floor.username == session.username}" class="dropdown tools">
 											<button class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
 												<span class="caret"></span>
 											</button>
 											<ul class="dropdown-menu">
-												<li><input type="hidden" th:value="${floors.id}"><a href="javascript:void(0)" class="delete">删除</a></li>
+												<li><input type="hidden" th:value="${floor.id}"><a href="javascript:void(0)" class="delete">删除</a></li>
 											</ul>
 										</div>
 									</div>
 									<!-- 留言内容 -->
 									<div class="floor-body">
-										<p th:utext="${floors.content}">它的父元素是视窗（浏览器默认用来展示内容的区域的尺寸，不是html 或body 的尺寸）。</p>
+										<p th:utext="${floor.content}">它的父元素是视窗（浏览器默认用来展示内容的区域的尺寸，不是html 或body 的尺寸）。</p>
 									</div>
 									<!-- 留言尾部 -->
 									<div class="floor-foot">
-										<input type="hidden" value="-1" th:value="${floors.id}">
-										<p th:text="${floors.time}">2017年4月19日14:54:50</p>
-										<a class="btn-zan" th:value="${floors.id}"><span class="zan glyphicon glyphicon-thumbs-up"></span><span class="zan-count" th:text="${floors.zanCount}">2</span></a>
-										<a class="btn-comment"><span class="comment glyphicon glyphicon-comment"></span><span class="reply-count" th:text="${floors.rpCount}">2</span></a>
+										<input type="hidden" value="-1" th:value="${floor.id}">
+										<p th:text="${floor.time}">2017年4月19日14:54:50</p>
+										<a class="btn-zan" th:value="${floor.id}"><span class="zan glyphicon glyphicon-thumbs-up"></span><span class="zan-count" th:text="${floor.zanCount}">2</span></a>
+										<a class="btn-comment"><span class="comment glyphicon glyphicon-comment"></span><span class="reply-count" th:text="${floor.rpCount}">2</span></a>
 									</div>
 									<!-- 回复层 -->
 									<div class="reply-container">
@@ -148,7 +148,7 @@
 											</div>
 											<div class="reply-frame-foot">
 												<a class="btn btn-default btn-reply">回复</a>
-												<input type="hidden" th:value="${floors.id}">
+												<input type="hidden" th:value="${floor.id}">
 											</div>
 										</div>
 									</div>
@@ -195,6 +195,7 @@
 	<div id="toast">
 		<p></p>
 	</div>
+	<input id="username" type="hidden" th:if="${session.username != null}" th:value="${session.username}">
 	<!-- 导入js -->
 	<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 	<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
@@ -204,6 +205,10 @@
     <script src="../static/js/zh_CN.js" th:src="@{/js/zh_CN.js}"></script>
     <script src="../static/js/qiniu.js" th:src="@{/js/qiniu.js}"></script>
 	<script src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
-	<script src="../static/js/blackboard.js" th:src="@{/js/blackboard.js}"></script>
+	<script src="../static/js/index-nav.js" th:src="@{/js/blackboard.js}"></script>
+	
+	<script th:if="${right == 0}" th:src="@{/js/blackboard/0.js}"></script>
+	<script th:if="${right == 2}" th:src="@{/js/blackboard/2.js}"></script>
+	<script th:if="${right == 3}" th:src="@{/js/blackboard/3.js}"></script>
 </body>
 </html>
