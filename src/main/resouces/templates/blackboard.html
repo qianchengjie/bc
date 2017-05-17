@@ -96,8 +96,9 @@
 					<h3 class="animated bounce" th:if="${session.username==null}" style="text-align: center;">登录后才能留言哦！</h3>
 					<div th:if="${session.username!=null}" id="leave-message"></div>
 					<div th:if="${session.username!=null}" class="leave-message-foot">
-					<button id="leave-message-btn" class="btn btn-primary">留言</button>
+						<button id="leave-message-btn" class="btn btn-primary">留言</button>
 					</div>
+
 				</div>
 				<div class="floor-content">
 					<!-- 楼层 -->
@@ -111,6 +112,14 @@
 										<img class="head-sculpture" src="../static/img/1.jpg" th:src="${floors.imgSrc}">
 										<span class="name"  th:text="${floors.username}">张三</span>
 										<!-- <small th:text="${floors.flNum}+'楼'">221楼</small> -->
+										<div class="dropdown tools">
+											<button class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+												<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><input type="hidden" th:value="${floors.id}"><a href="javascript:void(0)" class="delete">删除</a></li>
+											</ul>
+										</div>
 									</div>
 									<!-- 留言内容 -->
 									<div class="floor-body">
@@ -188,6 +197,7 @@
 	</div>
 	<!-- 导入js -->
 	<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 	<script src="../static/js/loaders.css.js" th:src="@{/js/loaders.css.js}"></script>
     <script src="../static/js/wangEditor.js" th:src="@{/js/wangEditor.js}"></script>
     <script src="../static/js/plupload.full.min.js" th:src="@{/js/plupload.full.min.js}"></script>

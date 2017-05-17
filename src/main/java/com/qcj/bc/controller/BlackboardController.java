@@ -65,6 +65,10 @@ public class BlackboardController {
 			){
 		return JSON.toJSONString(blackboardService.leaveMessage(floor));
 	}
+	@RequestMapping(value = "deleteMessage", method = RequestMethod.POST)
+	public @ResponseBody String deleteMessage(int floorId,int currentPage){
+		return JSON.toJSONString(blackboardService.deleteMessage(floorId,currentPage));
+	}
 	/**
 	 * 查选当前楼层回复的内容
 	 * @param floorId

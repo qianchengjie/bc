@@ -2,6 +2,8 @@ package com.qcj.bc.services;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -52,6 +54,11 @@ public class BlackboardService {
 		Pageable pageable = new PageRequest(pageNum, 6, sort);
 		return floorRepository.findAll(pageable);
 	}
+	/**
+	 * 留言
+	 * @param floor
+	 * @return
+	 */
 	public Map<String, Object> leaveMessage(Floor floor){
 		String msg = "留言成功";
 		floor.setImgSrc(userRepository.getImgSrc(floor.getUsername()));
@@ -61,6 +68,32 @@ public class BlackboardService {
 		Map<String,Object>map = new HashMap<>();
 		map.put("floor",floor);
 		map.put("msg",msg);
+		return map;
+	}
+	/**
+	 * 删除留言
+	 * @param floorId
+	 * @return
+	 */
+	public Map<String, Object> deleteMessage(int floorId,int currentPage){
+		String msg = "删除成功";
+		long count = floorRepository.count();
+		long pageSum = (count-1)/6;
+		Map<String, Object> map = new HashMap<>();
+		if(count > 6){
+			Sort sort = new Sort(Sort.Direction.DESC, "id");
+			if(currentPage <  pageSum){
+				Pageable pageable = new PageRequest(currentPage, 6, sort);
+				Page<Floor> page = floorRepository.findAll(pageable);
+				List<Floor> list = page.getContent();
+				Floor floor = list.get(0);
+				map.put("floor", floor);
+			}
+		}else{
+			msg = "删除成功，仅剩一页";
+		}
+		floorRepository.delete(floorId);
+		map.put("msg", msg);
 		return map;
 	}
 	/**
