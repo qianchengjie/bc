@@ -18,7 +18,7 @@ import com.qcj.bc.model.blackboard.Floor;
 import com.qcj.bc.model.blackboard.Reply;
 import com.qcj.bc.model.user.User;
 import com.qcj.bc.repository.FloorRepository;
-import com.qcj.bc.repository.user.ReplyRepository;
+import com.qcj.bc.repository.ReplyRepository;
 import com.qcj.bc.repository.user.UserRepository;
 import com.qiniu.common.Zone;
 import com.qiniu.storage.Configuration;

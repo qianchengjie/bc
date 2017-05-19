@@ -121,18 +121,19 @@
 				<small>We are a very privileged property to be in such a food-centric locale</small></h1>
 				<p>We grow many of our own fruits, vegetables and forage the estate for various wild produce. Wharekauhau is also in the unique position of being linked with one of the fastest growing vineyard companies in New Zealand – Foley Family Wines – which provides us access to a fabulous library of fantastic wines. Additionally, being 30 minutes by road from what many describe as the premier Pinot Noir region of New Zealand means we are quite literally PERFECTLY situated for those looking for food & wine experiences.</p>
 			</div>
-			<div id="item-box">
-				<div id="box-left">
-					<img src="../static/img/test/test2.jpg">
+			
+			<div id="item-box" th:each = " food,iterStat : ${foods}" th:class="${iterStat.even?'item-box-right':''}">
+				
+				<div id="box-left" th:if = "${iterStat.odd}">
+					<img src="../static/img/test/test1.jpg"  th:src="${food.url}">
 					<!-- <img src="../static/img/bg3.jpg" th:src="@{/img/bg3.jpg}"> -->
 				</div>
-				<div id="box-right">
+				<div id="box-right" th:if = "${iterStat.odd}">
 					<div id="hr" class="hr1"></div>
 					<div id="text">
-						<h3>山核桃</h3>
-						<p>山核桃，河桥（昌化）人叫“山哈”</p>
-						<p>河桥虽不是山核桃重镇，但毕竟是昌化产区之一</p>
-						<div id="button" data-toggle="modal" data-target="#myModal">
+						<h3 th:text="${food.name}" class="food-name">山核桃</h3>
+						<p th:utext="${food.content}" class="food-content">山核桃，河桥（昌化）人叫“山哈”</p>
+						<div id="button" class="modal-btn">
 							<div id="line-right"></div>
 							<div id="line-top"></div>
 							<div id="line-left"></div>
@@ -142,6 +143,26 @@
 					</div>
 					<div class="hr2"></div>
 				</div>
+				
+				<div id="box-right" th:if = "${iterStat.even}">
+					<div class="hr1"></div>
+					<div id="text">
+						<h3 th:text="${food.name}" class="food-name">野笋</h3>
+						<p th:utext="${food.content}" class="food-content">河桥野笋数量不是最多的，但品种肯定是最全的；河桥野笋吃法不是最丰富的，但味道肯定是最美的</p>
+						<div id="button" class="modal-btn">
+							<div id="line-top"></div>
+							<div id="line-left"></div>
+							<div id="line-right"></div>
+							<div id="line-bottom"></div>
+							DISCOVER
+						</div>
+					</div>
+					<div id="hr" class="hr2"></div>
+				</div>
+				<div id="box-left" th:if = "${iterStat.even}">
+					<img src="../static/img/test/test2.jpg" th:src="${food.url}">
+				</div>
+				
 			</div>
 
 
@@ -159,82 +180,25 @@
 					</div>
 				</div>
 			</div> -->
-
-
-			<div id="item-box" class="item-box-right">
-				<div id="box-right">
-					<div class="hr1"></div>
-					<div id="text">
-						<h3>野笋</h3>
-						<p>河桥野笋数量不是最多的，但品种肯定是最全的；河桥野笋吃法不是最丰富的，但味道肯定是最美的</p>
-						<div id="button" data-toggle="modal" data-target="#myModal2">
-							<div id="line-top"></div>
-							<div id="line-left"></div>
-							<div id="line-right"></div>
-							<div id="line-bottom"></div>
-							DISCOVER
-						</div>
-					</div>
-					<div id="hr" class="hr2"></div>
-				</div>
-				<div id="box-left">
-					<img src="../static/img/test/test1.jpg">
-				</div>
-			</div>
-			
-
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h4 class="modal-title" id="myModalLabel">山核桃</h4>
-					      </div>
-					      <div class="modal-body">
-					        			<pre>
-					        				山核桃，河桥（昌化）人叫“山哈”。
-河桥虽不是山核桃重镇，但毕竟是昌化产区之一。曹家、坑口、蒲村、学川、览村、蒲坑等村，都有成片的“山哈”树林。山核桃被誉为北纬30°地带上的圣果，讲营养，一斤桃仁可抵四五斤牛肉五斤鸡蛋；论药用价值，能补脑益智、润肺化痰、养颜乌发、补肾固齿、润肠通便……
-山核桃原本是山中野果，自生自灭。传说唐朝落魄秀才罗隐游历昌化时发现有猴子剥食此果，他就拾得几颗，敲去外壳，咬破内核拣仁食之，虽有涩味但还是觉得不错，也能充饥。于是，顺手一溜，告知山农：“高高山上一株木，寒冷不怕霜和雪。结出果子人不识，去掉外壳吃内核。”
-元末刘伯温跟随朱元璋打江山，屯兵昌化大明山时，见到这种略带苦涩味的果子，用盐水煮熟，除去了苦涩味。为了保存及携带方便，又试着在炭火上烘烤，再尝，异常香脆。当地村名于是纷纷效仿此法食用。
-
-					        			</pre>
-					      </div>
-					      <div class="modal-footer">
-					        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button> -->
-					      </div>
-					    </div><!-- modal-content -->
-					  </div><!-- modal-dialog -->
-					</div><!-- modal -->
-
-					<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h4 class="modal-title" id="myModalLabel">野笋（干）</h4>
-					      </div>
-					      <div class="modal-body">
-					        			<pre>
-					        				
-河桥野笋数量不是最多的，但品种肯定是最全的；河桥野笋吃法不是最丰富的，但味道肯定是最美的。
-河桥有高山、深谷、丘陵、缓坡多种类型的山野环境，适宜不同品种野笋的生长。随便数来，就有水笋、木笋、吉笋、石笋、贡笋、红壳笋、花斑笋、黄壳笋、枪刀笋等等。每年4月至8月，各种野笋相继拱土，形成山笋大观。此时此刻，人们便开始相约上山采笋。
-野笋有粗有细，粗的似刀柄，细的如笔管。剥去笋壳，露出青嫩的茎，用舌舔之，甜中带涩。然一旦进锅入菜，清鲜盖世，其味无穷。一些家常菜，像肉片笋丝炒芥菜、油焖野笋段、茴香腌菜水煮咸笋……都是百吃不厌的。而野笋一旦制成笋干，吃的名堂就更多了，开袋即食，或数菜合烹，菜品不可胜数。
-野笋（干）低糖低脂，性味甘寒，能滋阴凉血、清热化痰，适合“三高”人群食用。普通人常食，有促进肠道蠕动，助消化开胃口、利尿通便之功效。
-
-					        			</pre>
-					      </div>
-					      <div class="modal-footer">
-					        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button> -->
-					      </div>
-					    </div><!-- modal-content -->
-					  </div><!-- modal-dialog -->
-					</div><!-- modal -->
-
-
 		</div><!-- content -->
 	</div>
+	<!-- 模态框 -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel"></h4>
+	      </div>
+	      <div class="modal-body well well-lg" id="food-content">
+	      </div>
+	      <div class="modal-footer">
+	        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button> -->
+	      </div>
+	    </div><!-- modal-content -->
+	  </div><!-- modal-dialog -->
+	</div><!-- modal -->
 	
 	<div class="footer">
 		<!-- <div id="top">
@@ -303,6 +267,7 @@
 	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
 	<script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 	<script type="text/javascript" src="../static/js/button.js" th:src="@{/js/button.js}"></script>
+	<script type="text/javascript" src="../static/js/food.js" th:src="@{/js/food.js}"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#body #top #top-box").css('opacity', '1.0');
