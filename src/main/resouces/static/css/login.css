@@ -1,5 +1,5 @@
 body{
-	background: #fafafa;
+	background-image: url("../img/login_bg.png");
 }
 #content{
 	width: 450px;
@@ -21,7 +21,7 @@ body{
 	border-color: #ccc;
 	border-radius: 10px;
 	border-width: 1px;
-	background: #fff;
+	background: rgba(225,225,225,0.25);
 	padding: 50px 35px;
 }
 #content #view input{

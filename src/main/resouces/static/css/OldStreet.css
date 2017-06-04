@@ -1,3 +1,6 @@
+a,a:hover{
+	text-decoration: none;
+}
 #body #top{
 	width: 100%;
 	height: 800px;
@@ -32,17 +35,17 @@
 #body #content #items{
 	cursor: pointer;
 	overflow: hidden;
-	margin: 0;
+	margin: 0px;
 	padding: 0;
 	position: relative;
-	transition: transform 0.1s;
+	transition: transform 0.5s;
 	transition-delay: 1s;
-	transform: translate(0,100vh);
+	transform: translate(0,-300vh);
 	height: 200px;
 }
 
 #body #content #items #img{
-	background-image: url("../img/bg3.jpg");
+	margin: 20px;
 	background-position: center ;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -53,6 +56,8 @@
 	background: rgba(50,50,50,0.85);
 	width: 100%;
 	height: 150%;
+
+	font-size: 50px;
 	color:#fff;
 	padding: 30px;
 	text-align: center;

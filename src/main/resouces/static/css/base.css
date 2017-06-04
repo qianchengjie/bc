@@ -466,6 +466,8 @@
 		/*-------一条华丽丽的分割线----------*/
 		
 		.footer{
+			margin-top: 50px;
+
 			padding: 30px;
 			width: 100%;
 			/*background: #2c3e50;*/

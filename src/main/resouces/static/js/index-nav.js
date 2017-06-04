@@ -200,7 +200,6 @@ $("#header-static #search-box span").click(function(event) {
 });
 //search
 $("#header #item4 span").click(function(event) {
-	debugger;
 	/* Act on the event */
 	$("#header #box-right").css({
 		'opacity': '1.0',
