@@ -10,14 +10,15 @@
   </head>
   
   <body>
+  	
+	<div id="tip" th:if="${msg!=null}" th:text="${msg}"></div>
+  
     <div id="content">
 		<div id="logo">
-		<a href="index.html"><img src="../static/img/brid.png" th:src="@{/img/brid.png}"></a>
-		<p>Login</p>
+		<a href="index.html" th:href="@{/}"><img src="../static/img/logo.png" th:src="@{/img/logo.png}"></a>
 		</div>
 		<form name="form-login" th:action="@{/user/login}" th:object="${user}" method="post" onsubmit="return check()">
 			<div id="view">
-				<p id="msg" th:text="${msg}"><p>
 				<div class="form-group form-inline has-feedback">
 					<label class="control-label" for="username">用户名</label>
 					<div class="input-group">

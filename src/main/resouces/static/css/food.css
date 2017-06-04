@@ -1,6 +1,20 @@
 body{
 	background: #EDD5D1;
 }
+/* 模态框 */
+#food-content{
+	margin: 1rem;
+	text-indent: 2rem;
+}
+/* food内容 */
+.food-content{
+	text-indent: 2rem;
+	width:22em;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
 #body #top-back{
 	background-image: url("../img/bg2.jpg");
 	background-repeat: no-repeat;

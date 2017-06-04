@@ -2,7 +2,10 @@ package com.qcj.bc.services;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -10,14 +13,31 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.qcj.bc.model.User;
-import com.qcj.bc.repository.UserRepository;
+import com.qcj.bc.model.user.User;
+import com.qcj.bc.model.user.UserRoleRelation;
+import com.qcj.bc.repository.user.RRRRepository;
+import com.qcj.bc.repository.user.URRRepository;
+import com.qcj.bc.repository.user.URightRepository;
+import com.qcj.bc.repository.user.URoleRepository;
+import com.qcj.bc.repository.user.UserRepository;
 
 @Service
 public class UserService {
 	
 	@Resource
 	private UserRepository userRepository;
+	
+	@Resource
+	private URRRepository uRRRepository;
+	
+	@Resource
+	private RRRRepository rRRRepository;
+	
+	@Resource
+	private URoleRepository uRoleRepository;
+	
+	@Resource
+	private URightRepository uRightRepository;
 
 	public boolean register1(Map<String,Object> map){
 		String username = (String) map.get("username");
@@ -78,9 +98,15 @@ public class UserService {
 		else if(userRepository.getEmail( user.getEmail() ) != null)
 			msg = "邮箱已被注册";
 		else{
+			//用户信息默认设置
 			user.setImgSrc("img/person.png");
 			user.setRegDate(new Date().toLocaleString());
-			userRepository.save(user);
+			user = userRepository.save(user);
+			UserRoleRelation urr = new UserRoleRelation();
+			//用户权限默认设置
+			urr.setuId(user.getId());
+			urr.setrId(3);
+			uRRRepository.save(urr);
 		}
 		return msg;
 	}
@@ -96,6 +122,14 @@ public class UserService {
 		else if(!userRepository.getPassword( user.getUsername() ).equals( user.getPassword() ))
 			msg = "密码错误";
 		return msg;
+	}
+	/**
+	 * 获得用户ID
+	 * @param username
+	 * @return
+	 */
+	public int getUserId(String username){
+		return userRepository.getUserId(username);
 	}
 	/**
 	 * 用户名验证
@@ -128,5 +162,79 @@ public class UserService {
 	public String getImgSrc(String usernmae){
 		return userRepository.getImgSrc(usernmae);
 	}
-	
+	/**
+	 * 获得角色ID
+	 * @param uId
+	 * @return
+	 */
+	public int getRoleId(int uId){
+		return uRRRepository.getrId(uId);
+	}
+	/**
+	 * 获得角色名
+	 * @param rId
+	 * @return
+	 */
+	public String getRoleName(int roleId){
+		return uRoleRepository.getRoleName(roleId);
+	}
+	/**
+	 * 获得权限ID组
+	 * @param roleId
+	 * @return
+	 */
+	public List<Integer> getRightIdListId(int roleId){
+		return rRRRepository.getRightId(roleId);
+	}
+	/**
+	 * 获得拥有权限ID组
+	 * @param roleId
+	 * @return
+	 */
+	public List<Integer> getHaveRightIdListId(int roleId){
+		return rRRRepository.getHaveRightId(roleId);
+	}
+	/**
+	 * 获得权限名
+	 * @param rightId
+	 * @return
+	 */
+	public ArrayList<String> getRightNameList(List<Integer> roleIds){
+		ArrayList<String> rightNameList = new ArrayList<>();
+		for(int roleId:roleIds){
+			rightNameList.add(uRightRepository.getRightName(roleId));
+		}
+		return rightNameList;
+	}
+	/**
+	 * 判断是有拥有此权限
+	 * @param roleId
+	 * @param rightId
+	 * @return
+	 */
+	public boolean isHavaThisRight(String username, int rightId){
+		for(int right : getHaveRightIdListId(getRoleId(userRepository.getUserId(username)))){
+			if( right == rightId){
+				return true;
+			}
+		}
+		return false;
+	}
+	/**
+	 * 返回全部用户信息
+	 * @return
+	 */
+	public ArrayList<Map> getAllURR(){
+		ArrayList<Map> uRRList = new ArrayList<>();
+		
+		Iterable<User> users = userRepository.findAll();
+		for(User user:users){
+			Map<String, Object> map = new HashMap<>();
+			map.put("username", user.getUsername());
+			map.put("rolename", getRoleName(getRoleId(user.getId())));
+			map.put("rightnamelist", getRightNameList(getHaveRightIdListId(getRoleId(user.getId()))));
+			uRRList.add(map);
+		}
+		return uRRList;
+	}
 }

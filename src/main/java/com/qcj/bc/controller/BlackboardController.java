@@ -4,6 +4,7 @@ package com.qcj.bc.controller;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,7 @@ import com.alibaba.fastjson.JSON;
 import com.qcj.bc.model.blackboard.Floor;
 import com.qcj.bc.model.blackboard.Reply;
 import com.qcj.bc.services.BlackboardService;
+import com.qcj.bc.services.UserService;
 
 @Controller
 @RequestMapping("blackboard")
@@ -25,6 +27,8 @@ public class BlackboardController {
 	@Resource
 	private BlackboardService blackboardService;
 	
+	@Resource
+	private UserService userService;
 	
 	/**
 	 * 获取页数
@@ -44,13 +48,26 @@ public class BlackboardController {
 	 */
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView blackboard(
-			@RequestParam(value = "pageNum")int pageNum){
+			@RequestParam(value = "pageNum")int pageNum,
+			HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		Iterable<Floor> floors = blackboardService.findAll(pageNum-1);
 		long pageSum = blackboardService.getPageSum();
 		mav.addObject("floors",floors);
 		mav.addObject("pageSum", pageSum+1);
 		mav.addObject("currentPage", pageNum);
+		if(session.getAttribute("username") == null){
+			//游客
+			session.setAttribute("right", 0);
+		}else{
+			String username = (String) session.getAttribute("username");
+			//普通权限
+			if(userService.isHavaThisRight(username, 3))
+				mav.addObject("right", 3);
+			//管理权限
+			if(userService.isHavaThisRight(username, 2))
+				mav.addObject("right", 2);
+		}
 		mav.setViewName("blackboard");
 		return mav; 
 	}
@@ -64,6 +81,16 @@ public class BlackboardController {
 				@ModelAttribute(value = "floor")Floor floor
 			){
 		return JSON.toJSONString(blackboardService.leaveMessage(floor));
+	}
+	/**
+	 * 删除留言
+	 * @param floorId
+	 * @param currentPage
+	 * @return
+	 */
+	@RequestMapping(value = "deleteMessage", method = RequestMethod.POST)
+	public @ResponseBody String deleteMessage(int floorId,int currentPage){
+		return JSON.toJSONString(blackboardService.deleteMessage(floorId,currentPage));
 	}
 	/**
 	 * 查选当前楼层回复的内容
@@ -87,12 +114,20 @@ public class BlackboardController {
 			){
 		return blackboardService.reply(reply);
 	}
+	/**
+	 * 获得赞的数量
+	 * @param floorId
+	 * @return
+	 */
 	@RequestMapping(value = "zan", method = RequestMethod.POST)
 	@ResponseBody
 	public int zan(int floorId){
 		return blackboardService.zan(floorId);
 	}
-	
+	/**
+	 * 获得上传口令
+	 * @return
+	 */
 	@RequestMapping(value = "getUpToken", method = RequestMethod.GET)
 	public @ResponseBody String getUpToken(){
 		return JSON.toJSONString(blackboardService.getUpToken());

@@ -4,28 +4,20 @@
 	<title>美丽乡村</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=.7,user-scalable=no,maximum-scale=.7">
-	<!-- Loading jquery -->
-	<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
-	<!-- Loading Bootstrap -->
-	<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
-	<!-- Loading waypoints -->
-	<script src="../static/js/waypoints.min.js" th:src="@{/js/waypoints.min.js}"></script>
-	<!-- Loading mine -->
+	<link rel="stylesheet" type="text/css" href="../static/css/animate.min.css"  th:href="@{/css/animate.min.css}">
 	<link rel="stylesheet" type="text/css" href="../static/css/scene.css" th:href="@{/css/scene.css}">
-	<script src="../static/js/scene.js" th:src="@{/js/scene.js}"></script>
 	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
-	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
-		<style type="text/css">
-			.container-fluid{
-				max-width: 100%;
-				padding: 0px;
-				margin: 0px;
-			}
-			.scene-group{
-				padding: 0;
-			}
-		</style>
+	<style type="text/css">
+		.container-fluid{
+			max-width: 100%;
+			padding: 0px;
+			margin: 0px;
+		}
+		.scene-group{
+			padding: 0;
+		}
+	</style>
 </head>
 <body>
 	<!-- 遮罩层 -->
@@ -46,23 +38,14 @@
 			</div>
 		</div>
 	</div> -->
-		<!-- 第二个版本 -->
+	<!-- 第二个版本 -->
 	<div id="header">
 		<div id="box-left">
 			<div id="item1">
 				<img src="../static/img/index/nav.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/nav.png}"><span>MENU</span>
 			</div>
 		</div>
-		<div id="box-right">
-			<input type="text" name="" placeholder="Search Someting" id="text"><button id="do" class="glyphicon glyphicon-search"></button>
-			<div class="search-items">
-				<ul>
-					<!-- 此处添加搜索列表 -->
-					
-					
-				</ul>
-			</div>
-		</div>
+		<div id="box-right"><input type="text" name="" placeholder="Search Someting" id="text"><button id="do" class="glyphicon glyphicon-search"></button></div>
 		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
 		<a href="login.html" th:if="${session.username == null}" th:href="@{/user/login}"><div id="item3">REGISTER/LOG IN</div></a>
 		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
@@ -139,36 +122,52 @@
 	</nav> -->
 
 	<div class="scene-group">
-		<div class="container-fluid">
-			<div class="scene-container scene1">
-				<div class="scene-intro">
-					<div class="intro-text">
-						<h1>古有诗云</h1>
-						<p>群山环绕溪水碧，山村小镇江边傍。三溪相汇柳西江，水陆交通惯八方。三百舟船泊古埠 ，舷歌对唱闹浙西。千米长街青石铺，万家商铺依两傍。商贾云集频聚首，“唐昌首镇”远名扬。风雨千年伴古镇，尘烟尽逝曲飞扬。</p>
-					</div>
+		<div class="section">
+			<img class="animated" src="../static/img/img01.jpg" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/scenes/img01.jpg}">
+			<div class="scene-intro animated">
+				<div class="intro-text">
+					<h1>古有诗云</h1>
+					<p>
+							群山环绕溪水碧，山村小镇江边傍。
+							三溪相汇柳西江，水陆交通惯八方。
+							三百舟船泊古埠 ，舷歌对唱闹浙西。
+							千米长街青石铺，万家商铺依两傍。
+							商贾云集频聚首，“唐昌首镇”远名扬。
+							风雨千年伴古镇，尘烟尽逝曲飞扬。
+					</p>
 				</div>
-				<img class="img-responsive" src="../static/img/img01.jpg" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/scenes/img01.jpg}">
-			</div>
-			<div class="scene-container scene2">
-				<div class="scene-intro">
-					<div class="intro-text">
-						<h1>生态河桥</h1>
-						<p>山清水秀、环境优美的河桥充分发掘自身的山水旅游优势，邀请山外游客来共享山乡古镇的自然风情。今天，当你走进河桥，除了可以领略原生态的古镇风情外，还可以呼吸到山野清爽的空气，融入到青山绿水中去。</p>
-					</div>
-				</div>
-				<img/ class="img-responsive" src="../static/img/img02.jpg" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/scenes/img02.jpg}">
-			</div>
-			<div class="scene-container scene3">
-				<div class="scene-intro">
-					<div class="intro-text">
-						<h1>古韵犹存</h1>
-						<p>虽然历经沧桑，有些古建筑已遭破坏，但河桥老街古风依旧：排屋门、石板路、太平沟、石灰桥、老店号、木帆船、古城门、河埠头、行宫、庙会、寺观、古树、茶楼、酒肆……这些散落在街角的斑驳古迹，组成一幅独特的江南山乡水镇风俗图。</p>
-					</div>
-				</div>
-				<img class="img-responsive" src="../static/img/img03.jpg" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/scenes/img03.jpg}">
 			</div>
 		</div>
+
+		<div class="section">
+			<img class="animated" src="../static/img/img02.jpg" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/scenes/img02.jpg}">
+			<div class="scene-intro animated">
+				<div class="intro-text">
+					<h1>生态河桥</h1>
+					<p>山清水秀、环境优美的河桥充分发掘自身的山水旅游优势，邀请山外游客来共享山乡古镇的自然风情。今天，当你走进河桥，除了可以领略原生态的古镇风情外，还可以呼吸到山野清爽的空气，融入到青山绿水中去。</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="section">
+			<img class="animated" src="../static/img/img03.jpg" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/scenes/img03.jpg}">
+			<div class="scene-intro animated">
+				<div class="intro-text">
+					<h1>古韵犹存</h1>
+					<p>虽然历经沧桑，有些古建筑已遭破坏，但河桥老街古风依旧：排屋门、石板路、太平沟、石灰桥、老店号、木帆船、古城门、河埠头、行宫、庙会、寺观、古树、茶楼、酒肆……这些散落在街角的斑驳古迹，组成一幅独特的江南山乡水镇风俗图。</p>
+				</div>
+			</div>
+		</div>
+
 	</div>
+
+	<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="../static/js/jquery.fullPage.min.js" th:src="@{/js/jquery.fullPage.min.js}"></script>
+	<script src="../static/js/waypoints.min.js" th:src="@{/js/waypoints.min.js}"></script>
+	<script src="../static/js/scene.js" th:src="@{/js/scene.js}"></script>
+	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
 
 </body>
 </html>
+

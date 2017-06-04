@@ -1,4 +1,4 @@
-package com.qcj.bc.model;
+package com.qcj.bc.model.user;
 
 import java.util.Date;
 

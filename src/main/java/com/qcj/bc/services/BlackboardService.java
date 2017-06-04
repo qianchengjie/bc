@@ -2,6 +2,8 @@ package com.qcj.bc.services;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -12,12 +14,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.qcj.bc.model.User;
 import com.qcj.bc.model.blackboard.Floor;
 import com.qcj.bc.model.blackboard.Reply;
+import com.qcj.bc.model.user.User;
 import com.qcj.bc.repository.FloorRepository;
 import com.qcj.bc.repository.ReplyRepository;
-import com.qcj.bc.repository.UserRepository;
+import com.qcj.bc.repository.user.UserRepository;
 import com.qiniu.common.Zone;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
@@ -52,6 +54,11 @@ public class BlackboardService {
 		Pageable pageable = new PageRequest(pageNum, 6, sort);
 		return floorRepository.findAll(pageable);
 	}
+	/**
+	 * 留言
+	 * @param floor
+	 * @return
+	 */
 	public Map<String, Object> leaveMessage(Floor floor){
 		String msg = "留言成功";
 		floor.setImgSrc(userRepository.getImgSrc(floor.getUsername()));
@@ -61,6 +68,32 @@ public class BlackboardService {
 		Map<String,Object>map = new HashMap<>();
 		map.put("floor",floor);
 		map.put("msg",msg);
+		return map;
+	}
+	/**
+	 * 删除留言
+	 * @param floorId
+	 * @return
+	 */
+	public Map<String, Object> deleteMessage(int floorId,int currentPage){
+		String msg = "删除成功";
+		long count = floorRepository.count();
+		long pageSum = (count-1)/6+1;
+		Map<String, Object> map = new HashMap<>();
+		if(count > 6){
+			if(currentPage <  pageSum){
+				Sort sort = new Sort(Sort.Direction.DESC, "id");
+				Pageable pageable = new PageRequest(currentPage, 6, sort);
+				Page<Floor> page = floorRepository.findAll(pageable);
+				List<Floor> list = page.getContent();
+				Floor floor = list.get(0);
+				map.put("floor", floor);
+			}
+		}else{
+			msg = "删除成功，仅剩一页";
+		}
+		floorRepository.delete(floorId);
+		map.put("msg", msg);
 		return map;
 	}
 	/**

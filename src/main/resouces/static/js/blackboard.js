@@ -1,3 +1,52 @@
+
+    //Toast
+    var toastHideTimer = null;
+    function toast(msg){
+    	clearTimeout(toastHideTimer);
+    	$('#toast p').text(msg);
+    	$('#toast').fadeIn(400);
+    	toastHideTimer = setTimeout(function(){
+    		$('#toast').fadeOut(700);
+    	},2000)
+	}
+  //重新设置页数
+  	function setPagination(currentPage){
+  		$.ajax({
+  			url : "/blackboard/getpagesum",
+  			method : "GET",
+  			dateType : 'json',
+  			success : function(pageSum){
+  				
+  				pageSum++;
+  				
+  				//当此页无留言时
+  				if(pageSum < currentPage){
+  					window.location.href = 'blackboard?pageNum=' + pageSum;
+  				}
+  				
+  				var html = "";
+  				if(currentPage != 1){
+  					html += "<li><a href='blackboard?pageNum=" + ( currentPage-1 )+ "'><span >&laquo;</span></a></li>";
+  				}
+  				for( var i = 1; i <= pageSum; i++){
+  					if( i == currentPage)
+  						html += "<li class='active'><a href='blackboard?pageNum=";
+  					else
+  						html += "<li><a href='blackboard?pageNum=";
+  					html += i+"'>"+i+"</a></li>"
+  				}
+  				if(pageSum != currentPage){
+  					html += "<li><a href='blackboard?pageNum=" + ( currentPage+1 )+ "'><span >&raquo;</span></a></li>";
+  				}
+  				$('.pagination').html(html);
+  			}
+  		});
+  	}
+
+  	// 封装 console.log 函数
+  	function printLog(title, info) {
+  		window.console && console.log(title, info);
+  	}
 $(document).ready(function() {
 	
 	var pe = false;
@@ -14,40 +63,6 @@ $(document).ready(function() {
 	        }
 	    }
     })
-    //Toast
-    var toastHideTimer = null;
-    function toast(msg){
-    	clearTimeout(toastHideTimer);
-    	$('#toast p').text(msg);
-    	$('#toast').fadeIn(400);
-    	toastHideTimer = setTimeout(function(){
-    		$('#toast').fadeOut(700);
-    	},2000)
-	}
-	
-	//获得页数
-	/*$.ajax({
-		url : "/blackboard/getpagesum",
-		method : "GET",
-		dateType : 'json',
-		success : function(pageSum){
-			pageSum++;
-			var html = "";
-			for( var i = 1; i <= pageSum; i++){
-				if( i == 1)
-					html += "<li class='active'><a href='blackboard?pageNum=";
-				else
-					html += "<li><a href='blackboard?pageNum=";
-				html += i+"'>"+i+"</a></li>"
-			}
-			$('.pagination').find("li:first-child").after(html);
-		}
-	});*/
-
-	// 封装 console.log 函数
-	function printLog(title, info) {
-		window.console && console.log(title, info);
-	}
 
 	// 初始化七牛上传
 	function uploadInit() {
@@ -221,15 +236,17 @@ $(document).ready(function() {
 					content: content
 				},
 				success: function(data) {
+					setPagination(1)
 					var json = JSON.parse(data);
 					if (json.msg == '留言成功') {
 						$('#leave-message').html('<p><br></p>');
-						var html = "<div class='floor animated bounceInRight'><div class='row'><div class='col-xs-12'><div class='floor-container'><div class='floor-head'><img class='head-sculpture' src='" + json.floor.imgSrc + "'><span class='name'>" + json.floor.username + "</span></div><div class='floor-body'><p>" + json.floor.content + "</p></div><div class='floor-foot'><input type='hidden' value='" + json.floor.id + "' ><p >" + json.floor.time + "</p><a class='btn-zan' value='" + json.floor.id + "'><img src='http://optpqehds.bkt.clouddn.com/bc/images/blackboard/zan.png' ><span class='zan-count'>0</span></a><a class='btn-comment'><img src='http://optpqehds.bkt.clouddn.com/bc/images/blackboard/comment.png'><span class='reply-count' >0</span></a></div><div class='reply-container'><div class='replys'></div><div class='reply-frame' ><div class='reply-frame-head'>回复</div><div class='reply-textarea'></div><div class='reply-frame-foot'><a class='btn btn-default btn-reply'>回复</a><input type='hidden' value='" + json.floor.id + "'></div></div></div></div></div></div></div>";
+						var html = "<div class='floor animated bounceInRight'><div class='row'><div class='col-xs-12'><div class='floor-container'><div class='floor-head'><img class='head-sculpture' src='" + json.floor.imgSrc + "'><span class='name'>" + json.floor.username + "</span><div class='dropdown tools'><button class='btn btn-default dropdown-toggle btn-sm' data-toggle='dropdown'><span class='caret'></span></button><ul class='dropdown-menu'><li><input type='hidden' value='" + json.floor.id + "'><a href='javascript:void(0)' class='delete'>删除</a></li></ul></div></div><div class='floor-body'><p>" + json.floor.content + "</p></div><div class='floor-foot'><input type='hidden' value='" + json.floor.id + "'><p>" + json.floor.time + "</p><a class='btn-zan' value='" + json.floor.id + "'><span class='zan glyphicon glyphicon-thumbs-up'></span><span class='zan-count'>0</span></a><a class='btn-comment'><span class='comment glyphicon glyphicon-comment'></span><span class='reply-count'>0</span></a></div><div class='reply-container'><div class='replys'></div><div class='loader-anim'><div class='loader-inner pacman'><div></div><div></div><div></div><div></div><div></div></div></div><div class='reply-frame'><div class='reply-frame-head'>回复</div><div class='reply-textarea'></div><div class='reply-frame-foot'><a class='btn btn-default btn-reply'>回复</a><input type='hidden' value='" + json.floor.id + "'></div></div></div></div></div></div></div>";
 						$(".floor-content").prepend(html)
 						setTimeout(function() {
 							$('.main').find('.floor').removeClass('animated')
 						}, 1000)
-						$('.floor-content .floor:last-child').hide();
+						if($('.floor-content').find('.floor').length > 6)
+							$('.floor-content .floor:last-child').remove();
 					} else
 						toast('服务器错误');
 				}
@@ -297,28 +314,6 @@ $(document).ready(function() {
 		});
 		rp_obj.css('display', 'block')
 	}
-
-	//表情
-	/*var timer;
-	$('img.expression,.expression-panel').bind({
-		'mouseenter': function() {
-			clearTimeout(timer)
-			$(this).parent('.reply-frame-foot').find('.expression-panel').show();
-		},
-		'mouseleave': function() {
-			clearTimeout(timer)
-			var exprP_obj = $(this).parent('.reply-frame-foot').find('.expression-panel');
-			timer = setTimeout(function() {
-				exprP_obj.hide();
-			}, 100)
-		},
-	})
-	$('.main').click(function() {})
-	$('.expression-panel img').click(function() {
-		var ta_obj = $(this).parents('.reply-frame').find('.reply-textarea');
-		var expr_src = $(this).attr('src');
-		ta_obj.html(ta_obj.html() + "<img src='" + expr_src + "'>")
-	})*/
 
 	//回复
 	$('.main').on('click', '.btn-reply', function() {

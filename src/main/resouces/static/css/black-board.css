@@ -1,7 +1,7 @@
 html{font-size: 14px;line-height: 14px;}
 body{overflow-x: hidden;font: 1rem "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;}
 a{text-decoration: none;color: #000;}
-*{outline: none;}
+*{outline: none;max-height: 99999px;}
 ul,li{margin: 0;padding: 0;list-style: none;}
 
 .row{text-align:left}
@@ -74,7 +74,6 @@ body{
 	height: 20rem;
 }
 .main .main-container{
-	min-height: 100vh;
 	border-radius: .3rem;
 	padding: 1rem;
 	background-color: #FFF;
@@ -99,6 +98,23 @@ body{
 .floor-head small{
 	color: #C7C7C7;
 	margin-left: 1rem;
+}
+.floor-head .tools{
+	margin-top: 1rem;
+	float: right;
+	display: inline-block;
+}
+.tools .dropdown-menu{
+	min-width: 5rem;
+	margin-left: -2.8em;
+}
+.floor-head:after{
+	display: block;
+	visibility: hidden;
+	overflow: hidden;
+	content: "";
+	height: 0;
+	clear: both;
 }
 .floor-body{
 	margin-left: 5rem;

@@ -4,17 +4,18 @@ body{
 #content{
 	width: 450px;
 	margin: auto;
-	margin-top: 80px;
+	margin-top: 100px;
 }
 #content #logo{
 	width: 100%;
 	text-align: center;
+	margin-bottom: 80px;
 }
 #content #logo p{
 	font-size: 20px;
 }
 #content #logo img{
-	width: 35%;
+	width: 80%;
 }
 #content #view{
 	border-style: solid;
@@ -111,3 +112,33 @@ body{
 		bottom: 0;
 	}
 }
+
+		#tip{
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			top: -50px;
+			background: red;
+			z-index: 200;
+			color: white;
+			text-align: center;
+			line-height: 50px;
+			font-size: 20px;
+			font-weight: bold;
+			animation: tip 3s;
+		}
+		
+		@keyframes tip{
+			0%{
+				top: -50px;
+			}
+			10%{
+				top:0px;
+			}
+			90%{
+				top:0px;
+			}
+			100%{
+				top:-50px;
+			}
+		}
