@@ -33,7 +33,11 @@ public class FoodService {
 	 */
 	public ArrayList<Map> getFoodsList(int num){
 		ArrayList<Map> list = new ArrayList<>();
-		Iterable<Food> foods= foodRepository.findAll();
+		
+		Sort sort = new Sort(Sort.Direction.DESC, "id"); 
+		Pageable pageable = new PageRequest(num, 2, sort);
+		long sum = foodRepository.count();
+		Iterable<Food> foods= foodRepository.findAll(pageable);
 		for(Food food : foods){
 			Map<String, String> map = new HashMap<>();
 			map.put("name", food.getName());

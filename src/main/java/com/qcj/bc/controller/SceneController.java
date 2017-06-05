@@ -12,4 +12,9 @@ public class SceneController {
 		return "scene";
 	}
 	
+	@RequestMapping("/oldstreet")
+	public String oldstreet(){
+		return "oldStreet";
+	}
+	
 }
