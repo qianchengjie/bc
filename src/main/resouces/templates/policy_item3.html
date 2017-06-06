@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=.7,user-scalable=no,maximum-scale=.7">
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<title>Policy-items</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/Policy-item.css" th:href="@{/css/Policy-item.css}">
+</head>
+<body>
+	<!-- 遮罩层 -->
+	<!-- <div id="tip">wrong</div> -->
+	<div id="mask-top"></div>
+	<div id="mask-bottom"></div>
+	<div id="mask-main">
+		
+	</div>
+	<!-- 第一个版本 -->
+	<!-- <div id="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6" id="h1-box"><h1>HEAD|<small>COUNTRY-SIDE</small></h1></div>
+					<div class="col-xs-2" id="nav-first"><img src="img/index/nav.png"></div>
+					<div class="col-xs-2" id="nav-second">
+					<a href="#"><img src="img/index/heart-red.png"></a>
+					</div>
+					<div class="col-xs-2" id="nav-third"><img src="img/index/person.png"></div>
+			</div>
+		</div>
+	</div> -->
+	<!-- 第二个版本 -->
+	<div id="header">
+		<div id="box-left">
+			<div id="item1">
+				<img src="../static/img/index/nav.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/nav.png}"><span>MENU</span>
+			</div>
+		</div>
+		<div id="box-right">
+			<input type="text" name="" placeholder="Search Someting" id="text"><button id="do" class="glyphicon glyphicon-search"></button>
+			<div class="search-items">
+				<ul>
+					<!-- 此处添加搜索列表 -->
+					
+					
+				</ul>
+			</div>
+		</div>
+		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
+		<a href="login.html" th:if="${session.username == null}" th:href="@{/user/login}"><div id="item3">登录/注册</div></a>
+		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
+		<div id="item2"><a><img src="../static/img/index/heart-red.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png}"></a>/ do you like our web?</div>
+		<div id="logo">
+			河桥古镇
+		</div>
+	</div>
+
+	<div id="header-static">
+		<div id="logo">河桥古镇</div>
+		<div id="menu-box">Menu</div>
+		<div id="login-box" th:if="${session.username == null}"><a href="login.html" th:href="@{/user/login}">登录</a></div>
+		<div id="login-box" th:if="${session.username != null}"><img src="../static/img/1.jpg" th:src="${session.userHeadImg}"></div>
+		<div id="search-box">
+			<div id="search">
+				<span class="glyphicon glyphicon-search"></span><input type="text" name="search" class="form-control" placeholder="search">
+			</div>
+		</div>
+	</div>
+	<!-- 左侧导航条 -->
+	<div id="header-left">
+		<div id="head">
+			<span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
+		</div>
+		<a href="index.html" th:href="@{/}"><div id="items">主页 <span class="glyphicon glyphicon-map-marker"></span></div></a>
+		<a href="Food.html" th:href="@{/food}"><div id="items">美食 <span class="glyphicon glyphicon-fire"></span></div></a>
+		<a href="scene.html" th:href="@{/scene}"><div id="items">风景 <span class="glyphicon glyphicon-leaf"></span></div></a>
+		<a href="Policy.html" th:href="@{/policy}"><div id="items">新闻 <span class="glyphicon glyphicon-comment"></span></div></a>
+		<a href="Black-board.html" th:href="@{/blackboard?pageNum=1}"><div id="items">留言板 <span class="glyphicon glyphicon-edit"></span></div></a>
+		<a href="#"><div id="items">关于我们 <span class="glyphicon glyphicon-align-right"></span></div></a>
+		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/qr_code.png}"></div>
+		<div id="change">暗色调模式<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
+	</div>
+
+	<!-- __________________一条华丽丽的分隔线__________________-->
+	<div class="container-fuild" id="body1">
+		<div id="top">
+			<a href="Policy.html"><span class="glyphicon glyphicon-comment"></span> 返回上一页</a>
+		</div>
+		<div class="content">
+			<h1>临安河桥古镇回应“被摘牌”：整改并规划 打造民俗小镇</h1>
+			<h1 th:text="${id}"></h1>
+			<div class="items items-3">
+				<div class="title-box"><h3>景区问题由来已久  整改需要一定时间</h3></div>
+				<div class="content-box">
+					<p>
+						央广网杭州12月9日消息（记者傅炜如）近日，国家旅游局公布了10家被摘牌的4a级景区名单，临安的河桥古镇赫然在榜。作为浙江省唯一一个被摘牌的4a级景区，河桥古镇将会做出怎样的整改措施，重现河桥古镇昔日旅游风光？记者采访了河桥古镇的旅游运营方——杭州智行旅游开发有限公司副总经理杨立中，他告诉记者，此次摘牌原因主要是景区的老街存在着问题，自旅游景区问题曝光以来，管理部门和公司一直致力于对收费展区唐昌首镇的整改，现在他们也正对古镇未来整体的发展进行规划。
+					</p>
+					<p>
+						河桥古镇被摘牌并不是一朝一夕的问题，而是由来已久。记者从杨经理处了解到，杭州智行旅游开发有限公司2015年从之前的旅游企业手里收购河桥古镇时，它已问题重重，在这基础上把他们调正过来需要很大的资金投入和较长的时间。
+					</p>
+					<p>
+						杨经理说，之前的企业建立现在的唐昌首镇收费区也花了很大心思，展区内都是历史悠久的老房子，百分之九十的展品也是从当地居民家里收集的文物，这些物质传承是弥足珍贵的。在没有更好的点子前，他们主要是以保护发展为主。今年上半年，他们陆续在展区内增加了黄包车、水车等旅游设施。现在的客流量与去年相比，已经翻了两三番。早前曝光的关于景区内脏乱差等问题都得到了改善，现在还设有专职的卫生管理人员和考核机制。未来还计划开设VR体验馆，向游客重现古镇昔日繁华风貌。
+					</p>
+					<p>
+						对于游客反映的门票贵、商铺少、开设旅游专线等问题，杨经理也回应到，首先，作为盈利性的旅游企业，门票的收入要保证资金来维护文物，以后免门票游览仍不太现实。其次，大部分景区内的商铺都是承包的，以后他们在招商时也会对商铺营业时间进行明文规定。最后，目前开设旅游专线的条件还不成熟，暂且没有考虑设置相关旅游专线。
+					</p>
+				</div>
+			</div> 
+			<div class="items items-1">
+				<div class="title-box"><h3>老街整改困难重重  政府企业需齐头并进</h3></div>
+				<div class="content-box">
+					<p>
+						据了解，河桥古镇景区主要分为收费的唐昌首镇以及免费向游客开放的老街。老街作为景区的一部分，是一种活态传承，这里生活着2000多名居民，是一个生产生活的多功能区域，旅游仅仅是其中一个很小的功能，因此整改起来困难重重。
+					</p>
+					<p>
+						杨经理告诉记者，作为旅游企业他们没有能力和权限管理当地居民，有些作为景点的建筑里仍生活着居民，若是因为发展旅游而迁移，会涉及到土地规划调整的等一系列问题。景区问题曝光后，他们也向河桥镇政府沟通过相关情况，并做了专项整治工作，与之前相比改善了很多，但管理体制没有理顺，整改情况仍不容乐观，与省内其他古镇相比存在较大差距。
+					</p>
+					<p>
+						在未来规划大的背景下，河桥古镇成立怎样的管理机构，是他们目前着重讨论的问题。杨经理提到，参照省内周边的其他景区，整改中政府出面协调是关键，企业更多的还是资金配合，例如政府之前收购了老街20多幢房子，他们考虑把房子租下来发展旅游业态等，对促进旅游业起到一定的效应。
+					</p>
+				</div>
+			</div>  
+			<div class="items items-2">
+				<div class="title-box"><h3>未来将打造长三角最大民俗小镇</h3></div>
+				<div class="content-box">
+					<p>
+						“我们看中河桥古镇并不仅是现有的经营资源，而是它的可持续发展。”杨经理告诉记者。河桥古镇依山傍水，周围有温泉、漂流等丰富的风景资源，这些都是得天独厚的旅游开发条件。目前，他们企业正准备对河桥古镇进行较大规模的投资，重新规划整个小镇的发展，当前整改不了的问题都会在未来的规划中得到较好的落实，争取打造长三角地区最大的民俗小镇，带动当地旅游经济的发展。
+					</p>
+					<p>
+						杨经理还透露，这种规划并不是空想，而是要真正逐步落实。目前，他们已经开始逐步启动土地规划调整、资产评估等工作。在整体规划实施后，再进行大规模的旅游宣传，真正做到从内容与质量上吸引游客。
+					</p>
+				</div>
+			</div>  
+		</div>
+		<div id="bottom">
+			<ul>
+				<li>2017-05-06</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+		<div id="top">
+			<ul>
+				<li><a href="#"><img src="../static/img/logo.png" id="logo" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/logo.png}"></a></li>
+				<li><a href="#"><img src="../static/img/p.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/p.png}"></a></li>
+				<li><a href="#"><img src="../static/img/F.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/F.png}"></a></li>
+				<li><a href="#"><img src="../static/img/brid.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/brid.png}"></a></li>
+				<li><a href="#"><img src="../static/img/video.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/video.png}"></a></li>
+				<li><a href="#"><img src="../static/img/camera.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/camera.png}"></a></li>
+			</ul>
+		</div>
+		<div id="ul-group-box" class="container-fluid">
+			<div class="row">
+				<br>
+				<center>这是我们第一次合作制作网站，有什么不足可以联系我们<br>email : 1051333460@.com</center>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
+</body>
+</html>

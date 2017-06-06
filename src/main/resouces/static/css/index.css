@@ -1,3 +1,22 @@
+		.bg-img{
+			width: 100%;
+			height: 500px;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			background-image: url("../img/bg2.gif");
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+
+			filter: blur(5px);
+		}
+		#top-title{
+			height: 400px;
+			color: #fff;
+		}
 		#body{
 			padding-top: 150px;
 		}

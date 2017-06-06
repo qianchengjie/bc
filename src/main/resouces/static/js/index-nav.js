@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	if(document.body.clientWidth<500){
 			$(".footer #top").css('display', 'none');
-			$(".footer #ul-group-box").find('.row').first().css('display', 'none');
 	}
 	//屏蔽右击
  

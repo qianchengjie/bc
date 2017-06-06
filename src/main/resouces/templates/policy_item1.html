@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=.7,user-scalable=no,maximum-scale=.7">
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<title>Policy-items</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/Policy-item.css" th:href="@{/css/Policy-item.css}">
+</head>
+<body>
+	<!-- 遮罩层 -->
+	<!-- <div id="tip">wrong</div> -->
+	<div id="mask-top"></div>
+	<div id="mask-bottom"></div>
+	<div id="mask-main">
+		
+	</div>
+	<!-- 第一个版本 -->
+	<!-- <div id="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6" id="h1-box"><h1>HEAD|<small>COUNTRY-SIDE</small></h1></div>
+					<div class="col-xs-2" id="nav-first"><img src="img/index/nav.png"></div>
+					<div class="col-xs-2" id="nav-second">
+					<a href="#"><img src="img/index/heart-red.png"></a>
+					</div>
+					<div class="col-xs-2" id="nav-third"><img src="img/index/person.png"></div>
+			</div>
+		</div>
+	</div> -->
+	<!-- 第二个版本 -->
+	<div id="header">
+		<div id="box-left">
+			<div id="item1">
+				<img src="../static/img/index/nav.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/nav.png}"><span>MENU</span>
+			</div>
+		</div>
+		<div id="box-right">
+			<input type="text" name="" placeholder="Search Someting" id="text"><button id="do" class="glyphicon glyphicon-search"></button>
+			<div class="search-items">
+				<ul>
+					<!-- 此处添加搜索列表 -->
+					
+					
+				</ul>
+			</div>
+		</div>
+		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
+		<a href="login.html" th:if="${session.username == null}" th:href="@{/user/login}"><div id="item3">登录/注册</div></a>
+		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
+		<div id="item2"><a><img src="../static/img/index/heart-red.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/heart-red.png}"></a>/ do you like our web?</div>
+		<div id="logo">
+			河桥古镇
+		</div>
+	</div>
+
+	<div id="header-static">
+		<div id="logo">河桥古镇</div>
+		<div id="menu-box">Menu</div>
+		<div id="login-box" th:if="${session.username == null}"><a href="login.html" th:href="@{/user/login}">登录</a></div>
+		<div id="login-box" th:if="${session.username != null}"><img src="../static/img/1.jpg" th:src="${session.userHeadImg}"></div>
+		<div id="search-box">
+			<div id="search">
+				<span class="glyphicon glyphicon-search"></span><input type="text" name="search" class="form-control" placeholder="search">
+			</div>
+		</div>
+	</div>
+	<!-- 左侧导航条 -->
+	<div id="header-left">
+		<div id="head">
+			<span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
+		</div>
+		<a href="index.html" th:href="@{/}"><div id="items">主页 <span class="glyphicon glyphicon-map-marker"></span></div></a>
+		<a href="Food.html" th:href="@{/food}"><div id="items">美食 <span class="glyphicon glyphicon-fire"></span></div></a>
+		<a href="scene.html" th:href="@{/scene}"><div id="items">风景 <span class="glyphicon glyphicon-leaf"></span></div></a>
+		<a href="Policy.html" th:href="@{/policy}"><div id="items">新闻 <span class="glyphicon glyphicon-comment"></span></div></a>
+		<a href="Black-board.html" th:href="@{/blackboard?pageNum=1}"><div id="items">留言板 <span class="glyphicon glyphicon-edit"></span></div></a>
+		<a href="#"><div id="items">关于我们 <span class="glyphicon glyphicon-align-right"></span></div></a>
+		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/qr_code.png}"></div>
+		<div id="change">暗色调模式<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
+	</div>
+
+	<!-- __________________一条华丽丽的分隔线__________________-->
+	<div class="container-fuild" id="body1">
+		<div id="top">
+			<a href="Policy.html"><span class="glyphicon glyphicon-comment"></span> 返回上一页</a>
+		</div>
+		<div class="content">
+			<h1>临安市发生4.2级地震</h1>
+			<h1 th:text="${id}"></h1>
+			<div class="items items-3">
+				<div class="title-box"><h3>临安市发生4.2级地震</h3></div>
+				<div class="content-box">
+					<p>
+						本报杭州4月12日讯　（记者　方臻子　黄珍珍　刘健　见习记者　叶临风） 4月12日2时25分34秒，临安市潜川镇和河桥镇交界（北纬30.08度，东经119.34度）发生4.2级地震，震源深度15公里，震中位于临安河桥镇和潜川镇之间。杭州、湖州、衢州、绍兴等地区，以及邻近省界的安徽、江西等地区有震感，部分地区震感强烈。截至发稿时，没有人员伤亡和房屋倒塌报告。
+					</p>
+					<p>
+						地震发生后，省地震局随即派出工作队，奔赴震区开展工作。当天，监测组在潜川茶叶山村、河桥镇曹家村成功安装流动设施，开始实时传输记录数据。省地震监测预报研究中心研究员钟羽云告诉记者，本次地震，有震感的范围与4级地震的震感范围相符；震源深度在15公里，属于浅源地震，所以人们的感觉会相对强烈一些。
+					</p>
+					<p>
+						省民政厅派出救灾工作组赶赴灾区开展工作，与省地震局专家、当地民政干部对接，了解受灾情况，并要求当地民政部门继续高度关注余震发展，及时开展危旧住房、山塘水库、地质灾害隐患点的排查工作，扎实做好人员转移安置和应急救助工作，全力保障人民群众正常的生产生活。
+					</p>
+					<p>
+						地震发生后，临安市第一时间启动应急预案Ⅲ级响应，建立应急工作指挥部。面对地震，临安各级党员干部凭借扎实的工作作风和过硬的素质，在最短的时间内组织人员排查隐患，稳定民心。潜川镇青山殿村村委会主任陈乐政与其他村干部一起，分头前往各个村摸情况；河桥镇妇联主席沈亚锋摸黑前往村里进行排摸，反反复复巡查到天快亮了才离开；河桥镇泥骆村党支部书记章江明和大家一起摸排危房，排查水塘隐患，转移村民；党员组成的河桥镇义务队冲锋在前，自发去几个主要地质灾害点、山塘水库进行巡查。
+					</p>
+					<p>
+						在地震的应急应对中，“潜川镇镇村一家亲”微信群发挥了积极的作用。“不只微信群，每个镇还有短信平台、村村通喇叭等应急方式。”临安市防汛防台抗旱指挥部办公室副主任吴德成说。
+					</p>
+				</div>
+			</div> 
+		</div>
+		<div id="bottom">
+			<ul>
+				<li>2017-05-06</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+		<div id="top">
+			<ul>
+				<li><a href="#"><img src="../static/img/logo.png" id="logo" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/logo.png}"></a></li>
+				<li><a href="#"><img src="../static/img/p.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/p.png}"></a></li>
+				<li><a href="#"><img src="../static/img/F.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/F.png}"></a></li>
+				<li><a href="#"><img src="../static/img/brid.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/brid.png}"></a></li>
+				<li><a href="#"><img src="../static/img/video.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/video.png}"></a></li>
+				<li><a href="#"><img src="../static/img/camera.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/base/camera.png}"></a></li>
+			</ul>
+		</div>
+		<div id="ul-group-box" class="container-fluid">
+			<div class="row">
+				<br>
+				<center>这是我们第一次合作制作网站，有什么不足可以联系我们<br>email : 1051333460@.com</center>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
+</body>
+</html>
