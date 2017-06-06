@@ -1,3 +1,9 @@
+		body{
+			background: #fff;
+		}
+		a{
+			color: #000;
+		}
 		#body #top-back{
 			background-image: url("http://optpqehds.bkt.clouddn.com/bc/images/policy/policy.jpg");
 			background-repeat: no-repeat;

@@ -3,6 +3,9 @@
 			border: 0px;
 			margin: 0px;
 		}
+		a,a:hover{
+			text-decoration: none;
+		}
 		body{
 			background: #F2F2F3;
 			transition: 1s;
@@ -497,6 +500,10 @@
 		}
 		.footer #ul-group-box .row{
 			text-align: left;
+			
+			border-style: solid;
+			border-width: 0 0 2px 0;
+			border-color: #ccc;
 		}
 		@keyframes box-right{
 			0%{
