@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.qcj.bc.model.Food;
 import com.qcj.bc.model.FoodImage;
 import com.qcj.bc.services.FoodService;
@@ -26,6 +27,15 @@ public class FoodController {
 		mav.addObject("foods",foodService.getFoodsList(1));
 		mav.setViewName("food");
 		return mav;
+	}
+	/**
+	 * 获得食物信息
+	 * @param num
+	 * @return
+	 */
+	@RequestMapping("/getFoodsList")
+	public @ResponseBody String getFoodsList(int num){
+		return JSON.toJSONString(foodService.getFoodsList(num));
 	}
 	/**
 	 * 返回保存页面
