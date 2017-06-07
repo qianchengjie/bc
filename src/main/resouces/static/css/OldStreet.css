@@ -24,6 +24,13 @@ a,a:hover{
 	background: rgba(225,225,225,0.75);
 	text-align: center;
 }
+#body #top #content p{
+	padding: 30px;
+	text-indent: 2em;
+	text-align: left;
+	line-height: 30px;
+	font-size: 20px;
+}
 #body #content{
 	width: 80%;
 	margin: auto;

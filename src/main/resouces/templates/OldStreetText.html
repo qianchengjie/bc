@@ -138,4 +138,10 @@
 	<script type="text/javascript" src="../static/js/index-nav.js" th:src="@{/js/index-nav.js}"></script>
 	<script type="text/javascript" src="../static/js/OldStreet.js" th:src="@{/js/OldStreet.js}"></script>
 	<script type="text/javascript" src="../static/js/comment.js" th:src="@{/js/comment.js}"></script>
+	<script type="text/javascript">
+		if(document.body.clientWidth<1000){
+			$(".content .items .img-box").css('display', 'none');
+			$(".content .items .font-box").css('width','100%');
+		}
+	</script>
 </html>
