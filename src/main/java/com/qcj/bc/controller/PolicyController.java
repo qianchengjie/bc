@@ -15,9 +15,7 @@ public class PolicyController {
 	
 	@RequestMapping("policyitem")
 	public String policyitem(String id){
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("id", id);
-		return "policy_item";
+		return "policy_item"+id;
 	}
 	
 }
