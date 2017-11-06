@@ -22,12 +22,10 @@ public class SceneService {
 	private OldstreetTextRespository oldstreetTextRespository;
 	
 	public List<OldstreetImg> getOldstreetImg(int oldstreetId){
-		System.out.println(oldstreetId);
 		Iterator<OldstreetImg> iterator = oldstreetImgRespository.findAllByOldstreetId(oldstreetId).iterator();
 		List<OldstreetImg> list = new ArrayList<OldstreetImg>();
 		while(iterator.hasNext())
 			list.add(iterator.next());
-		System.out.println(list.size());
 		return list;
 	}
 	

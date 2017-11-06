@@ -1,4 +1,5 @@
-$("#content #item-box #box-right #text #button").mouseover(function(event) {
+
+$("#content").on('mouseover','#button',function(event) {
 	/* Act on the event */
 	$(this).css('width', '100px');
 	$(this).find('#line-right').css({
@@ -18,7 +19,7 @@ $("#content #item-box #box-right #text #button").mouseover(function(event) {
 		'width': '100px'
 	});
 });
-$("#content #item-box #box-right #text #button").mouseout(function(event) {
+$("#content").on('mouseout','#button',function(event) {
 	/* Act on the event */
 	$(this).css('width', '70px');
 	$(this).find('#line-right').css({

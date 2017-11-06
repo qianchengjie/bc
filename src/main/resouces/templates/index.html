@@ -77,8 +77,6 @@
 		<a href="Policy.html" th:href="@{/policy}"><div id="items">新闻 <span class="glyphicon glyphicon-comment"></span></div></a>
 		<a href="Black-board.html" th:href="@{/blackboard?pageNum=1}"><div id="items">留言板 <span class="glyphicon glyphicon-edit"></span></div></a>
 		<a href="#"><div id="items">关于我们 <span class="glyphicon glyphicon-align-right"></span></div></a>
-		<div id="bottom"><img src="../static/img/index/qr_code.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/qr_code.png}"></div>
-		<div id="change">暗色调模式<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
 	</div>
 
 	<!-- __________________一条华丽丽的分隔线__________________-->
@@ -162,30 +160,31 @@
 					<div id="title"><h1>Previously Featured Art</h1></div>
 				</div>
 				<div class="row">
-					<div class="col-xs-3"><a href="food.html"><img src="../static/img/index/food.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/index/food.png}"></a></div>
+					<div class="col-xs-3 small-pc"><a href="food.html"><img src="../static/img/index/food.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/index/food.png}"></a></div>
 					<!-- <div class="col-md-3"><img src="../static/img/index/scenne4.png" th:src="@{/img/index/scenne4.png}"></div> -->
-					<div class="col-xs-3"><a href="scene.html"><img src="../static/img/index/scene2.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/index/scene2.png}"></a></div>
-					<div class="col-xs-3"><a href="policy.html"><img src="../static/img/index/news3.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/index/news3.png}"></a></div>
-					<div class="col-xs-3" id="last"><a href="blackboard.html"><img src="../static/img/index/chalk board.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/index/chalk board.png}"></a></div>
+					<div class="col-xs-3 small-pc"><a href="scene.html"><img src="../static/img/index/scene2.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/index/scene2.png}"></a></div>
+					<div class="col-xs-3 small-pc"><a href="policy.html"><img src="../static/img/index/news3.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/index/news3.png}"></a></div>
+					<div class="col-xs-3 small-pc" id="last"><a href="blackboard.html"><img src="../static/img/index/chalk board.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/index/chalk board.png}"></a></div>
 				</div>
 				<div class="row" id="details-box">
 					<div class="col-md-6 col-xs-12 a1"  id="detials-left">
-						<div id="v1"></div>
+						<img title="点击播放" id="v1" src="../static/img/index/p1.png" 
+						th:src="@{img/index/p1.png}"/>
 					<!-- <embed src="../static/swf/v1.swf" th:src="@{/swf/v1.swf}" style="height: 100%;width: 100%;"></embed>  -->
 					</div>
 					<div class="col-md-6 col-xs-12 a2" id="detials-right">
-						<div id="bridge"></div>
+						<img title="点击播放" id="bridge" src="../static/img/index/p2.png" 
+						th:src="@{img/index/p2.png}" />
 					<!--<embed src="../static/swf/bridge.swf" th:src="@{/swf/bridge.swf}" style="height: 100%;width: 100%;"></embed>  -->
 					</div>
-					<div class="col-md-12 col-xs-12" id="details-devider">
-						<h1>VIEW <small> 视屏区(点击区域播放)</small></h1>
-					</div>
 					<div class="col-md-6 col-xs-12 a3" id="detials-3">
-						<div id="lake"></div>
+						<img title="点击播放" id="lake" src="../static/img/index/p3.png" 
+						th:src="@{img/index/p3.png}" />
 					<!-- <embed src="../static/swf/lake.swf" th:src="@{/swf/lake.swf}" style="height: 100%;width: 100%;"></embed>  -->
 					</div>
 					<div class="col-md-6 col-xs-12 a4" id="detials-left" >
-						<div id="oldstreet"></div>
+						<img title="点击播放" id="oldstreet" src="../static/img/index/p4.png" 
+						th:src="@{img/index/p4.png}" />
 					<!-- <embed src="../static/swf/oldstreet.swf" th:src="@{/swf/oldstreet.swf}" style="height: 100%;width: 100%;"></embed>  -->
 					</div>
 				</div>

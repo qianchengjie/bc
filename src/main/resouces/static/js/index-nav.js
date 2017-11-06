@@ -183,10 +183,18 @@ $(document).ready(function() {
 	}
 	
 });
+
+var isChange = false;
 //护眼模式!!!!
 $("#header-left #change span").click(function(event) {
 	/* Act on the event */
-	change();
+	if (isChange) {
+		reChange();
+		isChange = false;
+	} else {
+		change();
+		isChange = true;
+	}
 });
 
 //header-static search界面
@@ -274,4 +282,57 @@ function change(){
 		'background': '#380000',
 		'color': '#ccc'
 	});
+	$('#header-left #items').css({
+		'color': '#eee'
+	})
+}
+function reChange(){
+	$("#header-left #change span").css('color', 'black');
+	$("body").css({
+		'background': '#F1F1F1',
+		'color': '#000'
+	});
+	$("#header-static").css({
+		'background': '#FFF',
+		'color': '#000'
+	});
+	$("#header").css({
+		'background': '#FFF',
+		'color': '#000'
+	});
+	$("#header #box-left").css({
+		'border-color': '#ccc',
+		'color': '#888'
+	});
+	$("#header #box-left span").css({
+		'border-color': '',
+		'color': ''
+	});
+	$("#header-left").css({
+		'background': '#FFF',
+		'color': '#888',
+	});
+	$("#header-left #items").css({
+		'border-color':'#888',
+		property2: 'value2'
+	});
+	$("#header #item3").css({
+		'background': '#2F4F4F',
+		'color': '#ccc'
+	});
+	$(".footer").css({
+		'background': '#505050',
+		'color': '#ccc'
+	});
+	$(".footer #top").css({
+		'background': '#505050',
+		'border-color': '#eee'
+	});
+	$("#details-devider").css({
+		'background': '#380000',
+		'color': '#ccc'
+	});
+	$('#header-left #items').css({
+		'color': '#000'
+	})
 }

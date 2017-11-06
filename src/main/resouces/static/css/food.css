@@ -93,9 +93,8 @@ body{
 	display: block;
 }
 #content #item-box #box-left{
-	float: left;
 	height: 350px;
-	width: 50%;
+	width: 100%;
 	overflow: hidden;
 	position: relative;
 	animation: box-left-in 1s;
@@ -135,7 +134,7 @@ body{
 #content #item-box #box-right{
 	float: left;
 	height: 350px;
-	width: 50%;
+	width: 100%;
 	background: #fff;
 	position: relative;
 	animation: box-right-in 1s;
@@ -149,10 +148,9 @@ body{
 	border-color: black;
 }
 #content #item-box #box-right #text{
-	width: 400px;
+	width: 100%;
 	height: 300px;
 	margin: 25px;
-	float: left;
 	line-height: 30px;
 	position: relative;
 	padding: 30px;

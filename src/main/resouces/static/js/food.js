@@ -45,5 +45,4 @@ $(document).ready(function(){
 		}
 	})
 	console.log($(document).height())
-	
 });

@@ -39,6 +39,7 @@
 	width: 50%;
 }
 #body .content .items .font-box{
+	text-indent: 2em;
 	width: 50%;
 	float: left;
 }

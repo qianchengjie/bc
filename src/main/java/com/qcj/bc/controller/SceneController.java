@@ -22,14 +22,13 @@ public class SceneController {
 	
 	@RequestMapping("/oldstreet")
 	public String oldstreet(){
-		return "oldStreet";
+		return "OldStreet";
 	}
 	
 	@RequestMapping("/oldstreets")
 	public ModelAndView oldstreets(int id){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("imgs",sceneService.getOldstreetImg(id));
-		System.out.println(sceneService.getOldstreetImg(id));
 		mav.addObject("text",sceneService.getOldstreetText(id));
 		mav.setViewName("OldStreetText");
 		return mav;
